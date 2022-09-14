@@ -7,5 +7,4 @@
 * Alejandro Celen 
 * Gonzalo Jesús Ezequiel Cuello 
 * Nicolas Angel Emiliano Gaitan
-* María LiLen Guzman 
 * Pamela Suarez
