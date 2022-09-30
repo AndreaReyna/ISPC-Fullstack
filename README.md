@@ -1,10 +1,11 @@
 # ISPC - Proyecto FullStack
 
-* Juan Manuel Sanchez Fin
-* Fiorella Cristina Melgarejo 
-* Franco Agustin Trivini De Elejalde
-* Andrea Inés Reyna 
-* Alejandro Celen 
-* Gonzalo Jesús Ezequiel Cuello 
-* Nicolas Angel Emiliano Gaitan
-* Pamela Suarez
+* Juan Manuel Sanchez Fin - Product Owner
+* Andrea Inés Reyna - Scrum Master
+* Fiorella Cristina Melgarejo - Developer Full Stack
+* Franco Agustin Trivini De Elejalde - Developer Full Stack
+* Alejandro Celen - Admin DB
+* Gonzalo Jesús Ezequiel Cuello - QA
+* Nicolas Angel Emiliano Gaitan - UX/UI Designer
+* Pamela Suarez - UX/UI Designer
+
