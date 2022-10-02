@@ -3,10 +3,9 @@
 
 * 👨‍💻 Juan Manuel Sanchez Fin - Product Owner
 * 👩‍🏫 Andrea Inés Reyna - Scrum Master
-* 👷‍♂️ Fiorella Cristina Melgarejo - Developer Full Stack
-* 👷‍♂️ Franco Agustin Trivini De Elejalde - Developer Full Stack
-* 👷‍♂️ Alejandro Celen - Admin DB
-* 👷‍♂️ Gonzalo Jesús Ezequiel Cuello - QA
-* 👷‍♂️ Nicolas Angel Emiliano Gaitan - UX/UI Designer
-* 👷‍♂️ Pamela Suarez - UX/UI Designer
-
+* :construction: Fiorella Cristina Melgarejo - Developer Full Stack
+* :end: Franco Agustin Trivini De Elejalde - Developer Full Stack
+* :book: Alejandro Celen - Admin DB
+* :cop: Gonzalo Jesús Ezequiel Cuello - QA
+* :thought_balloon: Nicolas Angel Emiliano Gaitan - UX/UI Designer
+* :tada: Pamela Suarez - UX/UI Designer
