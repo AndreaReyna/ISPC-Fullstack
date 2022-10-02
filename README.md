@@ -1,5 +1,5 @@
-## ISPC - Proyecto FullStack
-# Grupo 47
+# ISPC - Proyecto FullStack
+## Grupo 47
 
 * 👨‍💻 Juan Manuel Sanchez Fin - Product Owner
 * 👩‍🏫 Andrea Inés Reyna - Scrum Master
