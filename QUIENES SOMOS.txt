@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+		<title>Libreria IN 47</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+	</head><!DOCTYPE html>
+<html>
+	<head>	
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+		<title>Libreria IN 47</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+	</head>
+
+	<body>
+		<blockquote>
+			<h1><em><strong><center>QUIENES SOMOS</center></strong></em></h1>
+		</blockquote>
+
+		<blockquote>
+		<p1> Somos IN 47, un grupo de desarrolladores web que ..... </p1>
+		<center><img src="imagenes/47.png" alt="HTML" width="400px" heigth="400px"></center>
+		</blockquote>
+
+	<blockquote>
+		<h2><em><strong><center>Nuestra Misión</center></strong></em></h1>
+</blockquote>
+
+<blockquote>
+		<p2>Nuestra mision es satisfacer íntegramente las necesidades
+		de nuestros clientes, ofreciendo el mayor surtido de libros 
+		de texto, lectura e innovación digital. 
+		Satisfaciendo las necesidades de la comunidad educativa con una 
+		amplia gama de editoriales para garantizar el aprendizaje y 
+		fomentar el amor a la lectura en el público en general.</p2>
+	
+</blockquote>
+
+<blockquote>
+		<h3><em><strong><center>Estamos para ayudarte</center></strong></em></p1></h3>
+</blockquote>
+
+<blockquote>
+		<h4><em><strong><center>NUESTRO EQUIPO</center></strong></em></h4>
+</blockquote>
+
+<blockquote>
+	<div class="card" style="width: 18rem;">
+  <img src="......." class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">Juan Manuel Sanchez Fin - PRODUCT OWNER</h5>
+    <p class="card-text">BLA BLA BLA BLA </p>
+  </div>
+</div>
+</blockquote>
+
+<blockquote>
+<div class="card" style="width: 18rem;">
+  <img src="........." class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">Andrea Ines Reyna - SCRUM MASTER</h5>
+    <p class="card-text">BLA BLA BLA BLA </p>
+  </div>
+</div>
+</blockquote>
+
+<blockquote>
+<div class="card" style="width: 18rem;">
+  <img src="..........." class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">Fiorella Cristina Melgarejo - DEVELOPER FULL STACK</h5>
+    <p class="card-text">BLA BLA BLA BLA </p>
+  </div>
+</div>
+</blockquote>
+
+<blockquote>
+<div class="card" style="width: 18rem;">
+  <img src=".............." class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">Franco Agustin Trivini de Elejalde - DEVELOPER FULL STACK</h5>
+    <p class="card-text">BLA BLA BLA BLA </p>
+  </div>
+</div>
+</div>
+</blockquote>
+
+<blockquote>
+<div class="card" style="width: 18rem;">
+  <img src="..........." class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">Alejandro Celen - ADMIN DB</h5>
+    <p class="card-text">BLA BLA BLA BLA </p>
+  </div>
+</div>
+</div>
+</blockquote>
+
+<blockquote>
+<div class="card" style="width: 18rem;">
+  <img src="..........." class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">Gonzalo Jesus Ezequiel Cuello - QA</h5>
+    <p class="card-text">BLA BLA BLA BLA </p>
+  </div>
+</div>
+</div>
+</blockquote>
+
+<blockquote>
+<div class="card" style="width: 18rem;">
+  <img src=".........." class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">Nicolas Angel Emiliano Gaitan - UX/UI DESIGNER</h5>
+    <p class="card-text">BLA BLA BLA BLA </p>
+  </div>
+</div>
+</div>
+</blockquote>
+
+<blockquote>
+<div class="card" style="width: 18rem;">
+  <img src="..........." class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">Pamela Suarez - UX/UI DESIGNER</h5>
+    <p class="card-text">BLA BLA BLA BLA </p>
+      </div>
+</div>
+</div>
+</blockquote>
+
+	</body>

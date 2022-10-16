@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+		<title>Libreria IN 47</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+	</head>
+
+ <blockquote>
+	<header>
+		<ul class="nav nav-tabs justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">INICIO</font></font></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">QUIENES SOMOS</font></font></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CONTACTO</font></font></a>
+      </li>
+		</ul>
+	</header>
+</blockquote>
+
+<blockquote>	
+	<body>
+
+		<h1><em><strong><center>Bienvenidos a la libreria virtual IN 47</center></strong></em></h1>
+</blockquote>
+
+<blockquote>
+		<p>En esta página web vas a poder encontrar y descubrir
+		todo tipo de historias, cuentos, autores y quedarte con el 
+		que más te guste.</p>
+</blockquote>
+
+<blockquote>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">BUSQUEDA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">INICIO</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">QUIENES SOMOS</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link active">CONTACTO</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">OK</button>
+      </form>
+    </div>
+  </div>
+</nav>
+</blockquote>
+
+<blockquote>
+<div class="btn-group" role="group" aria-label="Basic outlined example">
+  <button type="button" class="btn btn-outline-primary">LIBROS</button>
+  <button type="button" class="btn btn-outline-primary">NOVELAS</button>
+  <button type="button" class="btn btn-outline-primary">CUENTOS INFANTILES</button>
+ <button type="button" class="btn btn-outline-primary">TOP 100</button>
+ <button type="button" class="btn btn-outline-primary">COMICS</button>
+ <button type="button" class="btn btn-outline-primary">GUIA DE COMPRA</button>
+</div>
+</blockquote>
+
+<blockquote>
+<div id="carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item">
+	<img src="imagenes/PRIMERA.jpg" alt="HTML" width="100%" heigth="100%">          
+
+        </div>
+        <div class="carousel-item">
+	<img src="imagenes/SEGUNDA.jpg" alt="HTML" width="100%" heigth="100%">
+ 
+        </div>
+        <div class="carousel-item active">
+	 <img src="imagenes/TERCERA.jpg" alt="HTML" width="100%" heigth="100%">        
+        </div>
+      </div>
+    </div>
+</blockquote>
+
+<blockquote>
+<div class="card-group" role="group" aria-label="Basic outlined example">
+<div class="card" style="width: 18rem;">
+  <img src="imagenes/kids.jpg" class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">CUENTOS INFANTILES</h5>
+    <p class="card-text">En esta seccion encontraras los libros mas recomendados para niños/as de entre 3-12años.</p>
+    <a href="#" class="btn btn-primary">EXPLORAR</a>
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+  <img src="imagenes/novelas.jpg" class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">NOVELAS</h5>
+    <p class="card-text">En esta seccion encontraras las novelas mas emocionantes y apasionadas para disfrutar.</p>
+    <a href="#" class="btn btn-primary">EXPLORAR</a>
+  </div>
+</div>
+
+
+
+<div class="card" style="width: 18rem;">
+  <img src="imagenes/comic.jpg" class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">COMICS</h5>
+    <p class="card-text">En esta seccion encontraras los comics que te haran viajar a otra realidad y luchar junto a tus personajes favoritos.</p>
+    <a href="#" class="btn btn-primary">EXPLORAR</a>
+  </div>
+</div>
+
+
+
+<div class="card" style="width: 18rem;">
+  <img src="imagenes/books.jpg" class="card-img-top" alt="HTML" width="400"  heigth="400">
+  <div class="card-body">
+    <h5 class="card-title">LIBROS</h5>
+    <p class="card-text">En esta seccion encontraras los libros mas recomendados por la gente.</p>
+    <a href="#" class="btn btn-primary">EXPLORAR</a>
+  </div>
+</div>
+</div>
+</blockquote>
+
+
+	</body>
+
+
+</html>
