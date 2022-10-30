@@ -20,7 +20,7 @@
    
    <body>
       <header>
-         <ul class="nav nav-tabs justify-content-end bg-info">
+         <ul class="nav nav-tabs justify-content-end bg-secondary">
             <li class="nav-item">
                <a class="nav-link active" aria-current="page" href="index.html"
                   ><font style="vertical-align: inherit"
@@ -29,12 +29,12 @@
                   >
             </li>
             <li class="nav-item">
-               <a class="nav-link active" href="login.html"
-                  ><font style="vertical-align: inherit"
-                  ><font style="vertical-align: inherit">MI CUENTA</font></font
-                  ></a
-                  >
-            </li>
+                <a class="nav-link active" href="login.html"
+                   ><font style="vertical-align: inherit"
+                   ><font style="vertical-align: inherit">MI CUENTA</font></font
+                   ></a
+                   >
+             </li>
             <li class="nav-item">
                <a class="nav-link active" href="about.html"
                   ><font style="vertical-align: inherit"
@@ -50,143 +50,55 @@
                   >
             </li>
          </ul>
-         <br>
-         <br>
-         <center>
-         <h1 class="display-4">
-            Bienvenidos a la Libreria Virtual IN 47
-         </h1>
-         
-         <p class="lead">
-         En esta página web vas a poder encontrar y descubrir todo tipo de historias, cuentos, autores y quedarte con el que más te guste!</p>
-         </center>
-         <br>
-         <br>
       </header>
-      <nav class="navbar navbar-expand-lg bg-light">
-         <div class="input-group">
-            <input type="search" class="form-control rounded" placeholder="Ingresa titulo, autor, ISBN o palabra clave" aria-label="Search" aria-describedby="search-addon">
-            <button type="button" class="btn btn-outline-primary">BUSCAR</button>
-         </div>
-      </nav>
-      <nav class="nav nav-pills flex-column flex-sm-row">
-         <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">LIBROS</a>
-         <a class="flex-sm-fill text-sm-center nav-link" href="#">NOVELAS</a>
-         <a class="flex-sm-fill text-sm-center nav-link" href="#">INFANTILES</a>
-         <a class="flex-sm-fill text-sm-center nav-link" href="#">MAS VENDIDOS</a>
-         <a class="flex-sm-fill text-sm-center nav-link" href="#">COMICS</a>
-         <a class="flex-sm-fill text-sm-center nav-link" href="#">CATEGORIAS</a>
-      </nav>
-      <article>
-         <section>
-            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-               <div class="carousel-inner">
-                  <div class="carousel-item">
-                     <figure>
-                        <img
-                           src="imagenes/PRIMERA.jpg"
-                           alt="libro con taza de cafe"
-                           width="100%"
-                           heigth="100%"
-                           >
-                     </figure>
-                  </div>
-                  <div class="carousel-item">
-                     <figure>
-                        <img
-                           src="imagenes/SEGUNDA.jpg"
-                           alt="libro abierto"
-                           width="100%"
-                           heigth="100%"
-                           >
-                     </figure>
-                  </div>
-                  <div class="carousel-item active">
-                     <figure>
-                        <img
-                           src="imagenes/TERCERA.jpg"
-                           alt="ebook con taza de cafe y refrigerios"
-                           width="100%"
-                           heigth="100%"
-                           >
-                     </figure>
-                  </div>
-               </div>
+      <section>
+        <div class="container-fluid h-custom">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                class="img-fluid" alt="Sample image">
             </div>
-         </section>
-         <section>
-            <div class="card-group" role="group" aria-label="Basic outlined example">
-               <div class="card" style="width: 18rem">
-                  <figure>
-                     <img
-                        src="imagenes/infantil_portada.png"
-                        class="card-img-top"
-                        alt="portada de libro infantil"
-                        >
-                  </figure>
-                  <div class="card-body">
-                     <h5 class="card-title">CUENTOS INFANTILES</h5>
-                     <p class="card-text">
-                        En esta seccion encontraras los libros mas recomendados para
-                        niños/as de entre 3-12años.
-                     </p>
-                     <a href="#" class="btn btn-primary">EXPLORAR</a>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <form>
+                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                  <p class="lead fw-normal mb-3 me-3">Inicia sesion</p>                  
+                </div>      
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="form3Example3" class="form-control form-control-lg"
+                    placeholder="Ingresa tu correo electronico" />
+                  <label class="form-label" for="form3Example3">Correo electronico</label>
+                </div>
+      
+                <!-- Password input -->
+                <div class="form-outline mb-3">
+                  <input type="password" id="form3Example4" class="form-control form-control-lg"
+                    placeholder="Ingresa tu contraseña" />
+                  <label class="form-label" for="form3Example4">Contraseña</label>
+                </div>
+      
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- Checkbox -->
+                  <div class="form-check mb-0">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                    <label class="form-check-label" for="form2Example3">
+                      Recordarme
+                    </label>
                   </div>
-               </div>
-               <div class="card" style="width: 18rem">
-                  <figure>
-                     <img
-                        src="imagenes/novela_portada.png"
-                        class="card-img-top"
-                        alt="portada de novela"
-                        >
-                  </figure>
-                  <div class="card-body">
-                     <h5 class="card-title">NOVELAS</h5>
-                     <p class="card-text">
-                        En esta seccion encontraras las novelas mas emocionantes y
-                        apasionadas para disfrutar.
-                     </p>
-                     <a href="#" class="btn btn-primary">EXPLORAR</a>
-                  </div>
-               </div>
-               <div class="card" style="width: 18rem">
-                  <figure>
-                     <img
-                        src="imagenes/comic_portada.png"
-                        class="card-img-top"
-                        alt="portada de comic"
-                        >
-                  </figure>
-                  <div class="card-body">
-                     <h5 class="card-title">COMICS</h5>
-                     <p class="card-text">
-                        En esta seccion encontraras los comics que te haran viajar a otra
-                        realidad y luchar junto a tus personajes favoritos.
-                     </p>
-                     <a href="#" class="btn btn-primary">EXPLORAR</a>
-                  </div>
-               </div>
-               <div class="card" style="width: 18rem">
-                  <figure>
-                     <img
-                        src="imagenes/mas_vendidos_portada.png"
-                        class="card-img-top"
-                        alt="portada de libro mas vendido"
-                        >
-                  </figure>
-                  <div class="card-body">
-                     <h5 class="card-title">MAS VENDIDOS</h5>
-                     <p class="card-text">
-                        En esta seccion encontraras los libros mas vendidos y recomendados por la
-                        gente. Conocelos!
-                     </p>
-                     <a href="#" class="btn btn-primary">EXPLORAR</a>
-                  </div>
-               </div>
+                  <a href="#!" class="text-body">Olvidaste tu contraseña?</a>
+                </div>
+      
+                <div class="text-center text-lg-start mt-4 pt-2">
+                  <button type="button" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Ingresar</button>
+                  <p class="small fw-bold mt-2 pt-1 mb-0">No tienes una cuenta? <a href="register.html"
+                      class="link-danger">Registrarme</a></p>
+                </div>    
+              </form>
             </div>
-         </section>
-      </article>
+          </div>
+        </div>        
+      </section>
       <!-- Footer -->
       <footer class="text-center text-lg-start bg-white text-muted">
          <!-- Section: Social media -->
