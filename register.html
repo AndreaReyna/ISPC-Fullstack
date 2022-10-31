@@ -62,61 +62,62 @@
       
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrate</p>
       
-                      <form class="mx-1 mx-md-4">
+                      <form class="mx-1 mx-md-4" id="register">
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="text" id="form3Example1c" class="form-control" />
-                            <label class="form-label" for="form3Example1c">Tu nombre</label>
+                            <input type="text" id="name" class="form-control" />
+                            <label class="form-label" for="name">Tu nombre</label>
                           </div>
                         </div>
 
                         <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
-                              <input type="text" id="form3Example1c" class="form-control" />
-                              <label class="form-label" for="form3Example1c">Tu apellido</label>
+                              <input type="text" id="lastname" class="form-control" />
+                              <label class="form-label" for="lastname">Tu apellido</label>
                             </div>
                           </div>
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="email" id="form3Example3c" class="form-control" />
-                            <label class="form-label" for="form3Example3c">Tu correo electronico</label>
+                            <input type="email" id="email" class="form-control" />
+                            <label class="form-label" for="email">Tu correo electronico</label>
                           </div>
                         </div>
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="form3Example4c" class="form-control" />
-                            <label class="form-label" for="form3Example4c">Contraseña</label>
+                            <input type="password" id="pass" class="form-control" />
+                            <label class="form-label" for="pass">Contraseña</label>
                           </div>
                         </div>
       
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
-                            <input type="password" id="form3Example4cd" class="form-control" />
-                            <label class="form-label" for="form3Example4cd">Repite tu contraseña</label>
+                            <input type="password" id="pass2" class="form-control" />
+                            <label class="form-label" for="pass2">Repite tu contraseña</label>
                           </div>
                         </div>
       
                         <div class="form-check d-flex justify-content-center mb-5">
-                          <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-                          <label class="form-check-label" for="form2Example3">
+                          <input class="form-check-input me-2" type="checkbox" value="" id="check" />
+                          <label class="form-check-label" for="check">
                             He leído y acepto los <a href="#!">términos y condiciones de uso</a>
                           </label>
                         </div>
       
                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <button type="button" class="btn btn-primary btn-lg">Registrarme</button>
+                          <button type="submit" class="btn btn-primary btn-lg">Registrarme</button>
                         </div>
       
                       </form>
-      
+                      <div id="alert" class="alert alert-danger invisible mt-3" role="alert">
+                     </div>
                     </div>
                     <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
       
@@ -228,5 +229,6 @@
          <!-- Copyright -->
       </footer>
       <!-- Footer -->
+      <script src="js/registerValidations.js"></script>
    </body>
 </html>
