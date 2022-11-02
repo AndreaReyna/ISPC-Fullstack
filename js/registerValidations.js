@@ -18,6 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
      setTimeout(() => message.classList.replace("visible", "invisible"), 1900);
      return;
    }
+   if (name.length < 3) {
+    message.classList.replace("invisible", "visible");
+    message.innerHTML = "Por favor, escribe un nombre valido";
+    setTimeout(() => (message.innerHTML = ""), 1900);
+    setTimeout(() => message.classList.replace("visible", "invisible"), 1900);
+    return;
+  }
    if (lastname.length == 0) {
      message.classList.replace("invisible", "visible");
      message.innerHTML = "Por favor, escribe tu apellido";
@@ -25,6 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
      setTimeout(() => message.classList.replace("visible", "invisible"), 1900);
      return;
    }
+   if (lastname.length < 3) {
+    message.classList.replace("invisible", "visible");
+    message.innerHTML = "Por favor, escribe un apellido valido";
+    setTimeout(() => (message.innerHTML = ""), 1900);
+    setTimeout(() => message.classList.replace("visible", "invisible"), 1900);
+    return;
+  }
    if (email.length == 0) {
      message.classList.replace("invisible", "visible");
      message.innerHTML = "Por favor, escribe tu correo electronico";
@@ -32,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
      setTimeout(() => message.classList.replace("visible", "invisible"), 1900);
      return;
    }
-   if (email.length < 5 || !email.includes("@")) {
+   if (email.length < 5 || !email.includes("@") || !email.includes(".")) {
      message.classList.replace("invisible", "visible");
      message.innerHTML = "Por favor, escribe un correo valido";
      setTimeout(() => (message.innerHTML = ""), 1900);
@@ -60,7 +74,13 @@ document.addEventListener("DOMContentLoaded", function () {
      setTimeout(() => message.classList.replace("visible", "invisible"), 1900);
      return;
    }
-
+   if (pass.length < 6) {
+    message.classList.replace('invisible', 'visible');
+    message.innerHTML='La clave debe tener al menos 6 caraceres';
+    setTimeout(()=> message.innerHTML= "",1900);
+    setTimeout(()=> message.classList.replace('visible', 'invisible'),1900);
+    return;
+  }
    if (!document.getElementById("check").checked) {
     message.classList.replace("invisible", "visible");
     message.innerHTML = "Debe aceptar los terminos y condiciones";
@@ -69,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
    }
    this.submit();
+   alert("Registro exitoso!")
  }
  
  
