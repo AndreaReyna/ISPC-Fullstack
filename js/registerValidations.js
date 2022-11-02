@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
    }
    this.submit();
-   alert("Registro exitoso!")
+   alert("Registro exitoso!");
  }
  
  

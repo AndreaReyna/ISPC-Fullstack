@@ -37,5 +37,6 @@ function validarFormulario(evento) {
          return;
        }
       this.submit();
-      alert("Inicio de sesión exitoso!")
+      alert("Inicio de sesión exitoso!");
    }
+
