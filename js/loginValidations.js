@@ -1,4 +1,3 @@
-src="//cdn.jsdelivr.net/npm/sweetalert2@11"
 document.addEventListener("DOMContentLoaded", function () {
    document.getElementById("login").addEventListener('submit', validarFormulario);
 });
@@ -40,5 +39,3 @@ function validarFormulario(evento) {
       this.submit();
       alert("Inicio de sesión exitoso!")
    }
-
-
