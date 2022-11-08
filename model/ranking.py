@@ -1,6 +1,6 @@
 import libro
 
-class Ranking(Libro):
+class Ranking(libro):
 
     def __init__(self, id, esMasVendido):
         self._id = id

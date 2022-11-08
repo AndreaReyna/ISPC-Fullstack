@@ -1,6 +1,7 @@
+import persona
 import mysql.connector
 
-class Conectar():
+class Conectar(persona):
 
     def __init__(self) -> None:
         try:
@@ -19,7 +20,7 @@ class Conectar():
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sentenciaSQL= "INSERT INTO Usuarios VALUES(%s,%s,%s,%s)"
+                sentenciaSQL= """INSERT INTO Usuarios (nombre, apellido, email, password) VALUES (%s,%s,%s,%s)"""
                 data= (nombre, apellido, email, password)
 
                 cursor.execute(sentenciaSQL,data)
@@ -33,7 +34,7 @@ class Conectar():
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sentenciaSQL= "SELECT * from Usuarios WHERE email=%s"
+                sentenciaSQL= """SELECT * from Usuarios (email) WHERE email=%s"""
                 cursor.execute(sentenciaSQL)
                 resultadoREAD = cursor.fetchall()
                 self.conexion.close()
@@ -42,11 +43,11 @@ class Conectar():
             except:
                 print("No se pudo concectar a la base de datos")
 
-    def eliminarUsuario(self,ID):
+    def eliminarUsuario(self,id):
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sentenciaSQL = "DELETE from Usuario where id = ID"
+                sentenciaSQL = """DELETE from Usuario (id) where id=%s"""
                 cursor.execute(sentenciaSQL)
 
                 self.conexion.commit()                

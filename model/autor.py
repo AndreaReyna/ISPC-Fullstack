@@ -1,7 +1,7 @@
 import libro
 import pais
 
-class Autor(Libro, Pais):
+class Autor(libro, pais):
 
     def __init__(self, id, nombre, apellido, pais):
         self._id = id

@@ -1,6 +1,6 @@
 import libro
 
-class Novedades(Libro):
+class Novedades(libro):
 
     def __init__(self, id, esNovedad):
         self._id = id

@@ -1,7 +1,6 @@
-from random import normalvariate
 import libro
 
-class Pais(Libro):
+class Pais(libro):
 
     def __init__(self, id, nombrePais):
         self._id = id

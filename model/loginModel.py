@@ -1,6 +1,7 @@
+import persona
 import mysql.connector
 
-class Conectar():
+class Conectar(persona):
 
     def __init__(self) -> None:
         try:
@@ -19,7 +20,7 @@ class Conectar():
         if self.conexion.is_connected():
             try:
                 cursor = self.conexion.cursor()
-                sentenciaSQL= "SELECT * FROM Usuario WHERE email=%s AND password=%s"
+                sentenciaSQL= """SELECT * FROM Usuario (email, password) WHERE email=%s AND password=%s"""
                 cursor.execute(sentenciaSQL)
                 resultadoREAD = cursor.fetchall()
                 self.conexion.close()

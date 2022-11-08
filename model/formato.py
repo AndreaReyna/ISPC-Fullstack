@@ -1,6 +1,6 @@
 import libro
 
-class Formato(Libro):
+class Formato(libro):
 
     def __init__(self, id, tipoFormato):
         self._id = id

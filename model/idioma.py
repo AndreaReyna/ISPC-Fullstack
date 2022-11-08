@@ -1,6 +1,6 @@
 import libro
 
-class Idioma(Libro):
+class Idioma(libro):
 
     def __init__(self, id, nombreIdioma):
         self._id = id
