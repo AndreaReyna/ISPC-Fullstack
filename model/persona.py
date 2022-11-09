@@ -38,7 +38,16 @@ class Persona:
 
     @email.setter
     def email(self, value):
-        self._email = value
+        """
+        Valida el email
+        :param value:
+        :return:
+        """
+        pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        if re.fullmatch(pattern, value):
+            self._email = value
+        else:
+            raise ValueError(f'Email invalido: {value}')
     
     @property
     def password(self):

@@ -24,13 +24,7 @@ class Conectar(persona):
                 cursor.execute(sentenciaSQL)
                 resultadoREAD = cursor.fetchall()
                 self.conexion.close()
-               
-
-                if resultadoREAD.count() == 1: # usuario encontrado
-                    return resultadoREAD
-
-                else:
-                    print("Usuario o contraseña no valida")
-
+                return resultadoREAD
+                
             except:
                 print("No se pudo concectar a la base de datos")
