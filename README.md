@@ -10,5 +10,4 @@
 * :end: Franco Agustin Trivini De Elejalde - Developer Full Stack
 * :book: Alejandro Celen - Admin DB
 * :cop: Gonzalo Jesús Ezequiel Cuello - QA
-* :thought_balloon: Nicolas Angel Emiliano Gaitan - UX/UI Designer
 * :tada: Pamela Suarez - UX/UI Designer
