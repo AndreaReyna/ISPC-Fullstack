@@ -1,8 +1,8 @@
 # ISPC - Proyecto FullStack
-## Grupo 47
+## Libreria In47
 
-### Link del proyecto https://andreareyna.github.io/ISPC-Fullstack/index.html
-### Link del sitio institucional https://in47.online/
+### Tablero de trabajo: https://github.com/users/AndreaReyna/projects/4
+### Wiki: https://github.com/AndreaReyna/ISPC-Fullstack/wiki
 
 * 👨‍💻 Juan Manuel Sanchez Fin - Product Owner
 * 👩‍🏫 Andrea Inés Reyna - Scrum Master
