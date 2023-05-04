@@ -1,0 +1,49 @@
+    .card-img-top {
+      width: 100%;
+      height: 30vh;
+      object-fit: contain;
+    }
+    body {
+      max-width: 1200px;
+      margin: auto;
+    }
+    .TituloProducto,
+    .AutorProducto,
+    .PrecioProducto {
+      color: #f26531;
+    }
+    .SubtituloProducto,
+    .Autor,
+    .Editorial {
+      color: #9b9a9a;
+    }
+    .border-Product {
+      border: 1px dashed #c7c5c5;
+      border-bottom: 1px solid #ccc;
+      box-shadow: 0 5px 1px #ededed;
+    }
+    .border-Bottom {
+      border-bottom: 1px dotted #ccc;
+    }
+    .Stock {
+      font-size: 10px;
+      font-weight: bold;
+      background-color: #fdbc45;
+    }
+    .Resenia {
+      font-family: Garamond, serif;
+    }
+    .Resenia-Texto {
+      font-size: 13px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #212529;
+    }
+    .Detalles-Texto {
+      font-size: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+    }
+    .Ayudas {
+      color: #555;
+      font-size: 12px;
+    }
