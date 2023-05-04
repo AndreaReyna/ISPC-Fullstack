@@ -1,1 +1,87 @@
-<p>cart works!</p>
+
+<section class="carrito cartEmpty">
+    <div id="ctl00_ContentPlaceHolder1_progUpdate" style="display:none;" role="status" aria-hidden="true">
+    
+            <div class="md-overlay">
+                <img src="/images/ajax-loader.gif" alt="Cargando">
+            </div>
+        
+    </div>
+    <div id="ctl00_ContentPlaceHolder1_UpdatePanel1">
+    
+        <script type="text/javascript">
+            //<![CDATA[
+            Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$ContentPlaceHolder1$UpdatePanel1',''], [], [], 90, 'ctl00');
+            //]]>
+            </script>
+            <script> 
+                ///<summary>
+                ///  This will fire on initial page load, 
+                ///  and all subsequent partial page updates made 
+                ///  by any update panel on the page
+                ///</summary>
+                function pageLoad() {
+    
+                    $('#ctl00_ContentPlaceHolder1_txt_cupon').keyup(function () {
+                        if ($('#ctl00_ContentPlaceHolder1_div_mensajeContainer').hasClass('error')) {
+                            $(this).parent().parent().removeClass('error');
+                            $('#ctl00_ContentPlaceHolder1_div_mensajeContainer').hide(100);
+                        }
+                    });
+                }
+            </script>
+    
+            <p></p>
+    
+            <div class="hd">
+                <h2><center>MI CARRITO</center></h2>
+                
+            </div>
+            <div class="bd">
+                <div class="bd">
+                    
+                    <p id="ctl00_ContentPlaceHolder1_p_no_items" class="md-no-items">
+                        No hay items en el carrito. SI tenés libros guardados en tu carrito anteriormente,
+                        <a id="lnkIngresarCuenta" href= >ingresá a tu cuenta</a>
+                        para verlos
+                    </p>
+       
+                    <div id="ctl00_ContentPlaceHolder1_div_limpiardescuentos" class="md-total md-descuentos">
+                  </div>
+                </div>
+               
+            </div>
+            <div class="ft">
+                <div class="info-adic">
+                    <p>
+                        <span><strong>IMPORTANTE</strong></span>
+                        </p><p>El costo final de su compra <strong>con el envío incluído</strong>, se verá reflejado en el próximo paso de la compra al hacer clic en "Finalizar compra".</p>
+    
+    <p>Si lo desea, a continuacion puede ver una tabla con los costos de envío estimativos</p>
+    <img src="/./src/assets/img/costos.jpg" alt="costos de envio"> </p>
+                </div>
+    
+            </div>
+        
+    </div>
+    </section>
+    
+    <div class="mediosDePago">
+        <p><strong>MEDIOS DE PAGO</strong></p>
+            <img src="/./src/assets/img/logos-1.jpg" alt="medios de pago tarjetas">
+            <img src="/./src/assets/img/logos-2.jpg" alt="medios de pago tarjetas">
+            <img src="/./src/assets/img/logos-3.jpg" alt="medios de pago tarjetas">
+            <img src="/./src/assets/img/logos-4.jpg" alt="medios de pago tarjetas">
+        </a>
+    </div>
+    
+    <p></p>
+    
+    <section id="ctl00_ContentPlaceHolder1_section_tambien_interesar" class="carrito-recomendados rank">
+    <h2>También podría interesarte</h2>
+    
+    </section>
+    
+    
+    
+
