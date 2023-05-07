@@ -8,6 +8,14 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home/home.component';
 import { ContactComponent } from './contact/contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { PanelDeControlComponent } from './panel-de-control/panel-de-control.component';
+import { AgregarComponent } from './panel-de-control/agregar/agregar.component';
+import { CategoriasComponent } from './panel-de-control/categorias/categorias.component';
+import { EliminarComponent } from './panel-de-control/eliminar/eliminar.component';
+import { EntradasComponent } from './panel-de-control/entradas/entradas.component';
+import { ModificarComponent } from './panel-de-control/modificar/modificar.component';
+import { UsuariosComponent } from './panel-de-control/usuarios/usuarios.component';
+import { VentasComponent } from './panel-de-control/ventas/ventas.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +26,14 @@ import { AboutUsComponent } from './about-us/about-us.component';
     HomeComponent,
     ContactComponent,
     AboutUsComponent,
+    PanelDeControlComponent,
+    AgregarComponent,
+    CategoriasComponent,
+    EliminarComponent,
+    EntradasComponent,
+    ModificarComponent,
+    UsuariosComponent,
+    VentasComponent,
   ],
   imports: [
     BrowserModule,
