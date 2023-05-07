@@ -1,145 +1,88 @@
-<!DOCTYPE html>
-<html lang="es">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-      <link rel="icon" type="image/x-icon" href="content/images/logo-47.ico" />
-      <style>.card-img-top {
-         width: 100%;
-         height: 30vh;
-         object-fit: contain;
-         }
-      </style>
-      <title>Panel de control</title>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
-    </head>
+<app-nav-bar-control-panel></app-nav-bar-control-panel>
+
+<header>
+
+  <br>
+  <br>
 
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-           <div class="container-fluid">
-             <snap class="navbar-brand" >AppAdmin</snap>
-             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-             </button>
-             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-               <ul class="navbar-nav">
-                 <li class="nav-item">
-                   <a class="nav-link active" aria-current="page" href="paneldecontrol.html">Panel de control</a>
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-link" href="categorias.html">Categorías</a>
-                 </li>
-                 <li class="nav-item">
-                   <a class="nav-link" href="usuarios.html">Usuarios</a>
-                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="entradas.html">Entradas</a>
-                  </li>
-               </ul>
-             </div>
-           </div>
-         </nav>
-
-         <br>
-         <br>
-         
-    <center>
-        <h1 class="display-4 mt-5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16">
-                <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
-              </svg> Modificar Libro </center>
-        </h1>
-     </header>
+  <h1 class="display-4 mt-5 center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill"
+      viewBox="0 0 16 16">
+      <path
+        d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+    </svg> Modificar Libro
+  </h1>
+</header>
 
 
-   <body>
-  
-        <div class="dropdown" style="text-align: end">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Administrar
-        </button>
-        <ul class="dropdown-menu" style="text-align: end;">
-          <li><a class="dropdown-item" href="agregar.html">Agregar un libro</button></li>
-          <li><a class="dropdown-item" href="modificar.html">Modificar un libro</a></li>
-          <li><a class="dropdown-item" href="eliminar.html">Eliminar un libro</a></li>
-          <li><a class="dropdown-item" href="ventas.html">Estado de Ventas</a></li>
-        </ul>
+
+<div class="dropdown" style="text-align: end">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Administrar
+  </button>
+  <ul class="dropdown-menu" style="text-align: end;">
+    <li><a class="dropdown-item" routerLink="/agregarAdmin">Agregar un libro</a></li>
+    <li><a class="dropdown-item" href="/modificarAdmin">Modificar un libro</a></li>
+    <li><a class="dropdown-item" href="/eliminarAdmin">Eliminar un libro</a></li>
+    <li><a class="dropdown-item" href="/estadoVentas">Estado de Ventas</a></li>
+  </ul>
+</div>
+
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+
+    </div>
+    <div class="col-md-auto">
+
+      <form class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Título del Libro</label>
+          <input type="text" class="form-control">
         </div>
+        <div class="col-md-6">
+          <label class="form-label">Subtítulo del Libro</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Código ISBN</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Stock disponible</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Categoría</label>
+          <select class="form-select">
+            <option selected>Seleccionar</option>
+            <option>NOVELAS</option>
+            <option>INFANTILES</option>
+            <option>MAS VENDIDOS</option>
+            <option>COMICS</option>
+            <option>...</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Precio</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label" for="gridCheck">
+              Comproba la información
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Cargar</button>
+        </div>
+      </form>
 
-    <body>
-        <div class="container text-center">
-            <div class="row justify-content-md-center">
-              <div class="col col-lg-2">
-                
-              </div>
-              <div class="col-md-auto">
-                
-                <form class="row g-3">
-                    <div class="col-md-6">
-                      <label class="form-label">Título del Libro</label>
-                      <input type="text" class="form-control" >
-                    </div>
-                    <div class="col-md-6">
-                      <label class="form-label">Subtítulo del Libro</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label">Código ISBN</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label">Stock disponible</label>
-                      <input type="text" class="form-control">
-                    </div>
-                    <div class="col-md-4">
-                      <label class="form-label">Categoría</label>
-                      <select class="form-select">
-                        <option selected>Seleccionar</option>
-                        <option>NOVELAS</option>
-                        <option>INFANTILES</option>
-                        <option>MAS VENDIDOS</option>
-                        <option>COMICS</option>
-                        <option>...</option>
-                      </select>
-                    </div>
-                    <div class="col-md-2">
-                      <label class="form-label">Precio</label>
-                      <input type="text" class="form-control" >
-                    </div>
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" >
-                        <label class="form-check-label" for="gridCheck">
-                          Comproba la información
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Cargar</button>
-                    </div>
-                  </form>
-              
-            </div>
-              <div class="col col-lg-2">
-               
-              </div>
-            </div>
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.cim.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script
-   src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-   integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-   crossorigin="anonymous"
- ></script>
- 
- </body>
- </html>
+    </div>
+  </div>
+</div>
+<!-- FOOTER -->
+<app-footer-control-panel></app-footer-control-panel>

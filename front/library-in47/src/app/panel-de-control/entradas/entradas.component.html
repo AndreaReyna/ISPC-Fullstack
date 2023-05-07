@@ -1,195 +1,139 @@
-<!DOCTYPE html>
-<html lang="es">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
-      <link rel="icon" type="image/x-icon" href="content/images/logo-47.ico" />
-      <style>.card-img-top {
-         width: 100%;
-         height: 30vh;
-         object-fit: contain;
-         }
-      </style>
-      <title>Panel de control</title>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
-    </head>
+<app-nav-bar-control-panel></app-nav-bar-control-panel>
 
-   <body>
-    <header>
-       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-          <div class="container-fluid">
-            <snap class="navbar-brand" >AppAdmin</snap>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="paneldecontrol.html">Panel de control</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="categorias.html">Categorías</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="usuarios.html">Usuarios</a>
-                </li>
-                <li class="nav-item">
-                   <a class="nav-link active" href="entradas.html">Entradas</a>
-                 </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-    
-       <br>
-       <br>
-       <br>
-       
-       
-        <div class="dropdown" style="text-align: end">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Administrar
-        </button>
-        <ul class="dropdown-menu" style="text-align: end;">
-          <li><a class="dropdown-item" href="agregar.html">Agregar un libro</a></li>
-          <li><a class="dropdown-item" href="modificar.html">Modificar un libro</a></li>
-          <li><a class="dropdown-item" href="eliminar.html">Eliminar un libro</a></li>
-          <li><a class="dropdown-item" href="ventas.html">Estado de Ventas</a></li>
-        </ul>
-        </div>
-           
-       <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item" aria-current="page">Panel de control</a></li>
-          <li class="breadcrumb-item " aria-current="entradas.html">Entradas</li>
-        </ol>
-      </nav>
 
-             <center>
-       <h1 class="display-4 mt-5">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
-            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-          </svg> Entradas </center> </h1>
-    </header>
+  <header>
+
+
     <br>
     <br>
-        <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title" style="text-align: center;">Entradas con comentarios</h3>
-        </div>
-        </div>
- <br>
+    <br>
 
-        <div class="panel-body">
-            <table class="table table-striped table-hover">
-            <tr>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Libro</th>
-                <th>Comentario</th>
-                <th>Fecha</th>
-                <th> </th>
-                <th> </th>
-            </tr>
-            <tr>
-                <th>Leonardo</th>
-                <th>Leonardo@gmail.com</th>
-                <th>Platero y yo </th>
-                <th>"Me encanto el libro, muy emocionante"</th>
-                <th>Abr. 25, 2023</th>
-                <th><button type="button" class="btn btn-success">Subir comentario</button></th>
-                <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
-            </tr>
-            <tr>
-                <th>Leonardo</th>
-                <th>Leonardo@gmail.com</th>
-                <th>Platero y yo </th>
-                <th>"Me encanto el libro, muy emocionante"</th>
-                <th>Abr. 25, 2023</th>
-                <th><button type="button" class="btn btn-success">Subir comentario</button></th>
-                <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
-            </tr>
-            <tr>
-                <th>Leonardo</th>
-                <th>Leonardo@gmail.com</th>
-                <th>Platero y yo </th>
-                <th>"Me encanto el libro, muy emocionante"</th>
-                <th>Abr. 25, 2023</th>
-                <th><button type="button" class="btn btn-success">Subir comentario</button></th>
-                <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
-            </tr>
-            <tr>
-                <th>Leonardo</th>
-                <th>Leonardo@gmail.com</th>
-                <th>Platero y yo </th>
-                <th>"Me encanto el libro, muy emocionante"</th>
-                <th>Abr. 25, 2023</th>
-                <th><button type="button" class="btn btn-success">Subir comentario</button></th>
-                <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
-            </tr>
-            <tr>
-                <th>Leonardo</th>
-                <th>Leonardo@gmail.com</th>
-                <th>Platero y yo </th>
-                <th>"Me encanto el libro, muy emocionante"</th>
-                <th>Abr. 25, 2023</th>
-                <th><button type="button" class="btn btn-success">Subir comentario</button></th>
-                <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
-            </tr>
-            <tr>
-                <th>Leonardo</th>
-                <th>Leonardo@gmail.com</th>
-                <th>Platero y yo </th>
-                <th>"Me encanto el libro, muy emocionante"</th>
-                <th>Abr. 25, 2023</th>
-                <th><button type="button" class="btn btn-success">Subir comentario</button></th>
-                <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
-            </tr>
-            <tr>
-                <th>Leonardo</th>
-                <th>Leonardo@gmail.com</th>
-                <th>Platero y yo </th>
-                <th>"Me encanto el libro, muy emocionante"</th>
-                <th>Abr. 25, 2023</th>
-                <th><button type="button" class="btn btn-success">Subir comentario</button></th>
-                <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
-            </tr>
-            <tr>
-                <th>Leonardo</th>
-                <th>Leonardo@gmail.com</th>
-                <th>Platero y yo </th>
-                <th>"Me encanto el libro, muy emocionante"</th>
-                <th>Abr. 25, 2023</th>
-                <th><button type="button" class="btn btn-success">Subir comentario</button></th>
-                <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
-            </tr>
-        </table>
+
+    <div class="dropdown" style="text-align: end">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Administrar
+      </button>
+      <ul class="dropdown-menu" style="text-align: end;">
+        <li><a class="dropdown-item" href="agregar.html">Agregar un libro</a></li>
+        <li><a class="dropdown-item" href="modificar.html">Modificar un libro</a></li>
+        <li><a class="dropdown-item" href="eliminar.html">Eliminar un libro</a></li>
+        <li><a class="dropdown-item" href="ventas.html">Estado de Ventas</a></li>
+      </ul>
     </div>
-        
 
-            <!-- FOOTER -->
+    <nav
+      style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+      aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Panel de control</li>
+        <li class="breadcrumb-item " aria-current="entradas.html">Entradas</li>
+      </ol>
+    </nav>
+
+
+    <h1 class="display-4 mt-5 center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill"
+        viewBox="0 0 16 16">
+        <path
+          d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+      </svg> Entradas
+    </h1>
+  </header>
   <br>
   <br>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title" style="text-align: center;">Entradas con comentarios</h3>
+    </div>
+  </div>
+  <br>
 
-  <footer style="background-color: black; margin-block-end: auto ;">
-    <p> <center>Copyrigth AppAdmin, &copy;2023 </center></style></p>
-</footer>
+  <div class="panel-body">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Libro</th>
+        <th>Comentario</th>
+        <th>Fecha</th>
+        <th> </th>
+        <th> </th>
+      </tr>
+      <tr>
+        <th>Leonardo</th>
+        <th>Leonardo@gmail.com</th>
+        <th>Platero y yo </th>
+        <th>"Me encanto el libro, muy emocionante"</th>
+        <th>Abr. 25, 2023</th>
+        <th><button type="button" class="btn btn-success">Subir comentario</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
+      </tr>
+      <tr>
+        <th>Leonardo</th>
+        <th>Leonardo@gmail.com</th>
+        <th>Platero y yo </th>
+        <th>"Me encanto el libro, muy emocionante"</th>
+        <th>Abr. 25, 2023</th>
+        <th><button type="button" class="btn btn-success">Subir comentario</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
+      </tr>
+      <tr>
+        <th>Leonardo</th>
+        <th>Leonardo@gmail.com</th>
+        <th>Platero y yo </th>
+        <th>"Me encanto el libro, muy emocionante"</th>
+        <th>Abr. 25, 2023</th>
+        <th><button type="button" class="btn btn-success">Subir comentario</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
+      </tr>
+      <tr>
+        <th>Leonardo</th>
+        <th>Leonardo@gmail.com</th>
+        <th>Platero y yo </th>
+        <th>"Me encanto el libro, muy emocionante"</th>
+        <th>Abr. 25, 2023</th>
+        <th><button type="button" class="btn btn-success">Subir comentario</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
+      </tr>
+      <tr>
+        <th>Leonardo</th>
+        <th>Leonardo@gmail.com</th>
+        <th>Platero y yo </th>
+        <th>"Me encanto el libro, muy emocionante"</th>
+        <th>Abr. 25, 2023</th>
+        <th><button type="button" class="btn btn-success">Subir comentario</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
+      </tr>
+      <tr>
+        <th>Leonardo</th>
+        <th>Leonardo@gmail.com</th>
+        <th>Platero y yo </th>
+        <th>"Me encanto el libro, muy emocionante"</th>
+        <th>Abr. 25, 2023</th>
+        <th><button type="button" class="btn btn-success">Subir comentario</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
+      </tr>
+      <tr>
+        <th>Leonardo</th>
+        <th>Leonardo@gmail.com</th>
+        <th>Platero y yo </th>
+        <th>"Me encanto el libro, muy emocionante"</th>
+        <th>Abr. 25, 2023</th>
+        <th><button type="button" class="btn btn-success">Subir comentario</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
+      </tr>
+      <tr>
+        <th>Leonardo</th>
+        <th>Leonardo@gmail.com</th>
+        <th>Platero y yo </th>
+        <th>"Me encanto el libro, muy emocionante"</th>
+        <th>Abr. 25, 2023</th>
+        <th><button type="button" class="btn btn-success">Subir comentario</button></th>
+        <th><button type="button" class="btn btn-danger">Eliminar comentario</button> </th>
+      </tr>
+    </table>
+  </div>
 
-   
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.cim.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-          crossorigin="anonymous"
-        ></script>
 
- </body>
- </html>
-        
+<!-- FOOTER -->
+<app-footer-control-panel></app-footer-control-panel>
