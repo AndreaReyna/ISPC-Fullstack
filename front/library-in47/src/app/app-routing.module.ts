@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register/register.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { HelpComponent } from './help-center/help/help.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { UserComponent } from './user/user/user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'about-us', component: AboutUsComponent},
   { path: 'help', component: HelpComponent},
-  { path: 'details', component: ProductDetailComponent}
+  { path: 'details', component: ProductDetailComponent},
+  { path: 'user', component: UserComponent}
 
 ];
 
