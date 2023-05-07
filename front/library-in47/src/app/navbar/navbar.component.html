@@ -9,19 +9,16 @@
       data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown"
       aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav justify-content-start">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html"
-            >Inicio</a
-          >
+          <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="login">Mi cuenta</a>
+          <a class="nav-link" routerLink="user">Mi cuenta</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="about-us">Quienes somos</a>
@@ -30,6 +27,9 @@
           <a class="nav-link" routerLink="contact">Contacto</a>
         </li>
       </ul>
+      <div class="me-5 ms-auto order-last">
+        <button class="btn btn-light btn-nav" routerLink="login">Login</button>
+      </div>
     </div>
   </div>
 </nav>

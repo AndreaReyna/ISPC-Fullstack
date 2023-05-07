@@ -1,0 +1,10 @@
+.section{
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+.carousel-item{
+    height: 35vh;
+}
+img{
+    width:100% ;
+}

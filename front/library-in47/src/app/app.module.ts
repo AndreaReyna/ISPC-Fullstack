@@ -8,6 +8,10 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home/home.component';
 import { ContactComponent } from './contact/contact/contact.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { RegisterModule } from './register/register.module';
+import { LoginModule } from './login/login.module';
+
+
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RegisterModule,
+    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
