@@ -7,26 +7,24 @@
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
           <form id="login" action="" method="post">
-            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-              <p class="lead fw-normal mb-3 me-3 mt-3">Iniciar sesión</p>                  
+            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start ">
+              <p class="lead fw-normal mb-3 me-3 mt-5">Iniciar sesión</p>                  
             </div>      
             <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" id="email" class="form-control form-control-lg"
-                placeholder="Ingresa tu correo electronico" />
-              <label class="form-label mt-3" for="email">Correo electronico</label>
+            <div>
+              <label for="username" class="mt-2">Email: </label>
+              <input cols="30" rows="10" class="form-control input" type="text" id="username" name="username"
+                ngModel required>
             </div>
-  
             <!-- Password input -->
-            <div class="form-outline mb-3">
-              <input type="password" id="pass" class="form-control form-control-lg"
-                placeholder="Ingresa tu contraseña" />
-              <label class="form-label mt-3" for="pass">Contraseña</label>
+            <div>
+              <label for="password" class="mt-2">Contraseña: </label>
+              <input cols="30" rows="10" class="form-control input" type="password" id="password" name="password"
+                ngModel required>
             </div>
-  
             <div class="d-flex justify-content-between align-items-center">
               <!-- Checkbox -->
-              <div class="form-check mb-0">
+              <div class="form-check mb-0 mt-2">
                 <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
                 <label class="form-check-label" for="form2Example3">
                   Recordarme
@@ -36,7 +34,7 @@
             </div>
             <div id="alert" class="alert alert-danger invisible mt-3" role="alert">
             </div>
-            <div class="text-center text-lg-start mt-4 pt-2">
+            <div class="text-center text-lg-start mt-2 pt-2">
               <button type="submit" id="btn-enviar" class="btn btn-primary btn-lg"
                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Ingresar</button>
               <p class="small fw-bold mt-2 pt-1 mb-0">No tienes una cuenta?</p> 
