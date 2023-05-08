@@ -22,6 +22,8 @@ import { HelpCenterModule } from './help-center/help-center.module';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { NavBarControlPanelComponent } from './panel-de-control/nav-bar-control-panel/nav-bar-control-panel.component';
 import { FooterControlPanelComponent } from './panel-de-control/footer-control-panel/footer-control-panel.component';
+import { RegisterModule } from './register/register.module';
+import { LoginModule } from './login/login.module';
 
 const routes: Routes = [
   {
@@ -105,8 +107,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RegisterModule,
+    LoginModule,
     RouterModule.forRoot(routes)
-
   ],
   providers: [],
   bootstrap: [AppComponent]
