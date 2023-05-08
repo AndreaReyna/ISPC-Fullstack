@@ -1,0 +1,242 @@
+<app-nav-bar-control-panel></app-nav-bar-control-panel>
+
+<header>
+  <br>
+  <br>
+  <br>
+  <div class="dropdown" style="text-align: end">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Administrar
+    </button>
+    <ul class="dropdown-menu" style="text-align: end;">
+      <li><a class="dropdown-item" routerLink="/agregarAdmin">Agregar un libro</a></li>
+      <li><a class="dropdown-item" href="/modificarAdmin">Modificar un libro</a></li>
+      <li><a class="dropdown-item" href="/eliminarAdmin">Eliminar un libro</a></li>
+      <li><a class="dropdown-item" href="/estadoVentas">Estado de Ventas</a></li>
+    </ul>
+  </div>
+
+  <nav
+    style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" aria-current="page">Panel de control</li>
+    </ol>
+  </nav>
+
+
+  <h1 class="display-4 mt-5 center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gear-fill"
+      viewBox="0 0 16 16">
+      <path
+        d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z">
+      </path>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-gear-fill"
+      viewBox="0 0 16 16">
+      <path
+        d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z">
+      </path>
+    </svg>
+    Panel de control | <small>Administre su sitio</small>
+  </h1>
+
+
+</header>
+<br>
+<br>
+
+<!-- PARTE IZQUIERDA -->
+
+<div class="row g-0 text-center">
+  <div class="col-6 col-md-4">
+
+    <div class="card" style="margin-left: 30px; margin-right: 30px;">
+      <div class="card-header" style="text-align: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-gear-fill"
+          viewBox="0 0 16 16">
+          <path
+            d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z">
+          </path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-gear-fill"
+          viewBox="0 0 16 16">
+          <path
+            d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z">
+          </path>
+        </svg> Panel de Control
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a routerLink="/categoriasAdmin" class="list-group-item-action"> <svg
+              xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-collection-fill" viewBox="0 0 16 16">
+              <path
+                d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z" />
+            </svg> Categorias <a href="" class="text-dark">
+              <i class="fas fa-envelope fa-2x"></i>
+              <span class="badge rounded-pill badge-notification bg-danger">9</span>
+            </a></a></li>
+        <li class="list-group-item"><a routerLink="/usuarios" class="list-group-item-action"><svg
+              xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill"
+              viewBox="0 0 16 16">
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+            </svg> Usuarios <a href="" class="text-dark">
+              <i class="fas fa-envelope fa-2x"></i>
+              <span class="badge rounded-pill badge-notification bg-danger">125</span>
+            </a></a></li>
+        <li class="list-group-item"><a routerLink="/entradasAdmin" class="list-group-item-action"><svg
+              xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+            </svg> Entradas <a href="" class="text-dark">
+              <i class="fas fa-envelope fa-2x"></i>
+              <span class="badge rounded-pill badge-notification bg-danger">50</span>
+            </a></a>
+        </li>
+      </ul>
+    </div>
+
+    <br>
+    <br>
+
+    <section>
+      <div style="margin-left: 30px; margin-right: 30px;">
+        <p><strong> Usuarios registrados</strong></p>
+        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="25"
+          aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 25%"></div>
+        </div>
+      </div>
+    </section>
+
+    <br>
+    <br>
+
+    <section>
+      <div style="margin-left: 30px; margin-right: 30px;">
+        <p><strong> Usuarios no registrados</strong></p>
+        <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
+          aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 75%"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- PARTE DERECHA -->
+
+  <div class="col-sm-6 col-md-8">
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <div class="col">
+        <div class="card" style="margin-top: 30px;">
+          <div class="card-body">
+            <h5 class="card-title center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+              </svg> 508
+            </h5>
+            <p class="card-text center">
+              Usuarios
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="margin-top: 30px;">
+          <div class="card-body">
+            <h5 class="card-title center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-collection-fill" viewBox="0 0 16 16">
+                <path
+                  d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z" />
+              </svg> 17
+            </h5>
+            <p class="card-text center"> Páginas </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="margin-top: 30px;">
+          <div class="card-body">
+            <h5 class="card-title center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill"
+                viewBox="0 0 16 16">
+                <path
+                  d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
+              </svg> 33
+            </h5>
+            <p class="card-text center">
+              Entradas
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card" style="margin-top: 30px;">
+          <div class="card-body">
+            <h5 class="card-title center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-people-fill" viewBox="0 0 16 16">
+                <path
+                  d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+              </svg> 15,560
+            </h5>
+            <p class="card-text center">
+              Visitantes
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--PARTE DE ABAJO-->
+<br>
+<br>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title" style="text-align: center;">Últimos ususarios</h3>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Registrado</th>
+      </tr>
+      <tr>
+        <td> Juan Lopez </td>
+        <td> JuanLopez@gmail.com </td>
+        <td> Dic. 17, 2022 </td>
+      </tr>
+      <tr>
+        <td> Lautaro Martinez </td>
+        <td> LautaroMartinez@gmail.com </td>
+        <td> Dic. 20, 2022 </td>
+      </tr>
+      <tr>
+        <td> Ramiro Melgarejo </td>
+        <td> RamiroMelgarejo@gmail.com </td>
+        <td> Ene. 03, 2023 </td>
+      </tr>
+      <tr>
+        <td> Valentina Fernandez </td>
+        <td> ValentinaFernandez@gmail.com </td>
+        <td> Mar. 05, 2023 </td>
+      </tr>
+      <tr>
+        <td> Tomas Molina </td>
+        <td> TomasMolina@gmail.com </td>
+        <td> Abr. 10, 2023 </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<app-footer-control-panel></app-footer-control-panel>

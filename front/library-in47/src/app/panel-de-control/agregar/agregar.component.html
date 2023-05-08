@@ -1,0 +1,90 @@
+<app-nav-bar-control-panel></app-nav-bar-control-panel>
+
+
+<header>
+  <br>
+  <br>
+  <h1 class="display-4 mt-5 center">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill"
+      viewBox="0 0 16 16">
+      <path
+        d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+    </svg> Agregar Libro
+  </h1>
+</header>
+
+<div class="dropdown" style="text-align: end">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Administrar
+  </button>
+  <ul class="dropdown-menu" style="text-align: end;">
+    <li><a class="dropdown-item" routerLink="/agregarAdmin">Agregar un libro</a></li>
+    <li><a class="dropdown-item" href="/modificarAdmin">Modificar un libro</a></li>
+    <li><a class="dropdown-item" href="/eliminarAdmin">Eliminar un libro</a></li>
+    <li><a class="dropdown-item" href="/estadoVentas">Estado de Ventas</a></li>
+  </ul>
+</div>
+
+
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+
+    </div>
+    <div class="col-md-auto">
+
+      <form class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Título del Libro</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Subtítulo del Libro</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Código ISBN</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-12">
+          <label class="form-label">Stock disponible</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Categoría</label>
+          <select class="form-select">
+            <option selected>Seleccionar</option>
+            <option>LIBROS</option>
+            <option>LIBROS ESCOLARES</option>
+            <option>LIBROS INFANTILES</option>
+            <option>LIBROS MAS VENDIDOS</option>
+            <option>COMICS</option>
+            <option>TOP 100</option>
+            <option>E-BOOKS</option>
+            <option>MEDICINA</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <label class="form-label">Precio</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label" for="gridCheck">
+              Comproba la información
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Cargar</button>
+        </div>
+      </form>
+
+    </div>
+    
+  </div>
+</div>
+<!-- FOOTER -->
+
+<app-footer-control-panel></app-footer-control-panel>
