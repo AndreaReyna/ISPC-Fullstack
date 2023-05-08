@@ -16,7 +16,6 @@ import { EntradasComponent } from './panel-de-control/entradas/entradas.componen
 import { ModificarComponent } from './panel-de-control/modificar/modificar.component';
 import { UsuariosComponent } from './panel-de-control/usuarios/usuarios.component';
 import { VentasComponent } from './panel-de-control/ventas/ventas.component';
-import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register/register.component';
 import { HelpCenterModule } from './help-center/help-center.module';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
@@ -51,7 +50,6 @@ import { LoginModule } from './login/login.module';
     AppRoutingModule,
     RegisterModule,
     LoginModule,
-    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
