@@ -25,64 +25,6 @@ import { FooterControlPanelComponent } from './panel-de-control/footer-control-p
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
 
-const routes: Routes = [
-  {
-    path: 'home',
-    component: AppComponent
-  },
-  {
-    path: 'panelDeControl',
-    component: PanelDeControlComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'about-us',
-    component: AboutUsComponent
-  },
-  {
-    path: 'contact',
-    component: ContactComponent
-  },
-  {
-    path: 'help',
-    component: HelpCenterModule
-  },
-  {
-    path: 'product',
-    component: ProductDetailComponent
-  },
-  {
-    path: 'agregarAdmin',
-    component: AgregarComponent
-  },
-  {
-    path: 'modificarAdmin',
-    component: ModificarComponent
-  },
-  {
-    path: 'eliminarAdmin',
-    component: EliminarComponent
-  },
-  {
-    path: 'estadoVentas',
-    component: VentasComponent
-  },
-  {
-    path: 'categoriasAdmin',
-    component: CategoriasComponent
-  },
-  {
-    path: 'usuarios',
-    component: UsuariosComponent
-  },
-  {
-    path: 'entradasAdmin',
-    component: EntradasComponent
-  },
-];
 
 @NgModule({
   declarations: [
