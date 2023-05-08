@@ -15,6 +15,7 @@ import { EliminarComponent } from './panel-de-control/eliminar/eliminar.componen
 import { VentasComponent } from './panel-de-control/ventas/ventas.component';
 import { CategoriasComponent } from './panel-de-control/categorias/categorias.component';
 import { EntradasComponent } from './panel-de-control/entradas/entradas.component';
+import { UsuariosComponent } from './panel-de-control/usuarios/usuarios.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'estadoVentas', component: VentasComponent},
   { path: 'categoriasAdmin', component: CategoriasComponent},
   { path: 'entradasAdmin', component: EntradasComponent},
+  { path: 'usuarios', component: UsuariosComponent},
 ];
 
 @NgModule({
