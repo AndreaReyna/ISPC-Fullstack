@@ -23,6 +23,7 @@ import { NavBarControlPanelComponent } from './panel-de-control/nav-bar-control-
 import { FooterControlPanelComponent } from './panel-de-control/footer-control-panel/footer-control-panel.component';
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { LoginModule } from './login/login.module';
     AppRoutingModule,
     RegisterModule,
     LoginModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

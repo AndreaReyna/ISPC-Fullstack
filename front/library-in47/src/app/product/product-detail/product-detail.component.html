@@ -21,12 +21,16 @@
             </p>
           </div>
 
-          <img
+          <img [src]="libro.foto" class="mt-2" alt="portada de libro"
+          alt="portada libro"
+          class="img-fluid Box-shadow"
+          />
+        <!--  <img
             src="assets/img/9789508523150.png"
             alt="portada libro"
             class="img-fluid Box-shadow"
           />
-          <!--foto de portada 190x290 o 230x350. Tambien podria ser height maximo
+          foto de portada 190x290 o 230x350. Tambien podria ser height maximo
             290 o 350, adaptativo.-->
           <div class="mt-2">
             <ul class="compartir d-flex justify-content-around">
@@ -62,23 +66,20 @@
           <div class="row mb-1">
             <div class="col">
               <h3 class="TituloProducto text-uppercase">
-                <span>COMO HACER QUE TE PASEN COSAS BUENAS</span>
+                <span>{{libro.titulo}}</span>
               </h3>
             </div>
           </div>
           <div class="row mb-1">
             <div class="col">
               <h6 class="text-uppercase SubtituloProducto">
-                <span
-                  >ENTIENDE TU CEREBRO , GESTIONA TUS EMOCIONES , MEJORA TU
-                  VIDA</span
-                >
+                <span>{{libro.subtitulo}}</span>
               </h6>
             </div>
           </div>
           <div class="row mb-1">
             <div class="Autor col-md-auto">
-              <span>Autor</span>
+              <span>{{libro.autor}}</span>
             </div>
             <div class="AutorProducto col-md-auto">
               <span>Rojas Marian</span>
@@ -87,7 +88,7 @@
               <span>Editorial</span>
             </div>
             <div class="col-md-auto text-uppercase">
-              <span>ESPASA CALPE</span>
+              <span>{{libro.editorial}}</span>
             </div>
           </div>
           <div class="row mb-1 justify-content-end">
@@ -101,7 +102,7 @@
             <div class="book-box row d-flex justify-content-end align-items-center">
 
               <div class="col text-center p-0 m-0">
-                <p class="fs-4 PrecioProducto p-0 m-0">AR$ 7000,00</p>
+                <p class="fs-4 PrecioProducto p-0 m-0"> AR$ {{libro.precio}}</p>
               </div>
 
               <div class="col p-0 m-0 text-center">
@@ -120,7 +121,7 @@
             <div class="row book-box d-flex justify-content-around align-items-center">
 
               <div class="col text-center p-0 m-0">
-                <p class="fs-4 PrecioProducto p-0 m-0">U$D 30,97</p>
+                <p class="fs-4 PrecioProducto p-0 m-0">U$D {{(libro.precio / 500).toFixed(2)}}</p>
               </div>
 
               <div class="col p-0 m-0">
@@ -158,25 +159,12 @@
         </div>
         <div class="col-md-auto">
           <p class="fs-4 TituloProducto text-capitalize">
-            Como Hacer Que Te Pasen Cosas Buenas
+            {{libro.titulo}}
           </p>
         </div>
         <div class="row">
           <p class="Resenia-Texto">
-            ¿Sabes que tus emociones y pensamientos tienen un impacto directo en
-            tu organismo, en tu percepción de la realidad e incluso en tus
-            propios genes? ¿Eres consciente de que tu manera de gestionar los
-            conflictos te puede predisponer a sufrir ansiedad o depresión, las
-            enfermedades más frecuentes del siglo XXI? Para la doctora Marian
-            Rojas Estapé la felicidad consiste en vivir instalado de forma sana
-            en el presente, habiendo superado las heridas del pasado y mirando
-            con ilusión al futuro. Muchos de los trastornos que padecemos
-            provienen de la incapacidad para gestionar nuestro presente. La
-            felicidad no es lo que nos pasa, sino cómo interpretamos lo que nos
-            pasa. En Cómo hacer que te pasen cosas buenas entenderás la
-            importancia de aprender a enfocar tu atención y descubrirás pautas
-            para combatir los miedos, las angustias y cómo canalizar las
-            emociones negativas que te llegan a bloquear física y mentalmente.
+            {{libro.resenia}}
           </p>
         </div>
       </div>
@@ -188,21 +176,21 @@
         </div>
         <div class="col-md-auto">
           <p class="fs-4 TituloProducto text-capitalize">
-            Como Hacer Que Te Pasen Cosas Buenas
+            {{libro.titulo}}
           </p>
         </div>
         <ul class="Resenia-Texto" style="list-style-type: none">
-          <li class="col-md-auto">Paginas: 232</li>
+          <li class="col-md-auto">{{libro.paginas}}</li>
 
-          <li class="col-md-auto">Peso: 400</li>
+          <li class="col-md-auto">{{libro.peso}}</li>
 
           <li class="col-md-auto">Formato: Rustica</li>
 
-          <li class="col-md-auto">Edicion: 2019</li>
+          <li class="col-md-auto">{{libro.edicion}}</li>
 
           <li class="col-md-auto">Idioma: Castellano</li>
 
-          <li class="col-md-auto">ISBN: 9789508523150</li>
+          <li class="col-md-auto">ISBN: {{libro.isbn}}</li>
         </ul>
       </div>
     </div>

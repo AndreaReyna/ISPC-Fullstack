@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-
+import { ProductService } from '../services/productService/product.service';
 
 
 @NgModule({
@@ -10,6 +10,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  providers: [ProductService]
 })
 export class ProductModule { }
