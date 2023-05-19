@@ -35,6 +35,7 @@ const routes: Routes = [
   { path: 'categoriasAdmin', component: CategoriasComponent},
   { path: 'entradasAdmin', component: EntradasComponent},
   { path: 'usuarios', component: UsuariosComponent},
+  { path: 'libro/:id', component: ProductDetailComponent},
 ];
 
 @NgModule({
