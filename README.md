@@ -42,3 +42,7 @@
 - Correr el servidor de Angular
 
 `ng serve -o`
+
+## Django panel working!
+
+![WhatsApp Image 2023-05-18 at 22 09 57](https://github.com/AndreaReyna/ISPC-Fullstack/assets/73613388/b57f9cb1-0bed-4fe0-858c-03e499060062)

@@ -2,3 +2,10 @@ img{
     width: 100%;
     margin-bottom: 20px;
 }
+.hover-effect {
+    transition: transform .2s; /* Animación suave */
+  }
+  
+  .hover-effect:hover {
+    transform: scale(1.05); /* Aumenta el tamaño del elemento un 5% al pasar el cursor por encima */
+  }
