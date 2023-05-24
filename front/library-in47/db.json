@@ -225,5 +225,37 @@
             "autor": "Ernest Hemingway",
             "editorial" : "Viajero del Tiempo Editorial"
         }
+    ],
+    "usuarios" : [
+        {
+            "name": "Juan",
+            "lastname": "Pérez",
+            "email": "juanperez@gmail.com",
+            "pass": "contraseña123"
+        },
+        {
+            "name": "Maria",
+            "lastname": "López",
+            "email": "marialopez@hotmail.com",
+            "pass": "segura123"
+        },
+        {
+            "name": "Carlos",
+            "lastname": "Gómez",
+            "email": "carlosgomez@yahoo.com",
+            "pass": "carlos2023"
+        },
+        {
+            "name": "Sofia",
+            "lastname": "Martínez",
+            "email": "sofiamartinez@outlook.com",
+            "pass": "sofia321"
+        },
+        {
+            "name": "Ana",
+            "lastname": "Rodríguez",
+            "email": "anarodriguez@gmail.com",
+            "pass": "anaR2023"
+        }
     ]
 }
