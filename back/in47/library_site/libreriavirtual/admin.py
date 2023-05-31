@@ -1,5 +1,12 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from .models import *
+from django.contrib.auth import get_user_model
+
+@admin.register(get_user_model())
+class CustomUserAdmin(UserAdmin):
+    pass
+
 # Register your models here.
 
 class ClienteAdmin(admin.ModelAdmin):

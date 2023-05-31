@@ -14,9 +14,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# URLS PROYECTO
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+from libreriavirtual import urls as libreriavirtual_urls
+
+# Api router
+router = routers.DefaultRouter()
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # Api routes
+    path('api/', include('libreriavirtual.urls')),
+    path('api/', include(router.urls)),
 ]
