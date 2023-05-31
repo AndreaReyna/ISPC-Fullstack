@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { ProductService } from '../services/productService/product.service';
+import { ProductService } from '../services/product.service';
 
 
 @NgModule({

@@ -1,81 +1,116 @@
 <section class="vh-90 mt-5" style="background-color: #eee;">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-12 col-xl-11">
-          <div class="card text-black">
-            <div class="card-body p-md-5">
-              <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-  
-                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrate</p>
-  
-                  <form class="mx-1 mx-md-4" id="register"  action="" method="post">
-  
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <input type="text" id="name" class="form-control" />
-                        <label class="form-label" for="name">Tu nombre</label>
-                      </div>
-                    </div>
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrate</p>
 
-                    <div class="d-flex flex-row align-items-center mb-4">
-                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                        <div class="form-outline flex-fill mb-0">
-                          <input type="text" id="lastname" class="form-control" />
-                          <label class="form-label" for="lastname">Tu apellido</label>
-                        </div>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mx-1 mx-md-4" id="register">
+                  <div class="form-group">
+                    <label for="name">Tu nombre</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
                       </div>
-  
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <input type="email" id="email" class="form-control" />
-                        <label class="form-label" for="email">Tu correo electronico</label>
+                      <input type="text" id="name" class="form-control" formControlName="name"
+                        [class.is-invalid]="name?.invalid && (name?.dirty || name?.touched)" />
+                    </div>
+                    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="invalid-feedback">
+                      <span *ngIf="name?.errors?.['required']">El nombre es requerido.</span>
+                      <span *ngIf="name?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres.</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group mt-2">
+                    <label for="lastname">Tu apellido</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
                       </div>
+                      <input type="text" id="lastname" class="form-control" formControlName="lastname"
+                        [class.is-invalid]="lastname?.invalid && (lastname?.dirty || lastname?.touched)" />
                     </div>
-  
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <input type="password" id="pass" class="form-control" />
-                        <label class="form-label" for="pass">Contraseña</label>
+                    <div *ngIf="lastname?.invalid && (lastname?.dirty || lastname?.touched)" class="invalid-feedback">
+                      <span *ngIf="lastname?.errors?.['required']">El apellido es requerido.</span>
+                      <span *ngIf="lastname?.errors?.['minlength']">El apellido debe tener al menos 3 caracteres.</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group mt-2">
+                    <label for="email">Tu correo electrónico</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-envelope fa-fw"></i></span>
                       </div>
+                      <input type="email" id="email" class="form-control" formControlName="email"
+                        [class.is-invalid]="email?.invalid && (email?.dirty || email?.touched)" />
                     </div>
-  
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <input type="password" id="pass2" class="form-control" />
-                        <label class="form-label" for="pass2">Repite tu contraseña</label>
+                    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="invalid-feedback">
+                      <span *ngIf="email?.errors?.['required']">El correo electrónico es requerido.</span>
+                      <span *ngIf="email?.errors?.['email']">Ingresa un correo electrónico válido.</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group  mt-2">
+                    <label for="pass">Contraseña</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-lock fa-fw"></i></span>
                       </div>
+                      <input type="password" id="pass" class="form-control" formControlName="pass"
+                        [class.is-invalid]="pass?.invalid && (pass?.dirty || pass?.touched)" />
                     </div>
-  
-                    <div class="form-check d-flex justify-content-center mb-5">
-                      <input class="form-check-input me-2" type="checkbox" value="" id="check" />
-                      <label class="form-check-label" for="check">
-                        He leído y acepto los <a href="#!">términos y condiciones de uso</a>
-                      </label>
+                    <div *ngIf="pass?.invalid && (pass?.dirty || pass?.touched)" class="invalid-feedback">
+                      <span *ngIf="pass?.errors?.['required']">La contraseña es requerida.</span>
+                      <span *ngIf="pass?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</span>
                     </div>
-  
-                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="submit" class="btn btn-primary btn-lg">Registrarme</button>
+                  </div>
+
+                  <div class="form-group mt-2">
+                    <label for="pass2">Repite tu contraseña</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-key fa-fw"></i></span>
+                      </div>
+                      <input type="password" id="pass2" class="form-control" formControlName="pass2"
+                        [class.is-invalid]="pass2?.invalid && (pass2?.dirty || pass2?.touched)" />
                     </div>
-  
-                  </form>
-                  <div id="alert" class="alert alert-danger invisible mt-3" role="alert">
-                 </div>
+                    <div *ngIf="pass2?.invalid && (pass2?.dirty || pass2?.touched)" class="invalid-feedback">
+                      <span *ngIf="pass2?.errors?.['required']">Debes repetir tu contraseña.</span>
+                    </div>
+                  </div>
+
+                  <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" id="check" formControlName="check"
+                      [class.is-invalid]="check?.invalid && (check?.dirty || check?.touched)" />
+                    <label class="form-check-label" for="check">
+                      He leído y acepto los
+                      <a href="#!">términos y condiciones de uso</a>
+                    </label>
+                    <div *ngIf="check?.invalid && (check?.dirty || check?.touched)" class="invalid-feedback">
+                      <span *ngIf="check?.errors?.['requiredTrue']">Debes aceptar los términos y condiciones.</span>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-center mt-5">
+                    <button type="submit" class="btn btn-primary btn-lg">Registrarme</button>
+                  </div>
+                </form>
+
+                <div *ngIf="alertVisible" class="alert alert-danger mt-3" role="alert" [innerHTML]="alertMessage">
                 </div>
-                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-  
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                    class="img-fluid" alt="Sample image">
-  
-                </div>
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image">
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
