@@ -19,7 +19,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from libreriavirtual import urls as libreriavirtual_urls
+from libreriavirtual import urls as urls
 
 # Api router
 router = routers.DefaultRouter()

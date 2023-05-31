@@ -11,10 +11,11 @@ class SignupView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
 class LoginView(APIView):
-    def post(self, request):
-        # Recuperamos las credenciales y atutenticamos al usuario
+    def post(self, request): #def post(request): usa HTTP POST
+        # Recuperamos las credenciales y autenticamos al usuario
         email = request.data.get('email', None)
         password = request.data.get('password', None)
+        # user guarda un objeto User con las credenciales validas
         user = authenticate(email=email, password=password)
 
         # Si es correcto aniadimos a la request la informacion de sesion
