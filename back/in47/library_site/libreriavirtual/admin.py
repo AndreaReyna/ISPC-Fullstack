@@ -72,7 +72,6 @@ class PagoAdmin(admin.ModelAdmin):
                     'info_adicional', 'id_orden')
 
 
-admin.site.register(Cliente,ClienteAdmin)
 admin.site.register(Direccion,DireccionAdmin)
 admin.site.register(Provincia,ProvinciaAdmin)
 admin.site.register(Localidad,LocalidadAdmin)
