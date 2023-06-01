@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from rest_framework import status, generics
+from rest_framework import status, generics, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer
+from .serializers import *
+from .models import *
 
 # Create your views here.
 
@@ -38,3 +39,70 @@ class LogoutView(APIView):
         # Devolvemos la respuesta al cliente
         return Response(status=status.HTTP_200_OK)
     
+class CustomUserViewSet(viewsets.ModelViewSet):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserSerializer
+
+class DireccionViewSet(viewsets.ModelViewSet):
+    queryset = Direccion.objects.all()
+    serializer_class = DireccionSerializer
+
+class ProvinciaViewSet(viewsets.ModelViewSet):
+    queryset = Provincia.objects.all()
+    serializer_class = ProvinciaSerializer
+
+class LocalidadViewSet(viewsets.ModelViewSet):
+    queryset = Localidad.objects.all()
+    serializer_class = LocalidadSerializer
+
+class CarritoViewSet(viewsets.ModelViewSet):
+    queryset = Carrito.objects.all()
+    serializer_class = CarritoSerializer
+
+class ElementosCarritoViewSet(viewsets.ModelViewSet):
+    queryset = ElementosCarrito.objects.all()
+    serializer_class = ElementosCarritoSerializer
+
+class LibroViewSet(viewsets.ModelViewSet):
+    queryset = Libro.objects.all()
+    serializer_class = LibroSerializer
+
+class IdiomaViewSet(viewsets.ModelViewSet):
+    queryset = Idioma.objects.all()
+    serializer_class = IdiomaSerializer
+
+class CategoriaViewSet(viewsets.ModelViewSet):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+
+class EditorialViewSet(viewsets.ModelViewSet):
+    queryset = Editorial.objects.all()
+    serializer_class = EditorialSerializer
+
+class FormatoViewSet(viewsets.ModelViewSet):
+    queryset = Formato.objects.all()
+    serializer_class = FormatoSerializer
+
+class AutorViewSet(viewsets.ModelViewSet):
+    queryset = Autor.objects.all()
+    serializer_class = AutorSerializer
+
+class DetallePedidoViewSet(viewsets.ModelViewSet):
+    queryset = DetallePedido.objects.all()
+    serializer_class = DetallePedidoSerializer
+
+class PedidoViewSet(viewsets.ModelViewSet):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer
+
+class OrdenViewSet(viewsets.ModelViewSet):
+    queryset = Orden.objects.all()
+    serializer_class = OrdenSerializer
+
+class EstadoViewSet(viewsets.ModelViewSet):
+    queryset = Estado.objects.all()
+    serializer_class = EstadoSerializer
+
+class PagoViewSet(viewsets.ModelViewSet):
+    queryset = Pago.objects.all()
+    serializer_class = PagoSerializer
