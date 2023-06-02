@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   alertVisible: boolean;
   alertMessage: string;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.alertVisible = false;
     this.alertMessage = '';
   }
@@ -42,7 +42,8 @@ export class LoginComponent implements OnInit {
         (user) => {
           // Login successful
           console.log('Login successful:', user);
-          // Do something with the user data or navigate to another page
+          this.authService.isLoggedIn = true; // Set isLoggedIn to true on successful login
+          this.router.navigate(['/']);
         },
         (error) => {
           // Login failed
