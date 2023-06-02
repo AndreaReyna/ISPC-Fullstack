@@ -4,9 +4,6 @@ from django.contrib.auth.hashers import make_password
 from .models import *
 
 
-def validate_password(self, value):
-    return make_password(value)
-
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -15,7 +12,11 @@ class UserSerializer(serializers.ModelSerializer):
         required=True)
     password = serializers.CharField(
         min_length=8)
-    
+
+    def validate_password(self, value):
+        return make_password(value)
+
+
     class Meta:
         model = get_user_model()
         #fields = ('email', 'username', 'password')
