@@ -232,35 +232,35 @@
       "name": "Juan",
       "lastname": "Pérez",
       "email": "juanperez@gmail.com",
-      "pass": "contraseña123"
+      "password": "contraseña123"
     },
     {
       "id": 2,
       "name": "Maria",
       "lastname": "López",
       "email": "marialopez@hotmail.com",
-      "pass": "segura123"
+      "password": "segura123"
     },
     {
       "id": 3,
       "name": "Carlos",
       "lastname": "Gómez",
       "email": "carlosgomez@yahoo.com",
-      "pass": "carlos2023"
+      "password": "carlos2023"
     },
     {
       "id": 4,
       "name": "Sofia",
       "lastname": "Martínez",
       "email": "sofiamartinez@outlook.com",
-      "pass": "sofia321"
+      "password": "sofia321"
     },
     {
       "id": 5,
       "name": "Ana",
       "lastname": "Rodríguez",
       "email": "anarodriguez@gmail.com",
-      "pass": "anaR2023"
+      "password": "anaR2023"
     }
   ]
 }

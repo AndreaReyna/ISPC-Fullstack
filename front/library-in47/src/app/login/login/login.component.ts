@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      pass: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     });
   }
 
@@ -29,14 +29,14 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('email');
   }
 
-  get pass() {
-    return this.loginForm.get('pass');
+  get password() {
+    return this.loginForm.get('password');
   }
 
   onSubmit(): void {
     if (this.loginForm.valid) {
       const email = this.loginForm.value.email;
-      const password = this.loginForm.value.pass;
+      const password = this.loginForm.value.password;
 
       this.authService.login(email, password).subscribe(
         (user) => {
@@ -59,9 +59,9 @@ export class LoginComponent implements OnInit {
         this.email.markAsTouched();
       }
 
-      if (this.pass !== null) {
-        this.pass.markAsDirty();
-        this.pass.markAsTouched();
+      if (this.password !== null) {
+        this.password.markAsDirty();
+        this.password.markAsTouched();
       }
     }
   }
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
       errorMessage += '<br/>- Correo electrónico inválido.';
     }
 
-    if (this.pass?.invalid) {
+    if (this.password?.invalid) {
       errorMessage += '<br/>- Contraseña inválida.';
     }
 

@@ -40,6 +40,21 @@
                   </div>
 
                   <div class="form-group mt-2">
+                    <label for="username">Tu nombre de usuario</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
+                      </div>
+                      <input type="text" id="username" class="form-control" formControlName="username"
+                        [class.is-invalid]="username?.invalid && (username?.dirty || username?.touched)" />
+                    </div>
+                    <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="invalid-feedback">
+                      <span *ngIf="username?.errors?.['required']">El username es requerido.</span>
+                      <span *ngIf="username?.errors?.['minlength']">El username debe tener al menos 3 caracteres.</span>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group mt-2">
                     <label for="email">Tu correo electrónico</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -55,31 +70,31 @@
                   </div>
 
                   <div class="form-group  mt-2">
-                    <label for="pass">Contraseña</label>
+                    <label for="password">Contraseña</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-lock fa-fw"></i></span>
                       </div>
-                      <input type="password" id="pass" class="form-control" formControlName="pass"
-                        [class.is-invalid]="pass?.invalid && (pass?.dirty || pass?.touched)" />
+                      <input type="password" id="password" class="form-control" formControlName="password"
+                        [class.is-invalid]="password?.invalid && (password?.dirty || password?.touched)" />
                     </div>
-                    <div *ngIf="pass?.invalid && (pass?.dirty || pass?.touched)" class="invalid-feedback">
-                      <span *ngIf="pass?.errors?.['required']">La contraseña es requerida.</span>
-                      <span *ngIf="pass?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</span>
+                    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="invalid-feedback">
+                      <span *ngIf="password?.errors?.['required']">La contraseña es requerida.</span>
+                      <span *ngIf="password?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</span>
                     </div>
                   </div>
 
                   <div class="form-group mt-2">
-                    <label for="pass2">Repite tu contraseña</label>
+                    <label for="password2">Repite tu contraseña</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-key fa-fw"></i></span>
                       </div>
-                      <input type="password" id="pass2" class="form-control" formControlName="pass2"
-                        [class.is-invalid]="pass2?.invalid && (pass2?.dirty || pass2?.touched)" />
+                      <input type="password" id="password2" class="form-control" formControlName="password2"
+                        [class.is-invalid]="password2?.invalid && (password2?.dirty || password2?.touched)" />
                     </div>
-                    <div *ngIf="pass2?.invalid && (pass2?.dirty || pass2?.touched)" class="invalid-feedback">
-                      <span *ngIf="pass2?.errors?.['required']">Debes repetir tu contraseña.</span>
+                    <div *ngIf="password2?.invalid && (password2?.dirty || password2?.touched)" class="invalid-feedback">
+                      <span *ngIf="password2?.errors?.['required']">Debes repetir tu contraseña.</span>
                     </div>
                   </div>
 
