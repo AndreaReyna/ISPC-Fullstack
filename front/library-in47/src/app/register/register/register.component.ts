@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
   alertVisible: boolean;
   alertMessage: string;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private authService: AuthService, private router: Router) {
     this.alertVisible = false;
     this.alertMessage = '';
   }
@@ -22,9 +23,10 @@ export class RegisterComponent implements OnInit {
     this.registerForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      username: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      pass: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      pass2: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      password2: new FormControl('', [Validators.required, Validators.minLength(8)]),
       check: new FormControl(false, Validators.requiredTrue)
     });
   }
@@ -37,16 +39,20 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('lastname');
   }
 
+  get username() {
+    return this.registerForm.get('username');
+  }
+
   get email() {
     return this.registerForm.get('email');
   }
 
-  get pass() {
-    return this.registerForm.get('pass');
+  get password() {
+    return this.registerForm.get('password');
   }
 
-  get pass2() {
-    return this.registerForm.get('pass2');
+  get password2() {
+    return this.registerForm.get('password2');
   }
 
   get check() {
@@ -55,29 +61,42 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     if (
-      this.pass !== null &&
-      this.pass2 !== null &&
+      this.password !== null &&
+      this.password2 !== null &&
       this.registerForm.valid &&
-      this.pass.value === this.pass2.value &&
+      this.password.value === this.password2.value &&
       this.name !== null &&
       this.lastname !== null &&
+      this.username !== null &&
       this.email !== null
     ) {
       const user = {
-        id : 6, // por el momento necesitamos setear el id manualmente
+        id: 6, // por el momento necesitamos setear el id manualmente
         name: this.name.value!,
         lastname: this.lastname.value!,
         email: this.email.value!,
-        pass: this.pass.value!
+        username: this.username.value!,
+        password: this.password.value!
       };
 
       this.userService.create(user).subscribe(
-        (createdUser) => {
+        () => {
           // Registro exitoso
-          console.log('Registro exitoso:', createdUser);
-          // Realiza alguna acción adicional o navega a otra página
-          alert('Registro exitoso!');
-          this.router.navigate(['/home']);
+          console.log('Registro exitoso');
+          this.authService.login(user.email, user.password).subscribe(
+            () => {
+              // Login successful
+              console.log('Login successful');
+              this.authService.isLoggedIn = true; // Set isLoggedIn to true on successful login
+              this.router.navigate(['/']);
+            },
+            (error) => {
+              console.log('Error en el autologin:', error);
+              this.router.navigate(['/home']);
+            }
+          );
+        
+
         },
         (error) => {
           // Error al crear el usuario
@@ -105,14 +124,19 @@ export class RegisterComponent implements OnInit {
         this.email.markAsTouched();
       }
 
-      if (this.pass !== null) {
-        this.pass.markAsDirty();
-        this.pass.markAsTouched();
+      if (this.username !== null) {
+        this.username.markAsDirty();
+        this.username.markAsTouched();
       }
 
-      if (this.pass2 !== null) {
-        this.pass2.markAsDirty();
-        this.pass2.markAsTouched();
+      if (this.password !== null) {
+        this.password.markAsDirty();
+        this.password.markAsTouched();
+      }
+
+      if (this.password2 !== null) {
+        this.password2.markAsDirty();
+        this.password2.markAsTouched();
       }
 
       if (this.check !== null) {
@@ -129,37 +153,41 @@ export class RegisterComponent implements OnInit {
       errorMessage += '<br/>- Nombre inválido.';
     }
 
-      if (this.lastname?.invalid) {
-        errorMessage += '<br/>- Apellido inválido.';
-      }
-  
-      if (this.email?.invalid) {
-        errorMessage += '<br/>- Correo electrónico inválido.';
-      }
-  
-      if (this.pass?.invalid) {
-        errorMessage += '<br/>- Contraseña inválida.';
-      }
-  
-      if (this.pass2?.invalid) {
-        errorMessage += '<br/>- Contraseña inválida.';
-      }
-  
-      if (this.pass?.value !== this.pass2?.value) {
-        errorMessage += '<br/>- Las contraseñas no coinciden.';
-      }
-  
-      if (this.check?.invalid) {
-        errorMessage += '<br/>- Debes aceptar los términos y condiciones.';
-      }
-  
-      this.alertMessage = errorMessage;
-      this.alertVisible = true;
-      setTimeout(() => this.hideAlert(), 3900);
+    if (this.lastname?.invalid) {
+      errorMessage += '<br/>- Apellido inválido.';
     }
-  
-    hideAlert(): void {
-      this.alertVisible = false;
-      this.alertMessage = '';
+
+    if (this.username?.invalid) {
+      errorMessage += '<br/>- Nombre de usuario inválido.';
     }
+
+    if (this.email?.invalid) {
+      errorMessage += '<br/>- Correo electrónico inválido.';
+    }
+
+    if (this.password?.invalid) {
+      errorMessage += '<br/>- Contraseña inválida.';
+    }
+
+    if (this.password2?.invalid) {
+      errorMessage += '<br/>- Contraseña inválida.';
+    }
+
+    if (this.password?.value !== this.password2?.value) {
+      errorMessage += '<br/>- Las contraseñas no coinciden.';
+    }
+
+    if (this.check?.invalid) {
+      errorMessage += '<br/>- Debes aceptar los términos y condiciones.';
+    }
+
+    this.alertMessage = errorMessage;
+    this.alertVisible = true;
+    setTimeout(() => this.hideAlert(), 3900);
   }
+
+  hideAlert(): void {
+    this.alertVisible = false;
+    this.alertMessage = '';
+  }
+}

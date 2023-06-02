@@ -30,17 +30,17 @@
 
           <!-- Password input -->
           <div class="form-group  mt-2">
-            <label for="pass">Contraseña</label>
+            <label for="password">Contraseña</label>
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-lock fa-fw"></i></span>
               </div>
-              <input type="password" id="pass" class="form-control" formControlName="pass"
-                [class.is-invalid]="pass?.invalid && (pass?.dirty || pass?.touched)" />
+              <input type="password" id="password" class="form-control" formControlName="password"
+                [class.is-invalid]="password?.invalid && (password?.dirty || password?.touched)" />
             </div>
-            <div *ngIf="pass?.invalid && (pass?.dirty || pass?.touched)" class="invalid-feedback">
-              <span *ngIf="pass?.errors?.['required']">La contraseña es requerida.</span>
-              <span *ngIf="pass?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</span>
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="invalid-feedback">
+              <span *ngIf="password?.errors?.['required']">La contraseña es requerida.</span>
+              <span *ngIf="password?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</span>
             </div>
           </div>
 

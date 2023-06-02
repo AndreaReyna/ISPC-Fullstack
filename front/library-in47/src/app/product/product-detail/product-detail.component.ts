@@ -20,7 +20,7 @@ export class ProductDetailComponent implements OnInit {
         this.productService.get(Number(id)).subscribe((data) => {
           this.libro = data;
         });
+        this.viewportScroller.scrollToPosition([0, 0]);
     }
-    this.viewportScroller.scrollToPosition([0, 0]);
   }
 }
