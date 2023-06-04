@@ -17,7 +17,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="home">Inicio</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="logIn" >
           <a class="nav-link" routerLink="user">Mi cuenta</a>
         </li>
         <li class="nav-item">
@@ -28,7 +28,9 @@
         </li>
       </ul>
       <div class="me-5 ms-auto order-last">
-        <button class="btn btn-light btn-nav" routerLink="login">Login</button>
+        <button *ngIf="!logIn" class="btn btn-light btn-nav me-5" routerLink="login">Login</button>
+        <button *ngIf="logIn" class="btn btn-light btn-nav me-5" (click)="logout()">Logout</button>
+        <button *ngIf="!logIn" class="btn btn-light btn-nav" routerLink="register">Registro</button>
       </div>
     </div>
   </div>

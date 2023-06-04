@@ -1,58 +1,38 @@
+from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
+class CustomUser(AbstractUser):
 
-class Cliente(models.Model):
-
-    id_cliente = models.AutoField(
-        primary_key=True,
-        unique=True,
-        db_index=True
-        )
-    nombre = models.CharField(
-        max_length=60,
-        help_text='Maximo 60 caracteres'
-        )
-    apellido = models.CharField(
-        max_length=60,
-        help_text='Maximo 60 caracteres'
-        )
-    password = models.CharField(
-        max_length=20,
-        help_text='Maximo 20 caracteres'
-        )
     email = models.EmailField(
-        max_length=320
-        )
+        max_length=150,
+        unique=True
+    )   
     dni = models.CharField(
         max_length=8,
-        help_text='Maximo 8 caracteres'
+        help_text='Maximo 8 caracteres',
+        null=True
         )
     fecha_nac = models.DateField(
+        null=True
         )
     telefono = models.CharField(
         max_length=12,
-        help_text='Maximo 12 caracteres'
+        help_text='Maximo 12 caracteres',
+        null=True
         )
     id_direccion = models.ForeignKey(
         'Direccion',
         to_field='id_direccion',
-        null=False,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        null=True
         )
-    
-    class Meta:
-        db_table = 'cliente'
-        verbose_name = ('Detalle Cliente')
-        verbose_name_plural = ('Detalles de Clientes')
 
-    def __unicode__(self):
-        return self.id_cliente
-    
-    def __str__(self):
-        return f'{self.nombre} {self.apellido} ({self.email})'
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'password']
 
 
 class Direccion(models.Model):
@@ -223,8 +203,8 @@ class ElementosCarrito(models.Model):
     
     def __str__(self):
         return f'{self.cantidad} de \
-            {self.libro_id_libro} perteneciente a \
-            {self.carrito_id_carrito}'
+            {self.id_libro} perteneciente a \
+            {self.id_carrito}'
     
 
 class Libro(models.Model):
@@ -501,8 +481,8 @@ class Pedido(models.Model):
         default=Seguimientos.ARMANDO_PEDIDO
         )
     id_cliente = models.ForeignKey(
-        'Cliente',
-        to_field='id_cliente',
+        settings.AUTH_USER_MODEL,
+        to_field='id',
         on_delete=models.CASCADE
         )
     fecha = models.DateTimeField(
@@ -552,8 +532,8 @@ class Orden(models.Model):
         max_digits=7
         )
     id_cliente = models.ForeignKey(
-        'Cliente',
-        to_field='id_cliente',
+        settings.AUTH_USER_MODEL,
+        to_field='id',
         on_delete=models.CASCADE
         )
     id_estado = models.ForeignKey(

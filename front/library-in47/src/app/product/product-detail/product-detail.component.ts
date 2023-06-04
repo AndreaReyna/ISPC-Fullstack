@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from './product';
-import { ProductService } from 'src/app/services/productService/product.service';
+import { Product } from '../../models/product';
+import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 
@@ -20,7 +20,7 @@ export class ProductDetailComponent implements OnInit {
         this.productService.get(Number(id)).subscribe((data) => {
           this.libro = data;
         });
+        this.viewportScroller.scrollToPosition([0, 0]);
     }
-    this.viewportScroller.scrollToPosition([0, 0]);
   }
 }

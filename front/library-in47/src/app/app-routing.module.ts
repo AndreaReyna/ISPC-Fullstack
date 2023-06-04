@@ -16,6 +16,9 @@ import { VentasComponent } from './panel-de-control/ventas/ventas.component';
 import { CategoriasComponent } from './panel-de-control/categorias/categorias.component';
 import { EntradasComponent } from './panel-de-control/entradas/entradas.component';
 import { UsuariosComponent } from './panel-de-control/usuarios/usuarios.component';
+import { CartComponent } from './cart/cart/cart.component';
+import { EstadoCompraComponent } from './estado-compra/estado-compra/estado-compra.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -34,8 +37,11 @@ const routes: Routes = [
   { path: 'estadoVentas', component: VentasComponent},
   { path: 'categoriasAdmin', component: CategoriasComponent},
   { path: 'entradasAdmin', component: EntradasComponent},
-  { path: 'usuarios', component: UsuariosComponent},
+  { path: 'admin/usuarios', component: UsuariosComponent},
   { path: 'libro/:id', component: ProductDetailComponent},
+  { path: 'cart', component: CartComponent},
+  { path: 'purchase-status', component: EstadoCompraComponent},
+  
 ];
 
 @NgModule({
