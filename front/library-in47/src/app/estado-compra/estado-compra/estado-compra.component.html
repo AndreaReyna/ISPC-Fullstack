@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Libreria Virtual in47</title>
+    <base href="/" />
+    <link rel="icon" type="image/x-icon" href="./assets/img/logo-47.ico" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+    ></script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+  
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">in47</a>
+   
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav justify-content-start">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="home">Inicio</a>
+        </li>
+        <li class="nav-item" *ngIf="logIn" >
+          <a class="nav-link" routerLink="user">Mi cuenta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about-us">Quienes somos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="contact">Contacto</a>
+        </li>
+      </ul>
+      <div class="me-5 ms-auto order-last">
+        <button *ngIf="!logIn" class="btn btn-light btn-nav me-5" routerLink="login">Login</button>
+        <button *ngIf="logIn" class="btn btn-light btn-nav me-5" (click)="logout()">Logout</button>
+        <button *ngIf="!logIn" class="btn btn-light btn-nav" routerLink="register">Registro</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<br>
+<br>
+<h1 class="container display-4 mt-5">
+   Bienvenidos a la Libreria Virtual IN 47
+</h1>
+
+<p class="container lead">
+En esta página web vas a poder encontrar y descubrir todo tipo de historias, cuentos, autores y quedarte con el que más te guste!</p>
+<br>
+<br>
+<nav class="container navbar navbar-expand-lg bg-light">
+   <div class="container input-group">
+      <input type="search" class="form-control rounded" placeholder="Ingresa titulo, autor, ISBN o palabra clave" aria-label="Search" aria-describedby="search-addon">
+      <button type="button" class="btn btn-outline-primary">BUSCAR</button>
+   </div>
+</nav>
+
+<nav class="container nav nav-pills flex-column flex-sm-row">
+   <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="view/categorias.html">CATEGORIAS</a>
+   <a class="flex-sm-fill text-sm-center nav-link" href="view/libros.html">LIBROS</a>
+   <a class="flex-sm-fill text-sm-center nav-link" href="view/novelas.html">NOVELAS</a>
+   <a class="flex-sm-fill text-sm-center nav-link" href="view/infantiles.html">INFANTILES</a>
+   <a class="flex-sm-fill text-sm-center nav-link" href="view/masvendidos.html">MAS VENDIDOS</a>
+   <a class="flex-sm-fill text-sm-center nav-link" href="view/comics.html">COMICS</a>
+</nav>
+
+<div class="carrito cartFull" style="text-align: end;">
+        <a href="/carrito.aspx?cerrarcompra=si" class="cerrarCompra finalizar" data-title="Ir a la caja" title="Ir a la caja"><span class="cantidad">1</span>
+          <span class="tipoProducto">producto</span> <span class="pared">|</span> <i class="moneda">AR$</i> <i class="total">6.800,00</i> <span class="ic">
+            <img src="/./src/assets/img/carrito.jpg" border="0" alt="carrito"></span> </a>
+                    </div>
+                </div>
+
+<div><center><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+     <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+    <p><strong> MI CARRITO </strong></p></center></svg>
+    </div>
+    </div>
+
+    <br>
+    <br>
+
+<article>
+    <div id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_figContainer" class="tapa Libro">
+        <a href="/Libro/9788484456810/Este+Dolor+No+Es+Mio" id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_a_tapa_libro" title="Este Dolor No Es Mio">
+            <img src="https://contentv2.tap-commerce.com/cover/large/9788484456810_1.jpg?id_com=0" id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_img_tapa" class="tapaCarrito" border="0" tapacomunidadsize="3" title="Libro Este Dolor No Es Mio" alt="Libro Este Dolor No Es Mio"; style="float: left;"></a>
+  </div>
+
+    <div class="desc">
+        <h3>
+         <a href="/Libro/9788484456810/Este+Dolor+No+Es+Mio" id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_a_titulo" title="Este Dolor No Es Mio">Este Dolor No Es Mio</a></h3>
+              <p class="formato">
+                         Libro
+                           </p>
+          <p id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_p_autor" class="autor">
+                                            Autor:
+                                            
+                                                    <span itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">
+                                                        <a href="/resultados.aspx?c=WOLYNN+MARK&amp;por=AutorEstricto&amp;aut=491576&amp;orden=fecha" id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_rptAutores_ctl00_a_autor">Wolynn Mark</a></span> </span>
+                                                
+                                        </p>
+
+                                        <p id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_p_isbn">
+                                            ISBN:
+                                            9788484456810
+                                        </p>
+
+                                    </div>
+                                    <div class="cant" style="float: right;">
+                                        <select name="ctl00$ContentPlaceHolder1$rptCarrito$ctl00$ddl_Cantidad" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$rptCarrito$ctl00$ddl_Cantidad\',\'\')', 0)" id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_ddl_Cantidad" class="carritoImput">
+		<option selected="selected" value="1~32409673">1</option>
+		<option value="2~32409673">2</option>
+		<option value="3~32409673">3</option>
+		<option value="4~32409673">4</option>
+		<option value="5~32409673">5</option>
+		<option value="6~32409673">6</option>
+		<option value="7~32409673">7</option>
+		<option value="8~32409673">8</option>
+		<option value="9~32409673">9</option>
+		<option value="10~32409673">10</option>
+		<option value="11~32409673">11</option>
+		<option value="12~32409673">12</option>
+		<option value="13~32409673">13</option>
+		<option value="14~32409673">14</option>
+		<option value="15~32409673">15</option>
+		<option value="16~32409673">16</option>
+		<option value="17~32409673">17</option>
+		<option value="18~32409673">18</option>
+		<option value="19~32409673">19</option>
+		<option value="20~32409673">20</option>
+		<option value="21~32409673">21</option>
+		<option value="22~32409673">22</option>
+		<option value="23~32409673">23</option>
+		<option value="24~32409673">24</option>
+		<option value="25~32409673">25</option>
+		<option value="26~32409673">26</option>
+		<option value="27~32409673">27</option>
+		<option value="28~32409673">28</option>
+		<option value="29~32409673">29</option>
+		<option value="30~32409673">30</option>
+		<option value="31~32409673">31</option>
+		<option value="32~32409673">32</option>
+		<option value="33~32409673">33</option>
+		<option value="34~32409673">34</option>
+		<option value="35~32409673">35</option>
+		<option value="36~32409673">36</option>
+		<option value="37~32409673">37</option>
+		<option value="38~32409673">38</option>
+		<option value="39~32409673">39</option>
+		<option value="40~32409673">40</option>
+		<option value="41~32409673">41</option>
+		<option value="42~32409673">42</option>
+		<option value="43~32409673">43</option>
+		<option value="44~32409673">44</option>
+		<option value="45~32409673">45</option>
+		<option value="46~32409673">46</option>
+		<option value="47~32409673">47</option>
+		<option value="48~32409673">48</option>
+		<option value="49~32409673">49</option>
+		<option value="50~32409673">50</option>
+		<option value="51~32409673">51</option>
+		<option value="52~32409673">52</option>
+		<option value="53~32409673">53</option>
+		<option value="54~32409673">54</option>
+		<option value="55~32409673">55</option>
+		<option value="56~32409673">56</option>
+		<option value="57~32409673">57</option>
+		<option value="58~32409673">58</option>
+		<option value="59~32409673">59</option>
+		<option value="60~32409673">60</option>
+		<option value="61~32409673">61</option>
+		<option value="62~32409673">62</option>
+		<option value="63~32409673">63</option>
+		<option value="64~32409673">64</option>
+		<option value="65~32409673">65</option>
+		<option value="66~32409673">66</option>
+		<option value="67~32409673">67</option>
+		<option value="68~32409673">68</option>
+		<option value="69~32409673">69</option>
+		<option value="70~32409673">70</option>
+		<option value="71~32409673">71</option>
+		<option value="72~32409673">72</option>
+		<option value="73~32409673">73</option>
+		<option value="74~32409673">74</option>
+		<option value="75~32409673">75</option>
+		<option value="76~32409673">76</option>
+		<option value="77~32409673">77</option>
+		<option value="78~32409673">78</option>
+		<option value="79~32409673">79</option>
+		<option value="80~32409673">80</option>
+		<option value="81~32409673">81</option>
+		<option value="82~32409673">82</option>
+		<option value="83~32409673">83</option>
+		<option value="84~32409673">84</option>
+		<option value="85~32409673">85</option>
+		<option value="86~32409673">86</option>
+		<option value="87~32409673">87</option>
+		<option value="88~32409673">88</option>
+		<option value="89~32409673">89</option>
+		<option value="90~32409673">90</option>
+		<option value="91~32409673">91</option>
+		<option value="92~32409673">92</option>
+		<option value="93~32409673">93</option>
+		<option value="94~32409673">94</option>
+		<option value="95~32409673">95</option>
+		<option value="96~32409673">96</option>
+		<option value="97~32409673">97</option>
+		<option value="98~32409673">98</option>
+		<option value="99~32409673">99</option>
+		<option value="100~32409673">100</option>
+
+	</select>
+                                        <br>
+                                        <br>
+                                        <a id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_btn_eliminar" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$rptCarrito$ctl00$btn_eliminar','')">ELIMINAR</a>
+                                    
+                                    <div class="precio">
+                                        <span>AR$</span> 6.800,00
+                                        </div>
+                                    </div>
+                                </article>
+                                
+     <br>
+     <br>             
+                  
+                            
+    <div style="clear:both;"></div>
+    <div id="ctl00_ContentPlaceHolder1_div_cuponContainer" class="md-descuento-container">
+        <div class="md-descuento-cupon">
+            <input name="ctl00$ContentPlaceHolder1$txt_cupon" type="text" id="ctl00_ContentPlaceHolder1_txt_cupon" class="form-control" placeholder="Ingrese su cupón de descuento">
+        </div>
+        <a id="ctl00_ContentPlaceHolder1_link_aplicarcupon" class="btn btn-block btn-bordo padding pull-right" data-loading-text="Aplicando..." href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$link_aplicarcupon','')">Aplicar</a>
+    </div>
+
+</div>
+
+<br>
+<br> 
+<<div class="mediosDePago">
+    <p><strong>MEDIOS DE PAGO</strong></p>
+<img src="./assets/img/logos-1.jpg" alt="medios de pago tarjetas">
+<img src="./assets/img/logos-2.jpg" alt="medios de pago tarjetas">
+<img src="./assets/img/logos-3.jpg" alt="medios de pago tarjetas">
+<img src="./assets/img/logos-4.jpg" alt="medios de pago tarjetas">
+</div>
+
+<br>
+<br>
+    <div id="ctl00_ContentPlaceHolder1_div_mensajeCostoBonificado" class="banner">Para compras iguales o superiores a AR$ 3990 no se cobran gastos de envío para despachos a la Argentina</div>
+
+    <div class="totalcarrito">
+        <p class="precio">
+            <span class="total-carrito">Subtotal*:</span><span>AR$</span> 6.800,00
+        </p>
+        </div>
+</div>
+
+<div class="ft">
+    <div class="info-adic">
+        <p>
+            <span><strong>IMPORTANTE</strong></span>
+        </p>
+
+        <p>El costo final de su compra <strong>con el envío incluído</strong>, se verá reflejado en el próximo
+            paso de la compra al hacer clic en "Finalizar compra".</p>
+
+        <p>Si lo desea, a continuacion puede ver una tabla con los costos de envío estimativos</p>
+        <img src="./assets/img/costos.jpg" alt="costos de envio">
+    </div>
+</div>
+
+
+<section id="ctl00_ContentPlaceHolder1_section_tambien_interesar" class="carrito-recomendados rank">
+    <h2>También podría interesarte</h2>
+    
+    <div class="row">
+    <article>
+        <figure id="ctl00_ContentPlaceHolder1_listadoHorizontal_rptRanking_ctl00_figContainer" class="libro">
+            <div class="itemContainer">
+                <div id="ctl00_ContentPlaceHolder1_listadoHorizontal_rptRanking_ctl00_divContainer" class="">
+                    <a href="/Libro/9789501729160/La+Memoria+En+Las+Celulas" id="ctl00_ContentPlaceHolder1_listadoHorizontal_rptRanking_ctl00_a_tapa_libro" title="La Memoria En Las Celulas">
+                        
+                        
+                        <img src="https://contentv2.tap-commerce.com/cover/medium/9789501729160_1.jpg?id_com=1113&amp;w=200" id="ctl00_ContentPlaceHolder1_listadoHorizontal_rptRanking_ctl00_img_tapa" tapacomunidadsize="2" title="Libro La Memoria En Las Celulas" alt="Libro La Memoria En Las Celulas" style="float: left;">
+                        
+                    </a>
+                </div>
+
+                <div class="md-compra" style="display:none !important;">
+                    <a href="javascript:void(0);" id="ctl00_ContentPlaceHolder1_listadoHorizontal_rptRanking_ctl00_a_comprar_novedades" class="comprar papel" data-imagen="https://contentv2.tap-commerce.com/cover/medium/9789501729160_1.jpg?id_com=1113" data-titulo="La Memoria En Las Celulas" data-precio="<span>AR$</span> 4.900,00" data-codigo="115265" title="Comprar el libro La Memoria En Las Celulas" data-autor="DIAZ LUIS ANGEL.">
+                        <img src="/images/btn-comprar.png" alt="comprar"></a>
+                </div>
+            </div>
+            <figcaption>
+                <h3>
+                    <a href="/Libro/9789501729160/La+Memoria+En+Las+Celulas" id="ctl00_ContentPlaceHolder1_listadoHorizontal_rptRanking_ctl00_a_titulo" class="tit" title="La Memoria En Las Celulas">La Memoria En Las Celulas</a></h3>
+                <p id="ctl00_ContentPlaceHolder1_listadoHorizontal_rptRanking_ctl00_p_autor" class="autor">
+                    
+                            <a href="/resultados.aspx?c=DIAZ+LUIS+ANGEL&amp;por=AutorEstricto&amp;aut=261586&amp;orden=fecha" id="ctl00_ContentPlaceHolder1_listadoHorizontal_rptRanking_ctl00_rptAutores_ctl00_a_autor">Diaz Luis Angel</a>
+                        
+                </p>
+
+                <div class="md-bottom">
+                    <div class="md-formato">
+                        Libro
+                    </div>
+                    <div class="md-precio">
+                        <div class="precio">
+                            <span>AR$</span> 4.900,00
+                        </div>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+
+    </article>
+    </div>
+
+
+</section>
