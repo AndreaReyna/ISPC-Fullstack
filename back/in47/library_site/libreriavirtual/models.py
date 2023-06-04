@@ -203,8 +203,8 @@ class ElementosCarrito(models.Model):
     
     def __str__(self):
         return f'{self.cantidad} de \
-            {self.libro_id_libro} perteneciente a \
-            {self.carrito_id_carrito}'
+            {self.id_libro} perteneciente a \
+            {self.id_carrito}'
     
 
 class Libro(models.Model):
