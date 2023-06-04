@@ -17,6 +17,7 @@ import { CategoriasComponent } from './panel-de-control/categorias/categorias.co
 import { EntradasComponent } from './panel-de-control/entradas/entradas.component';
 import { UsuariosComponent } from './panel-de-control/usuarios/usuarios.component';
 import { CartComponent } from './cart/cart/cart.component';
+import { EstadoCompraComponent } from './estado-compra/estado-compra/estado-compra.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,8 @@ const routes: Routes = [
   { path: 'admin/usuarios', component: UsuariosComponent},
   { path: 'libro/:id', component: ProductDetailComponent},
   { path: 'cart', component: CartComponent},
+  { path: 'purchase-status', component: EstadoCompraComponent},
+  
 ];
 
 @NgModule({

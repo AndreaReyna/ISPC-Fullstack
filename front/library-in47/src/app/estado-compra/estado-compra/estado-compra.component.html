@@ -1,126 +1,22 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Libreria Virtual in47</title>
-    <base href="/" />
-    <link rel="icon" type="image/x-icon" href="./assets/img/logo-47.ico" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-    />
-    <!-- Font Awesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- MDB -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
-      rel="stylesheet"
-    />
-    <!-- MDB -->
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
-    ></script>
-  </head>
-  <body>
-    <app-root></app-root>
-  </body>
-  
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">in47</a>
-   
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav justify-content-start">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="home">Inicio</a>
-        </li>
-        <li class="nav-item" *ngIf="logIn" >
-          <a class="nav-link" routerLink="user">Mi cuenta</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="about-us">Quienes somos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="contact">Contacto</a>
-        </li>
-      </ul>
-      <div class="me-5 ms-auto order-last">
-        <button *ngIf="!logIn" class="btn btn-light btn-nav me-5" routerLink="login">Login</button>
-        <button *ngIf="logIn" class="btn btn-light btn-nav me-5" (click)="logout()">Logout</button>
-        <button *ngIf="!logIn" class="btn btn-light btn-nav" routerLink="register">Registro</button>
-      </div>
-    </div>
-  </div>
-</nav>
 
 <br>
 <br>
-<h1 class="container display-4 mt-5">
-   Bienvenidos a la Libreria Virtual IN 47
-</h1>
-
-<p class="container lead">
-En esta página web vas a poder encontrar y descubrir todo tipo de historias, cuentos, autores y quedarte con el que más te guste!</p>
-<br>
-<br>
-<nav class="container navbar navbar-expand-lg bg-light">
-   <div class="container input-group">
-      <input type="search" class="form-control rounded" placeholder="Ingresa titulo, autor, ISBN o palabra clave" aria-label="Search" aria-describedby="search-addon">
-      <button type="button" class="btn btn-outline-primary">BUSCAR</button>
-   </div>
-</nav>
-
-<nav class="container nav nav-pills flex-column flex-sm-row">
-   <a class="flex-sm-fill text-sm-center nav-link" aria-current="page" href="view/categorias.html">CATEGORIAS</a>
-   <a class="flex-sm-fill text-sm-center nav-link" href="view/libros.html">LIBROS</a>
-   <a class="flex-sm-fill text-sm-center nav-link" href="view/novelas.html">NOVELAS</a>
-   <a class="flex-sm-fill text-sm-center nav-link" href="view/infantiles.html">INFANTILES</a>
-   <a class="flex-sm-fill text-sm-center nav-link" href="view/masvendidos.html">MAS VENDIDOS</a>
-   <a class="flex-sm-fill text-sm-center nav-link" href="view/comics.html">COMICS</a>
-</nav>
-
 <div class="carrito cartFull" style="text-align: end;">
         <a href="/carrito.aspx?cerrarcompra=si" class="cerrarCompra finalizar" data-title="Ir a la caja" title="Ir a la caja"><span class="cantidad">1</span>
           <span class="tipoProducto">producto</span> <span class="pared">|</span> <i class="moneda">AR$</i> <i class="total">6.800,00</i> <span class="ic">
-            <img src="/./src/assets/img/carrito.jpg" border="0" alt="carrito"></span> </a>
+            <img src="/./src/assets/img/carrito.jpg" alt="carrito"></span> </a>
                     </div>
-                </div>
 
-<div><center><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+
+<div><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
      <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-    <p><strong> MI CARRITO </strong></p></center></svg>
-    </div>
-    </div>
+    </svg>
+    
+    <a routerLink="cart">MI CARRITO</a>
 
+    </div>
     <br>
     <br>
-
-<article>
-    <div id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_figContainer" class="tapa Libro">
-        <a href="/Libro/9788484456810/Este+Dolor+No+Es+Mio" id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_a_tapa_libro" title="Este Dolor No Es Mio">
-            <img src="https://contentv2.tap-commerce.com/cover/large/9788484456810_1.jpg?id_com=0" id="ctl00_ContentPlaceHolder1_rptCarrito_ctl00_img_tapa" class="tapaCarrito" border="0" tapacomunidadsize="3" title="Libro Este Dolor No Es Mio" alt="Libro Este Dolor No Es Mio"; style="float: left;"></a>
-  </div>
 
     <div class="desc">
         <h3>
@@ -254,7 +150,6 @@ En esta página web vas a poder encontrar y descubrir todo tipo de historias, cu
                                         <span>AR$</span> 6.800,00
                                         </div>
                                     </div>
-                                </article>
                                 
      <br>
      <br>             
@@ -268,11 +163,10 @@ En esta página web vas a poder encontrar y descubrir todo tipo de historias, cu
         <a id="ctl00_ContentPlaceHolder1_link_aplicarcupon" class="btn btn-block btn-bordo padding pull-right" data-loading-text="Aplicando..." href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$link_aplicarcupon','')">Aplicar</a>
     </div>
 
-</div>
 
 <br>
 <br> 
-<<div class="mediosDePago">
+<div class="mediosDePago">
     <p><strong>MEDIOS DE PAGO</strong></p>
 <img src="./assets/img/logos-1.jpg" alt="medios de pago tarjetas">
 <img src="./assets/img/logos-2.jpg" alt="medios de pago tarjetas">
@@ -289,7 +183,6 @@ En esta página web vas a poder encontrar y descubrir todo tipo de historias, cu
             <span class="total-carrito">Subtotal*:</span><span>AR$</span> 6.800,00
         </p>
         </div>
-</div>
 
 <div class="ft">
     <div class="info-adic">
