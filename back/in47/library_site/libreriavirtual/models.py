@@ -247,6 +247,9 @@ class Libro(models.Model):
         )
     stock = models.PositiveSmallIntegerField(
         )
+    img_url = models.URLField(
+        max_length = 200
+    )
     id_autor = models.ForeignKey(
         'Autor',
         to_field='id_autor',
