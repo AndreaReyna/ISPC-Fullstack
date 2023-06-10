@@ -3,8 +3,8 @@
 <article class="container" >
 
    <div class="row justify-content-center" role="group" aria-label="Basic outlined example">
-      <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 m-2 hover-effect" *ngFor="let libro of libros" [routerLink]="['/libro', libro.id]" style="cursor: pointer;">
-        <img [src]="libro.foto" class="mt-2" alt="portada de libro">
+      <div class="col-sm-6 col-md-4 col-lg-4 col-xl-2 m-2 hover-effect" *ngFor="let libro of libros" [routerLink]="['/libro', libro.id_libro]" style="cursor: pointer;">
+        <img [src]="libro.img_url" class="mt-2" alt="portada de libro">
         <div class="pt-0 text-center">
           <h6>{{libro.titulo}}</h6>
         </div>

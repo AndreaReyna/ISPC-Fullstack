@@ -247,6 +247,10 @@ class Libro(models.Model):
         )
     stock = models.PositiveSmallIntegerField(
         )
+    img_url = models.URLField(
+        max_length = 200,
+        default='https://unrulyguides.com/wp-content/uploads/2011/12/generic-cover.jpg'
+    )
     id_autor = models.ForeignKey(
         'Autor',
         to_field='id_autor',
