@@ -21,7 +21,7 @@
             </p>
           </div>
 
-          <img [src]="libro.foto" class="mt-2" alt="portada de libro"
+          <img [src]="libro.img_url" class="mt-2" alt="portada de libro"
           alt="portada libro"
           class="img-fluid Box-shadow"
           />
@@ -79,7 +79,7 @@
           </div>
           <div class="row mb-1">
             <div class="Autor col-md-auto">
-              <span>{{libro.autor}}</span>
+              <span>{{autor.nombre}}</span>
             </div>
             <div class="AutorProducto col-md-auto">
               <span>Rojas Marian</span>
@@ -88,7 +88,7 @@
               <span>Editorial</span>
             </div>
             <div class="col-md-auto text-uppercase">
-              <span>{{libro.editorial}}</span>
+              <span>{{editorial.nombre}}</span>
             </div>
           </div>
           <div class="row mb-1 justify-content-end">
@@ -106,8 +106,8 @@
               </div>
 
               <div class="col p-0 m-0 text-center">
-                <button type="button" class="btn btn-warning rounded ">
-                  COMPRAR
+                <button type="button" class="btn btn-warning rounded"(click)="agregarAlCarrito(libro)">
+                  Agregar al carrito
                 </button>
               </div>
 
@@ -121,7 +121,7 @@
             <div class="row book-box d-flex justify-content-around align-items-center">
 
               <div class="col text-center p-0 m-0">
-                <p class="fs-4 PrecioProducto p-0 m-0">U$D {{(libro.precio / 500).toFixed(2)}}</p>
+                <p class="fs-4 PrecioProducto p-0 m-0">U$D {{ (+libro.precio / 500).toFixed(2) }}</p>
               </div>
 
               <div class="col p-0 m-0">

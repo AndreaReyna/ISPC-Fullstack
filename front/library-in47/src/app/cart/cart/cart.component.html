@@ -1,83 +1,107 @@
-<section class="carrito cartEmpty">
-    <div id="ctl00_ContentPlaceHolder1_progUpdate" style="display:none;" role="status" aria-hidden="true">
+<br />
+<div class="m-5"></div>
 
-        <div class="md-overlay">
-            <img src="/images/ajax-loader.gif" alt="Cargando">
-        </div>
+<section class="carrito">
+  <div class="text-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      fill="currentColor"
+      class="bi bi-cart4"
+      viewBox="0 0 16 16"
+    >
+      <!-- SVG code... -->
+    </svg>
+    <p><strong>MI CARRITO</strong></p>
+  </div>
 
-    </div>
+  <div *ngIf="elementosCarrito.length == 0">
+    <p>No hay items en el carrito. </p>
+  </div>
 
-    <div id="ctl00_ContentPlaceHolder1_UpdatePanel1">
-
-        <script type="text/javascript">
-            //<![CDATA[
-            Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$ContentPlaceHolder1$UpdatePanel1', ''], [], [], 90, 'ctl00');
-            //]]>
-        </script>
-
-        <script>
-            ///<summary>
-            ///  This will fire on initial page load, 
-            ///  and all subsequent partial page updates made 
-            ///  by any update panel on the page
-            ///</summary>
-            function pageLoad() {
-
-                $('#ctl00_ContentPlaceHolder1_txt_cupon').keyup(function () {
-                    if ($('#ctl00_ContentPlaceHolder1_div_mensajeContainer').hasClass('error')) {
-                        $(this).parent().parent().removeClass('error');
-                        $('#ctl00_ContentPlaceHolder1_div_mensajeContainer').hide(100);
-                    }
-                });
-            }
-        </script>
-    </div>
- </section>
-
-  <br>
-  <br>
-  <br>
-  <br>
- 
-    <div style text-aling="center"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
-     <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-    </svg> <p><strong> MI CARRITO</strong></p>
-    </div>
-   
-    <div class="bd">
-        <div class="bd">
-                          
-            <p id="ctl00_ContentPlaceHolder1_p_no_items" class="md-no-items">
-                 No hay items en el carrito. </p>
-                 <p>SI tenés libros guardados en tu carrito anteriormente,<a class="nav-link" href="#">ingresá a tu cuenta</a> 
-                para verlos </p>
-
-                <div id="ctl00_ContentPlaceHolder1_div_limpiardescuentos" class="md-total md-descuentos">
-                </div>
-
-        </div>
-     </div>
-        
-        <div class="ft">
-            <div class="info-adic">
-                <p>
-                    <span><strong>IMPORTANTE</strong></span>
-                </p>
-
-                <p>El costo final de su compra <strong>con el envío incluído</strong>, se verá reflejado en el próximo
-                    paso de la compra al hacer clic en "Finalizar compra".</p>
-
-                <p>Si lo desea, a continuacion puede ver una tabla con los costos de envío estimativos</p>
-                <img src="../../../../assets/img/costos.jpg" alt="costos de envio">
+  <div *ngIf="elementosCarrito.length > 0">
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Libro</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Precio</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let elemento of elementosCarrito">
+          <td>
+            <img
+              src="{{ elemento.libro.img_url }}"
+              alt="{{ elemento.libro.titulo }}"
+              class="img-thumbnail"
+              style="width: 50px;"
+            />
+            {{ elemento.libro.titulo }}
+          </td>
+          <td>
+            <div class="btn-group" role="group">
+              <button
+                type="button"
+                class="btn btn-outline-primary rounded-left"
+                (click)="decrementarCantidad(elemento.libro.id_libro)"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+              <span class="btn btn-light">{{ elemento.cantidad | number:'1.2-2' }}</span>
+              <button
+                type="button"
+                class="btn btn-outline-primary rounded-right"
+                (click)="incrementarCantidad(elemento.libro.id_libro)"
+              >
+                <i class="fas fa-plus"></i>
+              </button>
             </div>
-        </div>
+          </td>
+          <td>{{ (convertirPrecio(elemento.libro.precio) * elemento.cantidad) | number:'1.2-2' }}</td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="eliminarElemento(elemento.libro.id_libro)">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Total: {{ total | number:'1.2-2' }}</p>
 
-            <div class="mediosDePago">
-                    <p><strong>MEDIOS DE PAGO</strong></p>
-             <img src="../../../../assets/img/logos-1.jpg" alt="medios de pago tarjetas">
-             <img src="../../../../assets/img/logos-2.jpg" alt="medios de pago tarjetas">
-             <img src="../../../../assets/img/logos-3.jpg" alt="medios de pago tarjetas">
-             <img src="../../../../assets/img/logos-4.jpg" alt="medios de pago tarjetas">
-        </div>
+    <div *ngIf="!logIn" class="text-center mt-3">
+      <p>Inicia sesión o regístrate para continuar con la compra.</p>
+      <a class="link-primary" href="/login">Iniciar sesión</a> |
+      <a class="link-primary" href="/register">Registrarse</a>
+    </div>
 
-   
+    <div *ngIf="logIn" class="text-center mt-3">
+      <a class="btn btn-success" (click)="finalizarCompra()">Finalizar compra</a>
+    </div>
+  </div>
+
+  <br />
+  <div class="ft mt-4">
+    <div class="info-adic">
+      <p><strong>IMPORTANTE</strong></p>
+
+      <p>
+        El costo final de su compra <strong>con el envío incluído</strong>, se verá reflejado en el próximo paso de la
+        compra al hacer clic en "Finalizar compra".
+      </p>
+
+      <p>Si lo desea, a continuación puede ver una tabla con los costos de envío estimativos</p>
+      <img src="../../../../assets/img/costos.jpg" alt="costos de envio" />
+    </div>
+  </div>
+
+  <div class="mediosDePago">
+    <p><strong>MEDIOS DE PAGO</strong></p>
+    <img src="../../../../assets/img/logos-1.jpg" alt="medios de pago tarjetas" />
+    <img src="../../../../assets/img/logos-2.jpg" alt="medios de pago tarjetas" />
+    <img src="../../../../assets/img/logos-3.jpg" alt="medios de pago tarjetas" />
+    <img src="../../../../assets/img/logos-4.jpg" alt="medios de pago tarjetas" />
+  </div>
+</section>

@@ -24,7 +24,8 @@ import { FooterControlPanelComponent } from './panel-de-control/footer-control-p
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CartModule } from './cart/cart.module';
+import { CarritoService } from './services/carrito.service';
 
 @NgModule({
   declarations: [
@@ -51,9 +52,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     RegisterModule,
     LoginModule,
-    HttpClientModule
+    HttpClientModule,
+    CartModule
   ],
-  providers: [],
+  providers: [CarritoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
