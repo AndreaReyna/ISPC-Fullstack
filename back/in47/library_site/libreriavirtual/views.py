@@ -20,11 +20,20 @@ class LoginView(APIView):
         email = request.data.get('email', None)
         password = request.data.get('password', None)
         # user guarda un objeto User con las credenciales validas
-        user = authenticate(email=email, password=password)
+        user = authenticate(request, email=email, password=password) #se le agrego REQUEST. Si no funciona, borrar!
 
         # Si es correcto aniadimos a la request la informacion de sesion
         if user:
             login(request, user)
+            
+            # Verificar si el usuario ya tiene un carrito asociado
+            if not user.id_carrito:
+                # Si no tiene un carrito, crear uno nuevo y asociarlo al usuario
+                carrito = Carrito.objects.create()
+                user.id_carrito = carrito
+                user.save()
+                
+
             return Response(
                 UserSerializer(user).data,
                 status=status.HTTP_200_OK)

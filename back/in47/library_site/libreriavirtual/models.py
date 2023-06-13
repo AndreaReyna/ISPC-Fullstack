@@ -30,6 +30,12 @@ class CustomUser(AbstractUser):
         on_delete=models.CASCADE,
         null=True
         )
+    id_carrito = models.ForeignKey(
+        'Carrito',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='customuser'
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'password']
@@ -185,6 +191,11 @@ class ElementosCarrito(models.Model):
         to_field='id_carrito',
         on_delete=models.CASCADE
         )
+    id_cliente = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        to_field='id',
+        on_delete=models.CASCADE
+        )
     id_libro = models.ForeignKey(
         'Libro',
         to_field='id_libro',
@@ -204,7 +215,8 @@ class ElementosCarrito(models.Model):
     def __str__(self):
         return f'{self.cantidad} de \
             {self.id_libro} perteneciente a \
-            {self.id_carrito}'
+            {self.id_carrito} de usuario \
+            {self.id_cliente}'
     
 
 class Libro(models.Model):
@@ -632,3 +644,28 @@ class Pago(models.Model):
         return f'registrado {self.fecha_pago} \
         monto {self.monto} \
         info {self.info_adicional}'
+
+
+class Comprar(models.Model):
+
+    id_comprar = models.AutoField(
+        primary_key=True,
+        unique=True,
+        db_index=True
+        )
+    cantidad = models.PositiveSmallIntegerField(
+        )
+    precio = models.DecimalField(
+        max_digits=7,
+        decimal_places=2
+        )
+    id_libro = models.ForeignKey(
+        'Libro',
+        to_field='id_libro',
+        on_delete=models.CASCADE
+        )
+
+    class Meta:
+        db_table = 'comprar'
+        verbose_name = ('Comprar')
+        verbose_name_plural = ('Compras')

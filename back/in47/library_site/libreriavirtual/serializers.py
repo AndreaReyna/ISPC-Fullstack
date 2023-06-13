@@ -117,3 +117,61 @@ class PagoSerializer(serializers.ModelSerializer):
     class Meta:
         model= Pago
         fields='__all__'
+
+class ComprarSerializer(serializers.ModelSerializer): #eliminar!!!
+
+    class Meta:
+        model= Comprar
+        fields='__all__'
+    
+    def create(self, validated_data):
+        # Obtener el usuario autenticado
+        user = self.context['request'].user
+
+        id_libro = validated_data['libro']['id_libro']
+        precio = validated_data['libro']['precio']
+        cantidad = validated_data['cantidad']
+
+        # Crear una instancia del modelo Comprar
+        comprar = Comprar.objects.create(
+            id_libro_id=id_libro,
+            precio=precio,
+            cantidad=cantidad
+        )
+
+        return comprar
+#
+# Serializador completo para recibir todos los datos de la compra /
+# y poder distribuir en varios modelos a la vez
+# 
+
+
+class ElementosSerializer(serializers.ModelSerializer):
+    id_libro = serializers.PrimaryKeyRelatedField(queryset=Libro.objects.all(), source='id_libro.id_libro')
+    cantidad = serializers.IntegerField()
+
+    class Meta:
+        model = ElementosCarrito
+        fields = ['id_elementos_carrito', 'id_carrito', 'id_cliente', 'id_libro', 'cantidad']
+
+    def create(self, validated_data):
+        return ElementosCarrito.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        instance.id_libro.id_libro = validated_data.get('id_libro', instance.id_libro.id_libro)
+        instance.cantidad = validated_data.get('cantidad', instance.cantidad)
+        instance.save()
+        return instance
+    
+
+class OrdenSerializer(serializers.ModelSerializer):
+    precioTotal = serializers.DecimalField(decimal_places=2, max_digits=7, write_only=True)
+
+    class Meta:
+        model = Orden
+        fields = ['id_orden', 'fecha_creacion', 'total', 'id_cliente', 'id_estado', 'precioTotal']
+
+    def create(self, validated_data):
+        precio_total = validated_data.pop('precioTotal', None)
+        orden = Orden.objects.create(total=precio_total, **validated_data)
+        return orden
