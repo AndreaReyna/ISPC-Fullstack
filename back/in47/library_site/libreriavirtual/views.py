@@ -33,7 +33,6 @@ class LoginView(APIView):
                 user.id_carrito = carrito
                 user.save()
                 
-
             return Response(
                 UserSerializer(user).data,
                 status=status.HTTP_200_OK)
@@ -70,6 +69,29 @@ class ProfileView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         if self.request.user.is_authenticated:
             return self.request.user
+
+#endopoint para comprar
+class ComprarView(APIView):
+    def post(self, request):
+        elementos_serializer = ElementosSerializer(data=request.data.get('elementos', []), many=True, context={'request': request})
+        orden_serializer = OrdenSerializer(data={
+            'total': request.data.get('precioTotal'),
+            'id_cliente': request.user.id,
+        }, context={'request': request})
+
+        if elementos_serializer.is_valid() and orden_serializer.is_valid():
+            elementos = elementos_serializer.save()
+            orden = orden_serializer.save()
+            return Response({'elementos': elementos_serializer.data, 'orden': orden_serializer.data}, status=status.HTTP_201_CREATED)
+
+        errors = {}
+        if not elementos_serializer.is_valid():
+            errors['elementos'] = elementos_serializer.errors
+        if not orden_serializer.is_valid():
+            errors['orden'] = orden_serializer.errors
+
+        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 ########################################################################
 

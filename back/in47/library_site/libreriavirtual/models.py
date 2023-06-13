@@ -599,8 +599,8 @@ class Estado(models.Model):
         return self.id_estado
     
     def __str__(self):
-        return {self.estado}
-    
+        return self.get_estado_display()
+
 
 class Pago(models.Model):
 
@@ -644,28 +644,3 @@ class Pago(models.Model):
         return f'registrado {self.fecha_pago} \
         monto {self.monto} \
         info {self.info_adicional}'
-
-
-class Comprar(models.Model):
-
-    id_comprar = models.AutoField(
-        primary_key=True,
-        unique=True,
-        db_index=True
-        )
-    cantidad = models.PositiveSmallIntegerField(
-        )
-    precio = models.DecimalField(
-        max_digits=7,
-        decimal_places=2
-        )
-    id_libro = models.ForeignKey(
-        'Libro',
-        to_field='id_libro',
-        on_delete=models.CASCADE
-        )
-
-    class Meta:
-        db_table = 'comprar'
-        verbose_name = ('Comprar')
-        verbose_name_plural = ('Compras')

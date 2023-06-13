@@ -1,7 +1,7 @@
 #URLS APP
 
 from django.urls import path, include
-from .views import LoginView, LogoutView, SignupView, ProfileView
+from .views import LoginView, LogoutView, SignupView, ProfileView, ComprarView
 from rest_framework import routers
 from libreriavirtual import views
 
@@ -41,6 +41,7 @@ router.register(r'admin_estado',views.EstadoAdmin)
 router.register(r'admin_pago',views.PagoAdmin)
 router.register(r'admin_carrito',views.CarritoAdmin)
 router.register(r'admin_elementoscarrito',views.ElementosCarritoAdmin)
+router.register(r'comprar',views.ComprarView)
 
 
 
