@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework import status, generics, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
 from .serializers import *
 from .models import *
@@ -72,27 +74,45 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 
 #endopoint para comprar
 class ComprarView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def post(self, request):
-        elementos_serializer = ElementosSerializer(data=request.data.get('elementos', []), many=True, context={'request': request})
-        orden_serializer = OrdenSerializer(data={
-            'total': request.data.get('precioTotal'),
-            'id_cliente': request.user.id,
-        }, context={'request': request})
+        elementos_data = request.data.pop('elementos', [])
+        precio_total = request.data['precioTotal']
+        total = float(precio_total)
+        user = request.user
+        estado_por_defecto = Estado.objects.get(id_estado=3)
+        
+        serializer = OrdenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
 
-        if elementos_serializer.is_valid() and orden_serializer.is_valid():
-            elementos = elementos_serializer.save()
-            orden = orden_serializer.save()
-            return Response({'elementos': elementos_serializer.data, 'orden': orden_serializer.data}, status=status.HTTP_201_CREATED)
+        if user.is_authenticated:
+            carrito = user.id_carrito
 
-        errors = {}
-        if not elementos_serializer.is_valid():
-            errors['elementos'] = elementos_serializer.errors
-        if not orden_serializer.is_valid():
-            errors['orden'] = orden_serializer.errors
+            Orden.objects.create(
+                id_cliente=user,
+                total=total,
+                id_estado=estado_por_defecto
+            )
 
-        return Response(errors, status=status.HTTP_400_BAD_REQUEST)
+            for elemento_data in elementos_data:
+                libro_data = elemento_data['libro']
+                cantidad = elemento_data['cantidad']
 
+                try:
+                    libro_instance = Libro.objects.get(id_libro=libro_data['id_libro'])
+                    ElementosCarrito.objects.create(
+                        id_carrito=carrito,
+                        id_cliente=user,
+                        id_libro=libro_instance,
+                        cantidad=cantidad
+                    )
+                except Libro.DoesNotExist:
+                    raise ValidationError(f"El libro con ID {libro_data['id_libro']} no existe")
 
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"detail": "El usuario no está autenticado"}, status=status.HTTP_401_UNAUTHORIZED)
 ########################################################################
 
 class DireccionViewSet(viewsets.ModelViewSet):  #direccion editable por usuario logueado

@@ -41,7 +41,7 @@ router.register(r'admin_estado',views.EstadoAdmin)
 router.register(r'admin_pago',views.PagoAdmin)
 router.register(r'admin_carrito',views.CarritoAdmin)
 router.register(r'admin_elementoscarrito',views.ElementosCarritoAdmin)
-
+#router.register(r'comprar',views.ComprarView, basename='comprar')
 
 urlpatterns = [
     
@@ -61,6 +61,6 @@ urlpatterns = [
          ProfileView.as_view(), name='user_profile'),
     
      path('comprar/',
-         ComprarView.as_view(), name='user_profile'),
+         ComprarView.as_view(), name='comprar'),
 ]
 

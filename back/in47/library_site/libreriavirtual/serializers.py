@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from .models import *
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.serializers import ValidationError
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -119,45 +120,27 @@ class PagoSerializer(serializers.ModelSerializer):
 # 
 
 
-class ElementosSerializer(serializers.ModelSerializer):
-    id_libro = serializers.PrimaryKeyRelatedField(queryset=Libro.objects.all(), source='id_libro.id_libro')
+class ElementosSerializer(serializers.Serializer):
+    libro = serializers.DictField()
     cantidad = serializers.IntegerField()
 
-    class Meta:
-        model = ElementosCarrito
-        fields = ['id_elementos_carrito', 'id_carrito', 'id_cliente', 'id_libro', 'cantidad']
-
     def create(self, validated_data):
-        
-        # Obtener el usuario autenticado
-        user = self.context['request'].user
-        if user.is_authenticated:
-            # Obtener el carrito asociado al usuario
-            carrito = user.id_carrito
-            # Agregar los IDs del usuario y el carrito a los datos validados
-            validated_data['id_carrito'] = carrito.id_carrito
-            validated_data['id_cliente'] = user.id
-            return ElementosCarrito.objects.create(**validated_data)    
-        else:
-            raise AuthenticationFailed("El usuario no está autenticado")
+        libro_data = validated_data['libro']
+        libro_instance = Libro.objects.get(id_libro=libro_data['id_libro'])
+        elemento = ElementosCarrito.objects.create(libro=libro_instance, cantidad=validated_data['cantidad'])
+        return elemento
+
 
 class OrdenSerializer(serializers.ModelSerializer):
+    elementos = serializers.ListField(child=ElementosSerializer(), read_only=True)
     precioTotal = serializers.DecimalField(decimal_places=2, max_digits=7, write_only=True)
+    id_cliente = serializers.PrimaryKeyRelatedField(read_only=True)
+    id_estado = serializers.PrimaryKeyRelatedField(read_only=True)
+    total = serializers.DecimalField(decimal_places=2, max_digits=7, read_only=True)
 
     class Meta:
         model = Orden
-        fields = ['id_orden', 'fecha_creacion', 'total', 'id_cliente', 'id_estado', 'precioTotal']
-
-    def create(self, validated_data):
-        # Obtener el usuario autenticado
-        user = self.context['request'].user
-        if user.is_authenticated:
-            # Obtener el carrito asociado al usuario
-            carrito = user.id_carrito
-            # Agregar los IDs del usuario y el carrito a los datos validados
-            validated_data['id_cliente'] = user.id
-            precio_total = validated_data.pop('precioTotal', None)
-            orden = Orden.objects.create(total=precio_total, id_carrito=carrito, **validated_data)
-            return orden
-        else:
-            raise AuthenticationFailed("El usuario no está autenticado")
+        fields = ['id_orden', 'fecha_creacion', 'total', 'id_cliente', 'id_estado', 'elementos', 'precioTotal']
+        extra_kwargs = {
+            'total': {'write_only': True},
+        }
