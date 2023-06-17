@@ -8,6 +8,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
 from .serializers import *
 from .models import *
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -73,6 +74,7 @@ class ProfileView(generics.RetrieveUpdateAPIView):
             return self.request.user
 
 #endopoint para comprar
+
 class ComprarView(APIView):
     permission_classes = [IsAuthenticated]
 
