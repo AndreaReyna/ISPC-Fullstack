@@ -99,7 +99,7 @@ class PedidoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model= Pedido
-        fields='__all__'
+        fields = ['id_cliente', 'nro_tracking', 'id_orden']
 
 class EstadoSerializer(serializers.ModelSerializer):
 
