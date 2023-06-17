@@ -111,7 +111,7 @@ class PagoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model= Pago
-        fields='__all__'
+        fields = ['monto', 'info_adicional', 'id_orden']
 
 
 #

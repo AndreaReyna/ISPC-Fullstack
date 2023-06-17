@@ -268,11 +268,11 @@ class EstadoAdmin(viewsets.ModelViewSet):   #estado editable
     serializer_class = EstadoSerializer
 
 class PagoAdmin(viewsets.ModelViewSet): #pago editable por usuario logueado
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAdminUser]
     queryset = Pago.objects.all()
     serializer_class = PagoSerializer
 
 class PagoViewSet(viewsets.ModelViewSet):   #pago editable
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated]
     queryset = Pago.objects.all()
     serializer_class = PagoSerializer
