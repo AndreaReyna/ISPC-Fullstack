@@ -80,11 +80,11 @@ export class CartComponent {
     this.carritoService.enviarCompra(compra)
       .subscribe(
         response => {
-          console.log('Compra realizada exitosamente');
-          alert('Compra realizada exitosamente');
+          console.log('Orden procesada exitosamente');
+          alert('Orden procesada exitosamente');
         },
         error => {
-          console.error('Error al finalizar la compra', error);
+          console.error('Error al procesar la orden', error);
         }
       );
   }

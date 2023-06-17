@@ -20,11 +20,13 @@ export class AuthService {
     };
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      }),
-      withCredentials: true
-    };
-    return this.http.post<User>(`${this.url}/login/`, credentials, httpOptions);
+            'Content-Type':  'application/json',
+            'Cookie': ` X-CSRFToken=${this.getCookie('csrftoken')}`,
+            'X-Requested-With': 'XMLHttpRequest'
+        }),
+        withCredentials: true
+    };
+    return this.http.post<User>(`${this.url}/login/`, credentials);
   }  
   
   logout(): Observable<any> {
@@ -36,7 +38,7 @@ export class AuthService {
         }),
         withCredentials: true
     };
-    return this.http.post<any>(`${this.url}/logout/`, null, httpOptions); 
+    return this.http.post<any>(`${this.url}/logout/`, null); 
   }
 
   getCookie(name: string): string {

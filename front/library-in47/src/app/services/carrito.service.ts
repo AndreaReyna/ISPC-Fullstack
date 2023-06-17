@@ -1,7 +1,7 @@
 import { Observable } from "rxjs";
 import { ElementoCarrito } from "../models/elementoCarrito";
 import { Product } from "../models/product";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 
@@ -78,7 +78,41 @@ export class CarritoService {
     this.cantidadProductos = this.elementosCarrito.reduce((total, producto) => total + producto.cantidad, 0);
   }
 
+
   enviarCompra(compra: any): Observable<any> {
-    return this.http.post<any>(`${this.url}/comprar/`, compra);
+  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+
+      'X-CSRFToken': this.getCookie('csrftoken')
+    });
+
+    return this.http.post<any>(`${this.url}/comprar/`, compra, { headers, withCredentials: true });
   }
+
+  private getCookie(name: string): string {
+    const cookieName = `${name}=`;
+    const cookies = document.cookie.split(';');
+
+    for (let i = 0; i < cookies.length; i++) {
+      let cookie = cookies[i];
+      while (cookie.charAt(0) === ' ') {
+        cookie = cookie.substring(1);
+      }
+      if (cookie.indexOf(cookieName) === 0) {
+        return cookie.substring(cookieName.length, cookie.length);
+      }
+    }
+
+    return '';
+  }
+
+
+
+  //enviarCompra(compra: any): Observable<any> {
+  //  return this.http.post<any>(`${this.url}/comprar/`, compra, {withCredentials: true});
+  // }
+
+
+
 }

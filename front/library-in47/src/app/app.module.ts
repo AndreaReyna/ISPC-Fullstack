@@ -23,9 +23,10 @@ import { NavBarControlPanelComponent } from './panel-de-control/nav-bar-control-
 import { FooterControlPanelComponent } from './panel-de-control/footer-control-panel/footer-control-panel.component';
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import { CartModule } from './cart/cart.module';
 import { CarritoService } from './services/carrito.service';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { CarritoService } from './services/carrito.service';
     RegisterModule,
     LoginModule,
     HttpClientModule,
-    CartModule
+    CartModule,
+    HttpClientModule,
   ],
   providers: [CarritoService],
   bootstrap: [AppComponent]
