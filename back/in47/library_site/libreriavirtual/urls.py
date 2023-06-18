@@ -1,7 +1,7 @@
 #URLS APP
 
 from django.urls import path, include
-from .views import LoginView, LogoutView, SignupView, ProfileView, ComprarView
+from .views import LoginView, LogoutView, SignupView, ProfileView, ComprarView, DetallePedidoView
 from rest_framework import routers
 from libreriavirtual import views
 
@@ -20,7 +20,7 @@ router.register(r'categoria',views.CategoriaViewSet)
 router.register(r'editorial',views.EditorialViewSet)
 router.register(r'formato',views.FormatoViewSet)
 router.register(r'autor',views.AutorViewSet)
-router.register(r'detallepedido',views.DetallePedidoViewSet)
+#router.register(r'detallepedido',views.DetallePedidoViewSet)
 router.register(r'pedido',views.PedidoViewSet)
 router.register(r'orden',views.OrdenViewSet)
 router.register(r'estado',views.EstadoViewSet)
@@ -62,5 +62,9 @@ urlpatterns = [
     
      path('comprar/',
          ComprarView.as_view(), name='comprar'),
+
+     path('detalle_pedido/',
+         DetallePedidoView.as_view(), name='detalle_pedido'),
+        
 ]
 

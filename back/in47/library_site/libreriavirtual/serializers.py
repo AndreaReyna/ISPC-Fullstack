@@ -93,7 +93,7 @@ class DetallePedidoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model= DetallePedido
-        fields='__all__'
+        fields=['cantidad', 'id_pedido', 'id_libro']
 
 class PedidoSerializer(serializers.ModelSerializer):
 

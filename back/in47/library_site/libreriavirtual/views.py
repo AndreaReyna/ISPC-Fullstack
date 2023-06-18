@@ -232,10 +232,15 @@ class DetallePedidoAdmin(viewsets.ModelViewSet):  #detalle editable
     queryset = DetallePedido.objects.all()
     serializer_class = DetallePedidoSerializer
 
-class DetallePedidoViewSet(viewsets.ModelViewSet):  #detalle editable por usuario logueado
+class DetallePedidoView(APIView):  #detalle editable por usuario logueado
     permission_classes = [IsAuthenticated]
-    queryset = DetallePedido.objects.all()
-    serializer_class = DetallePedidoSerializer
+    def post(self, request):
+        detalles = request.data.get('detalles')
+        serializer = DetallePedidoSerializer(data=detalles, many=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
 
 class PedidoAdmin(viewsets.ModelViewSet): #pedido editable
     permission_classes = [IsAdminUser]
