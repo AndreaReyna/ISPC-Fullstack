@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 
@@ -8,28 +8,15 @@ import { User } from '../models/user';
 })
 export class UserService {
 
-  private url: string = "http://localhost:8000/api/auth/signup/";
+  private url: string = "http://localhost:8000/api/";
 
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.url);
-  }
-
-  get(id: number): Observable<User> {
-    return this.http.get<User>(`${this.url}/${id}`);
+    return this.http.get<User[]>(this.url+"users/");
   }
 
   create(user: User): Observable<User> {
-    return this.http.post<User>(this.url, user);
+    return this.http.post<User>(this.url+"auth/signup/", user);
   }
-
-  update(id: number, user: User): Observable<User> {
-    return this.http.put<User>(`${this.url}/${id}`, user);
-  }
-
-  delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.url}/${id}`);
-  }
-
 }

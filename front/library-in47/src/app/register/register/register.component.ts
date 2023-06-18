@@ -72,8 +72,8 @@ export class RegisterComponent implements OnInit {
     ) {
       const user = {
         id: 6, // por el momento necesitamos setear el id manualmente
-        name: this.name.value!,
-        lastname: this.lastname.value!,
+        first_name: this.name.value!,
+        last_name: this.lastname.value!,
         email: this.email.value!,
         username: this.username.value!,
         password: this.password.value!

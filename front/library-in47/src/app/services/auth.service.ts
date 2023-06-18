@@ -2,14 +2,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../models/user';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private url: string = "http://localhost:8000/api/auth";
+  user: User | null = null;
+
+  private url: string = "http://localhost:8000/api/";
   private _isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private _currentUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient) { }
 
@@ -26,19 +31,42 @@ export class AuthService {
         }),
         withCredentials: true
     };
-    return this.http.post<User>(`${this.url}/login/`, credentials);
-  }  
+    return this.http.post<User>(`${this.url}auth/login/`, credentials).pipe(
+      map(user => {
+        this.user = user;
+        this.isLoggedIn = true;
+        return user;
+      })
+    );
+  }
   
   logout(): Observable<any> {
     const httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type':  'application/json',
-            'Cookie': `sessionid=${this.getCookie('sessionid')}; csrftoken=${this.getCookie('csrftoken')}`,
-            'X-Requested-With': 'XMLHttpRequest'
-        }),
-        withCredentials: true
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Cookie': `sessionid=${this.getCookie('sessionid')}; csrftoken=${this.getCookie('csrftoken')}`,
+        'X-Requested-With': 'XMLHttpRequest'
+      }),
+      withCredentials: true
     };
-    return this.http.post<any>(`${this.url}/logout/`, null); 
+    return this.http.post<any>(`${this.url}auth/logout/`, null).pipe(
+      map(response => {
+        this.user = null;
+        this.isLoggedIn = false;
+        return response;
+      })
+    );
+  }
+  getProfile(): Observable<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Cookie': `sessionid=${this.getCookie('sessionid')}; csrftoken=${this.getCookie('csrftoken')}`,
+          'X-Requested-With': 'XMLHttpRequest'
+      }),
+      withCredentials: true
+  };
+    return this.http.get<User>(`${this.url}profile/`, httpOptions);
   }
 
   getCookie(name: string): string {
@@ -67,4 +95,9 @@ export class AuthService {
   getIsLoggedIn(): Observable<boolean> {
     return this._isLoggedIn.asObservable();
   }
+
+  getUser(): User | null {
+    return this.user;
+  }
+  
 }

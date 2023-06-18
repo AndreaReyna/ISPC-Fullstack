@@ -107,12 +107,7 @@ export class CarritoService {
     return '';
   }
 
-
-
   //enviarCompra(compra: any): Observable<any> {
   //  return this.http.post<any>(`${this.url}/comprar/`, compra, {withCredentials: true});
   // }
-
-
-
 }
