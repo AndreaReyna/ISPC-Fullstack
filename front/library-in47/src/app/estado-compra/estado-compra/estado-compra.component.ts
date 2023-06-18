@@ -1,30 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component} from '@angular/core';
+
+
+
 
 @Component({
   selector: 'app-estado-compra',
   templateUrl: './estado-compra.component.html',
   styleUrls: ['./estado-compra.component.css']
 })
-export class EstadoCompraComponent implements OnInit{
-  purchaseStatus: string | undefined;
-
-  constructor(private route: ActivatedRoute) {}
-
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      // Lógica para obtener el estado de compra usando el id proporcionado
-      // Puede ser una llamada a un servicio o cualquier otra forma de obtener los datos
-      this.purchaseStatus = this.getPurchaseStatusById(Number(id));
+export class EstadoCompraComponent{
+  orders = [
+    {
+      id: 1,
+      status: 'In Progress',
+      date: '2023-06-17',
+      items: [
+        {
+          name: 'Product 1',
+          price: 10,
+          image: './assets/img/logos-1.jpg',
+          quantity: 1
+        },
+        {
+          name: 'Product 2',
+          price: 20,
+          image: 'path/to/product2.jpg',
+          quantity: 2
+        }
+      ]
+    }
+  ];
+  increaseQuantity(item: any) {
+    item.quantity++;
+  }
+  
+  decreaseQuantity(item: any) {
+    if (item.quantity > 1) {
+      item.quantity--;
     }
   }
-
-  getPurchaseStatusById(id: number): string {
-    // Lógica para obtener el estado de compra según el id proporcionado
-    // Puede ser una llamada a un servicio o cualquier otra forma de obtener los datos
-    // Por simplicidad, este ejemplo retorna un estado de compra estático
-    return 'Pago confirmado, en proceso de envío';
+  
+  cancelOrder(order: any) {
+    // Lógica para cancelar la orden
   }
+
 }
+
+
 

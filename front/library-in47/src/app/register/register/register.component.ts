@@ -25,6 +25,8 @@ export class RegisterComponent implements OnInit {
       lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
       username: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
+      number: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      address: new FormControl('', [Validators.required, Validators.minLength(3)]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       password2: new FormControl('', [Validators.required, Validators.minLength(8)]),
       check: new FormControl(false, Validators.requiredTrue)
@@ -45,6 +47,12 @@ export class RegisterComponent implements OnInit {
 
   get email() {
     return this.registerForm.get('email');
+  }
+  get number() {
+    return this.registerForm.get('number');
+  }
+  get address() {
+    return this.registerForm.get('address');
   }
 
   get password() {
@@ -67,6 +75,8 @@ export class RegisterComponent implements OnInit {
       this.password.value === this.password2.value &&
       this.name !== null &&
       this.lastname !== null &&
+      this.number !== null &&
+      this.address !== null &&
       this.username !== null &&
       this.email !== null
     ) {
@@ -75,6 +85,8 @@ export class RegisterComponent implements OnInit {
         name: this.name.value!,
         lastname: this.lastname.value!,
         email: this.email.value!,
+        number: this.number.value!,
+        address: this.address.value!,
         username: this.username.value!,
         password: this.password.value!
       };
@@ -124,6 +136,16 @@ export class RegisterComponent implements OnInit {
         this.email.markAsTouched();
       }
 
+      if (this.number !== null) {
+        this.number.markAsDirty();
+        this.number.markAsTouched();
+      }
+
+      if (this.address !== null) {
+        this.address.markAsDirty();
+        this.address.markAsTouched();
+      }
+
       if (this.username !== null) {
         this.username.markAsDirty();
         this.username.markAsTouched();
@@ -163,6 +185,14 @@ export class RegisterComponent implements OnInit {
 
     if (this.email?.invalid) {
       errorMessage += '<br/>- Correo electrónico inválido.';
+    }
+
+    if (this.number?.invalid) {
+      errorMessage += '<br/>- Número de teléfono inválido.';
+    }
+
+    if (this.address?.invalid) {
+      errorMessage += '<br/>- Dirección inválida.';
     }
 
     if (this.password?.invalid) {

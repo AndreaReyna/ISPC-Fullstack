@@ -10,7 +10,7 @@
 
                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mx-1 mx-md-4" id="register">
                   <div class="form-group">
-                    <label for="name">Tu nombre</label>
+                    <label for="name">Nombre</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
@@ -25,7 +25,7 @@
                   </div>
 
                   <div class="form-group mt-2">
-                    <label for="lastname">Tu apellido</label>
+                    <label for="lastname">Apellido</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
@@ -40,7 +40,7 @@
                   </div>
 
                   <div class="form-group mt-2">
-                    <label for="username">Tu nombre de usuario</label>
+                    <label for="username">Nombre de usuario</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-user fa-fw"></i></span>
@@ -55,7 +55,7 @@
                   </div>
                   
                   <div class="form-group mt-2">
-                    <label for="email">Tu correo electrónico</label>
+                    <label for="email">Correo electrónico</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-envelope fa-fw"></i></span>
@@ -66,6 +66,36 @@
                     <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="invalid-feedback">
                       <span *ngIf="email?.errors?.['required']">El correo electrónico es requerido.</span>
                       <span *ngIf="email?.errors?.['email']">Ingresa un correo electrónico válido.</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group mt-2">
+                    <label for="number">Teléfono</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend ">
+                        <span class="input-group-text"><i class="fas fa-phone fa-fw"></i></span>
+                      </div>
+                      <input type="number" id="number" class="form-control input-number" formControlName="number"
+                        [class.is-invalid]="number?.invalid && (number?.dirty || number?.touched)" />
+                    </div>
+                    <div *ngIf="number?.invalid && (number?.dirty || number?.touched)" class="invalid-feedback">
+                      <span *ngIf="number?.errors?.['required']">El número de teléfono es requerido.</span>
+                      <span *ngIf="number?.errors?.['number']">Ingresa un número de teléfono válido.</span>
+                    </div>
+                  </div>
+
+                  <div class="form-group mt-2">
+                    <label for="address">Dirección</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-map fa-fw"></i></span>
+                      </div>
+                      <input type="text" id="address" class="form-control" formControlName="address"
+                        [class.is-invalid]="address?.invalid && (address?.dirty || address?.touched)" />
+                    </div>
+                    <div *ngIf="address?.invalid && (address?.dirty || address?.touched)" class="invalid-feedback">
+                      <span *ngIf="address?.errors?.['required']">La dirección es requerida.</span>
+                      <span *ngIf="address?.errors?.['address']">Ingresa una dirección válida.</span>
                     </div>
                   </div>
 

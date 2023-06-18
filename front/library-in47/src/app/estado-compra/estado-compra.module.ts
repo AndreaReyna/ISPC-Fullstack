@@ -11,5 +11,6 @@ import { EstadoCompraComponent } from './estado-compra/estado-compra.component';
   imports: [
     CommonModule
   ]
+
 })
 export class EstadoCompraModule { }

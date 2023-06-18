@@ -1,0 +1,103 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.card {
+  width: 400px;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-content {
+  width: 400px;
+}
+
+.modal-title {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  width: 100%;
+}
+
+.btn-dark {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.m-2 {
+  margin-right: 10px;
+}
+
+.mt-5 {
+  margin-top: 50px;
+}
+
+.mb-5 {
+  margin-bottom: 50px;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  .modal.fade .modal-dialog {
+    animation: fadeIn 0.3s;
+  }
+  
+  .modal.fade.show .modal-dialog {
+    opacity: 1;
+  }
+  .custom-table {
+    width: 100%;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .custom-table thead {
+    background-color: #f5f5f5;
+  }
+  
+  .custom-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+  
+  .custom-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
