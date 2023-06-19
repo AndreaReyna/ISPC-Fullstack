@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FormPagoService {
-  private apiUrl = 'http://localhost:8000/api/pagos';
+  private apiUrl = 'http://localhost:8000/api/pagos/';
 
   constructor(private http: HttpClient) { }
 
