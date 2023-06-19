@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ElementoCarrito } from 'src/app/models/elementoCarrito';
 import { AuthService } from 'src/app/services/auth.service';
 import { CarritoService } from 'src/app/services/carrito.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-cart',
@@ -81,7 +83,13 @@ export class CartComponent {
       .subscribe(
         response => {
           console.log('Orden procesada exitosamente');
-          alert('Orden procesada exitosamente');
+          Swal.fire(
+            'Orden procesada exitosamente',
+            '',
+            'success'
+          )
+
+       //   alert('Orden procesada exitosamente');
         },
         error => {
           console.error('Error al procesar la orden', error);
