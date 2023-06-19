@@ -29,6 +29,8 @@ Ejecutar:
 
 ### Para correr el proyecto de Angular
 * Ubicarse en ...\front\library-in47
+
+Ejecutar:
 * ng serve -o
   
 ### Importante:
