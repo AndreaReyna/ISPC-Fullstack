@@ -18,6 +18,7 @@ import { EntradasComponent } from './panel-de-control/entradas/entradas.componen
 import { UsuariosComponent } from './panel-de-control/usuarios/usuarios.component';
 import { CartComponent } from './cart/cart/cart.component';
 import { EstadoCompraComponent } from './estado-compra/estado-compra/estado-compra.component';
+import { FormularioPagoComponent } from './pagar-compra/formulario-pago/formulario-pago.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'libro/:id', component: ProductDetailComponent},
   { path: 'cart', component: CartComponent},
   { path: 'purchase-status', component: EstadoCompraComponent},
+  { path: 'pagar-compra', component: FormularioPagoComponent},
   
 ];
 

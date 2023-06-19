@@ -1,15 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">in47</a>
-   
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
+    <a class="navbar-brand"routerLink="home">in47</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -17,7 +11,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="home">Inicio</a>
         </li>
-        <li class="nav-item" *ngIf="logIn" >
+        <li class="nav-item" *ngIf="logIn">
           <a class="nav-link" routerLink="user">Mi cuenta</a>
         </li>
         <li class="nav-item">
@@ -27,11 +21,16 @@
           <a class="nav-link" routerLink="contact">Contacto</a>
         </li>
       </ul>
-      <div class="me-5 ms-auto order-last">
-        <button *ngIf="!logIn" class="btn btn-light btn-nav me-5" routerLink="login">Login</button>
+      <div class="ms-auto">
+        <button *ngIf="!logIn" class="btn btn-light btn-nav me-3" routerLink="login">Login</button>
         <button *ngIf="logIn" class="btn btn-light btn-nav me-5" (click)="logout()">Logout</button>
-        <button *ngIf="!logIn" class="btn btn-light btn-nav" routerLink="register">Registro</button>
+        <button *ngIf="!logIn" class="btn btn-light btn-nav me-3" routerLink="register">Registro</button>
       </div>
+      <!-- Icono de carrito -->
+        <a class="nav-link" routerLink="cart">
+          <i class="fas fa-shopping-cart cart-icon"></i>
+          <span class="badge bg-secondary">{{ carritoService.cantidadProductos }}</span>
+        </a>
     </div>
   </div>
 </nav>

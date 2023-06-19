@@ -23,7 +23,10 @@ import { NavBarControlPanelComponent } from './panel-de-control/nav-bar-control-
 import { FooterControlPanelComponent } from './panel-de-control/footer-control-panel/footer-control-panel.component';
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
+import { CartModule } from './cart/cart.module';
+import { CarritoService } from './services/carrito.service';
+import { PagarCompraModule } from './pagar-compra/pagar-compra.module';
 
 
 @NgModule({
@@ -51,9 +54,12 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     RegisterModule,
     LoginModule,
-    HttpClientModule
+    HttpClientModule,
+    CartModule,
+    HttpClientModule,
+    PagarCompraModule,
   ],
-  providers: [],
+  providers: [CarritoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

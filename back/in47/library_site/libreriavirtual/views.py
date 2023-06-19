@@ -3,9 +3,12 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework import status, generics, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated
 from .serializers import *
 from .models import *
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -20,11 +23,19 @@ class LoginView(APIView):
         email = request.data.get('email', None)
         password = request.data.get('password', None)
         # user guarda un objeto User con las credenciales validas
-        user = authenticate(email=email, password=password)
+        user = authenticate(request, email=email, password=password) #se le agrego REQUEST. Si no funciona, borrar!
 
         # Si es correcto aniadimos a la request la informacion de sesion
         if user:
             login(request, user)
+            
+            # Verificar si el usuario ya tiene un carrito asociado
+            if not user.id_carrito:
+                # Si no tiene un carrito, crear uno nuevo y asociarlo al usuario
+                carrito = Carrito.objects.create()
+                user.id_carrito = carrito
+                user.save()
+                
             return Response(
                 UserSerializer(user).data,
                 status=status.HTTP_200_OK)
@@ -62,6 +73,60 @@ class ProfileView(generics.RetrieveUpdateAPIView):
         if self.request.user.is_authenticated:
             return self.request.user
 
+#endopoint para gestionar la venta
+
+class PagosView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = PagosSerializer(data=request.data)
+
+        if serializer.is_valid():
+            pagos = serializer.save(id_cliente=request.user)
+            return Response(PagosSerializer(pagos).data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ComprarView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        elementos_data = request.data.pop('elementos', [])
+        precio_total = request.data['precioTotal']
+        total = float(precio_total)
+        user = request.user
+        estado_por_defecto = Estado.objects.get(id_estado=3)
+        
+        serializer = OrdenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        if user.is_authenticated:
+            carrito = user.id_carrito
+
+            Orden.objects.create(
+                id_cliente=user,
+                total=total,
+                id_estado=estado_por_defecto
+            )
+
+            for elemento_data in elementos_data:
+                libro_data = elemento_data['libro']
+                cantidad = elemento_data['cantidad']
+
+                try:
+                    libro_instance = Libro.objects.get(id_libro=libro_data['id_libro'])
+                    ElementosCarrito.objects.create(
+                        id_carrito=carrito,
+                        id_cliente=user,
+                        id_libro=libro_instance,
+                        cantidad=cantidad
+                    )
+                except Libro.DoesNotExist:
+                    raise ValidationError(f"El libro con ID {libro_data['id_libro']} no existe")
+
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response({"detail": "El usuario no está autenticado"}, status=status.HTTP_401_UNAUTHORIZED)
 ########################################################################
 
 class DireccionViewSet(viewsets.ModelViewSet):  #direccion editable por usuario logueado
@@ -179,10 +244,15 @@ class DetallePedidoAdmin(viewsets.ModelViewSet):  #detalle editable
     queryset = DetallePedido.objects.all()
     serializer_class = DetallePedidoSerializer
 
-class DetallePedidoViewSet(viewsets.ModelViewSet):  #detalle editable por usuario logueado
+class DetallePedidoView(APIView):  #detalle editable por usuario logueado
     permission_classes = [IsAuthenticated]
-    queryset = DetallePedido.objects.all()
-    serializer_class = DetallePedidoSerializer
+    def post(self, request):
+        detalles = request.data.get('detalles')
+        serializer = DetallePedidoSerializer(data=detalles, many=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
 
 class PedidoAdmin(viewsets.ModelViewSet): #pedido editable
     permission_classes = [IsAdminUser]
@@ -215,11 +285,11 @@ class EstadoAdmin(viewsets.ModelViewSet):   #estado editable
     serializer_class = EstadoSerializer
 
 class PagoAdmin(viewsets.ModelViewSet): #pago editable por usuario logueado
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAdminUser]
     queryset = Pago.objects.all()
     serializer_class = PagoSerializer
 
 class PagoViewSet(viewsets.ModelViewSet):   #pago editable
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated]
     queryset = Pago.objects.all()
     serializer_class = PagoSerializer

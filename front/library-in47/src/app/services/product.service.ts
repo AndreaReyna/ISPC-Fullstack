@@ -8,7 +8,7 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  private url:string = "http://localhost:3000/libros";
+  private url:string = "http://localhost:8000/api/libro/";
 
   constructor(private http: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class ProductService {
   }
 
   get(id:number):Observable<Product>{
-    return this.http.get<Product>(this.url+'/'+id);
+    return this.http.get<Product>(this.url+id);
   }
   
   create(product: Product): Observable<Product> {

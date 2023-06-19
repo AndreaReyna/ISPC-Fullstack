@@ -9,9 +9,10 @@ import { Injectable } from '@angular/core';
 export class AuthService {
 
   private url: string = "http://localhost:8000/api/auth";
+  private profileUrl: string = "http://localhost:8000/api";
   private _isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,) { }
 
   login(email: string, password: string): Observable<User> {
     const credentials = {
@@ -20,21 +21,25 @@ export class AuthService {
     };
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
-      }),
-      withCredentials: true
+        'Content-Type':  'application/json',
+        //'Cookie': `sessionid=${this.getCookie('sessionid')}; csrftoken=${this.getCookie('csrftoken')}`,
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRFToken': this.getCookie('csrftoken'),
+    }),
+    withCredentials: true
     };
     return this.http.post<User>(`${this.url}/login/`, credentials, httpOptions);
   }  
   
   logout(): Observable<any> {
     const httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type':  'application/json',
-            'Cookie': `sessionid=${this.getCookie('sessionid')}; csrftoken=${this.getCookie('csrftoken')}`,
-            'X-Requested-With': 'XMLHttpRequest'
-        }),
-        withCredentials: true
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        //'Cookie': `sessionid=${this.getCookie('sessionid')}; csrftoken=${this.getCookie('csrftoken')}`,
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRFToken': this.getCookie('csrftoken'),
+    }),
+    withCredentials: true
     };
     return this.http.post<any>(`${this.url}/logout/`, null, httpOptions); 
   }
@@ -64,5 +69,18 @@ export class AuthService {
 
   getIsLoggedIn(): Observable<boolean> {
     return this._isLoggedIn.asObservable();
+  }
+
+  getProfile(): Observable<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        //'Cookie': `sessionid=${this.getCookie('sessionid')}; csrftoken=${this.getCookie('csrftoken')}`,
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRFToken': this.getCookie('csrftoken'),
+    }),
+    withCredentials: true
+    };
+    return this.http.get<User>(`${this.profileUrl}/profile/`, httpOptions);
   }
 }
