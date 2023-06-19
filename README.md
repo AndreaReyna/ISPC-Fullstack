@@ -29,6 +29,7 @@ Ejecutar:
 
 ### Para correr el proyecto de Angular
 * Ubicarse en ...\front\library-in47
+* ng serve -o
   
 ### Importante:
 * Para previsualizar el proyecto con datos cargados, tenemos un seeder disponible en la documentacion: ...\documentacion\seeder.sql
