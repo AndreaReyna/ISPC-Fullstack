@@ -73,7 +73,19 @@ class ProfileView(generics.RetrieveUpdateAPIView):
         if self.request.user.is_authenticated:
             return self.request.user
 
-#endopoint para comprar
+#endopoint para gestionar la venta
+
+class PagosView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = PagosSerializer(data=request.data)
+
+        if serializer.is_valid():
+            pagos = serializer.save(id_cliente=request.user)
+            return Response(PagosSerializer(pagos).data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class ComprarView(APIView):
     permission_classes = [IsAuthenticated]

@@ -119,6 +119,13 @@ class PagoSerializer(serializers.ModelSerializer):
 # y poder distribuir en varios modelos a la vez
 # 
 
+class PagosSerializer(serializers.ModelSerializer):
+        id_cliente = serializers.ReadOnlyField(source='context["request"].session.get("id_cliente")')
+
+        class Meta:
+            model = Pagos
+            fields = ['id_cliente', 'code', 'dni', 'email', 'tarjeta', 'titular', 'vencimiento']
+
 
 class ElementosSerializer(serializers.Serializer):
     libro = serializers.DictField()

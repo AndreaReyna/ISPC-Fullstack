@@ -1,7 +1,7 @@
 #URLS APP
 
 from django.urls import path, include
-from .views import LoginView, LogoutView, SignupView, ProfileView, ComprarView, DetallePedidoView
+from .views import LoginView, LogoutView, SignupView, ProfileView, ComprarView, DetallePedidoView, PagosView
 from rest_framework import routers
 from libreriavirtual import views
 
@@ -65,6 +65,9 @@ urlpatterns = [
 
      path('detalle_pedido/',
          DetallePedidoView.as_view(), name='detalle_pedido'),
+         
+     path('pagos/',
+         PagosView.as_view(), name='pagos'),
         
 ]
 

@@ -644,3 +644,62 @@ class Pago(models.Model):
         return f'registrado {self.fecha_pago} \
         monto {self.monto} \
         info {self.info_adicional}'
+    
+
+class Pagos(models.Model):
+
+    id_pagos = models.AutoField(
+        primary_key=True,
+        unique=True,
+        db_index=True
+        )
+    
+    id_cliente = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        to_field='id',
+        on_delete=models.CASCADE
+        )
+    
+    fecha_pago = models.DateTimeField(
+        #Create date of payment
+        auto_now_add=True,
+        db_comment= 'The field is only automatically updated when calling Model.save()'
+        )
+    
+    code = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+    
+    dni = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+    
+    email = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+    
+    tarjeta = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+    
+    titular = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+    
+    vencimiento = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+
+    class Meta:
+        db_table = 'pagos'
+        verbose_name = ('Pagos')
+        verbose_name_plural = ('Datos generales de Pagos')
+
+    def __unicode__(self):
+        return self.id_pagos
