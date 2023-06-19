@@ -30,6 +30,12 @@ class CustomUser(AbstractUser):
         on_delete=models.CASCADE,
         null=True
         )
+    id_carrito = models.ForeignKey(
+        'Carrito',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='customuser'
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'password']
@@ -185,6 +191,11 @@ class ElementosCarrito(models.Model):
         to_field='id_carrito',
         on_delete=models.CASCADE
         )
+    id_cliente = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        to_field='id',
+        on_delete=models.CASCADE
+        )
     id_libro = models.ForeignKey(
         'Libro',
         to_field='id_libro',
@@ -204,7 +215,8 @@ class ElementosCarrito(models.Model):
     def __str__(self):
         return f'{self.cantidad} de \
             {self.id_libro} perteneciente a \
-            {self.id_carrito}'
+            {self.id_carrito} de usuario \
+            {self.id_cliente}'
     
 
 class Libro(models.Model):
@@ -587,8 +599,8 @@ class Estado(models.Model):
         return self.id_estado
     
     def __str__(self):
-        return {self.estado}
-    
+        return self.get_estado_display()
+
 
 class Pago(models.Model):
 
@@ -632,3 +644,62 @@ class Pago(models.Model):
         return f'registrado {self.fecha_pago} \
         monto {self.monto} \
         info {self.info_adicional}'
+    
+
+class Pagos(models.Model):
+
+    id_pagos = models.AutoField(
+        primary_key=True,
+        unique=True,
+        db_index=True
+        )
+    
+    id_cliente = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        to_field='id',
+        on_delete=models.CASCADE
+        )
+    
+    fecha_pago = models.DateTimeField(
+        #Create date of payment
+        auto_now_add=True,
+        db_comment= 'The field is only automatically updated when calling Model.save()'
+        )
+    
+    code = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+    
+    dni = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+    
+    email = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+    
+    tarjeta = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+    
+    titular = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+    
+    vencimiento = models.CharField(
+        max_length=200,
+        help_text='Maximo 200 caracteres'
+        )
+
+    class Meta:
+        db_table = 'pagos'
+        verbose_name = ('Pagos')
+        verbose_name_plural = ('Datos generales de Pagos')
+
+    def __unicode__(self):
+        return self.id_pagos

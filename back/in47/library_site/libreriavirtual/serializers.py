@@ -2,7 +2,8 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from .models import *
-
+from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.serializers import ValidationError
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -92,19 +93,13 @@ class DetallePedidoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model= DetallePedido
-        fields='__all__'
+        fields=['cantidad', 'id_pedido', 'id_libro']
 
 class PedidoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model= Pedido
-        fields='__all__'
-
-class OrdenSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model= Orden
-        fields='__all__'
+        fields = ['id_cliente', 'nro_tracking', 'id_orden']
 
 class EstadoSerializer(serializers.ModelSerializer):
 
@@ -116,4 +111,43 @@ class PagoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model= Pago
-        fields='__all__'
+        fields = ['monto', 'info_adicional', 'id_orden']
+
+
+#
+# Serializador completo para recibir todos los datos de la compra /
+# y poder distribuir en varios modelos a la vez
+# 
+
+class PagosSerializer(serializers.ModelSerializer):
+        id_cliente = serializers.ReadOnlyField(source='context["request"].session.get("id_cliente")')
+
+        class Meta:
+            model = Pagos
+            fields = ['id_cliente', 'code', 'dni', 'email', 'tarjeta', 'titular', 'vencimiento']
+
+
+class ElementosSerializer(serializers.Serializer):
+    libro = serializers.DictField()
+    cantidad = serializers.IntegerField()
+
+    def create(self, validated_data):
+        libro_data = validated_data['libro']
+        libro_instance = Libro.objects.get(id_libro=libro_data['id_libro'])
+        elemento = ElementosCarrito.objects.create(libro=libro_instance, cantidad=validated_data['cantidad'])
+        return elemento
+
+
+class OrdenSerializer(serializers.ModelSerializer):
+    elementos = serializers.ListField(child=ElementosSerializer(), read_only=True)
+    precioTotal = serializers.DecimalField(decimal_places=2, max_digits=7, write_only=True)
+    id_cliente = serializers.PrimaryKeyRelatedField(read_only=True)
+    id_estado = serializers.PrimaryKeyRelatedField(read_only=True)
+    total = serializers.DecimalField(decimal_places=2, max_digits=7, read_only=True)
+
+    class Meta:
+        model = Orden
+        fields = ['id_orden', 'fecha_creacion', 'total', 'id_cliente', 'id_estado', 'elementos', 'precioTotal']
+        extra_kwargs = {
+            'total': {'write_only': True},
+        }
