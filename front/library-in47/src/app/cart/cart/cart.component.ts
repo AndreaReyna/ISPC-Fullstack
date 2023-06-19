@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ElementoCarrito } from 'src/app/models/elementoCarrito';
 import { AuthService } from 'src/app/services/auth.service';
 import { CarritoService } from 'src/app/services/carrito.service';
@@ -16,7 +17,7 @@ export class CartComponent {
   cantidadTotalElementos: number = 0;
   precioTotalCompra: number = 0;
 
-  constructor(private authService: AuthService, public carritoService: CarritoService) { }
+  constructor(private authService: AuthService, public carritoService: CarritoService, private router :Router) { }
 
   ngOnInit(): void {
     this.elementosCarrito = this.carritoService.elementosCarrito;
@@ -87,9 +88,9 @@ export class CartComponent {
             'Orden procesada exitosamente',
             '',
             'success'
-          )
-
-       //   alert('Orden procesada exitosamente');
+            ).then(() => {
+              this.router.navigateByUrl('/pagar-compra');
+            });
         },
         error => {
           console.error('Error al procesar la orden', error);

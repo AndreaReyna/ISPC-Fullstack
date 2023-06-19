@@ -26,6 +26,7 @@ import { LoginModule } from './login/login.module';
 import { HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import { CartModule } from './cart/cart.module';
 import { CarritoService } from './services/carrito.service';
+import { PagarCompraModule } from './pagar-compra/pagar-compra.module';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { CarritoService } from './services/carrito.service';
     HttpClientModule,
     CartModule,
     HttpClientModule,
+    PagarCompraModule,
   ],
   providers: [CarritoService],
   bootstrap: [AppComponent]

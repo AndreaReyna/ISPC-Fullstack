@@ -12,7 +12,7 @@ export class AuthService {
   private profileUrl: string = "http://localhost:8000/api";
   private _isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,) { }
 
   login(email: string, password: string): Observable<User> {
     const credentials = {
