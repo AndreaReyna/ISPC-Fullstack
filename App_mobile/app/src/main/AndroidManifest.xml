@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Libreria_In_47_App"
         tools:targetApi="31">
         <activity
+            android:name=".BookDetail"
+            android:exported="false" />
+        <activity
             android:name=".AboutUs"
             android:exported="false" />
         <activity
