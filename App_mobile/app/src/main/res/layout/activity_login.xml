@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:hint="Nombre"
+        android:padding="16dp"
+        android:inputType="text"
+        android:background="@drawable/rounded_edittext" />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Contraseña"
+        android:padding="16dp"
+        android:inputType="textPassword"
+        android:background="@drawable/rounded_edittext" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Entrar"
+        android:backgroundTint="#F3AA60"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/registerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="¿No tienes cuenta aún? Regístrate aquí"
+        android:textColor="#828282" />
+</LinearLayout>
