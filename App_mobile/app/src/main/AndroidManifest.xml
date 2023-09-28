@@ -13,6 +13,11 @@
         android:theme="@style/Theme.Libreria_In_47_App"
         tools:targetApi="31">
         <activity
+            android:name=".BookDetail"
+            android:exported="false" />
+        <activity
+            android:name=".AboutUs"
+            android:exported="false" />
             android:name=".RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register">
@@ -27,13 +32,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".AboutUsActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+            
     </application>
 
 </manifest>
