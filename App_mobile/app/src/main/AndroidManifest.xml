@@ -16,8 +16,6 @@
             android:name=".BookDetail"
             android:exported="false" />
         <activity
-            android:name=".AboutUs"
-            android:exported="false" />
             android:name=".RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register">
