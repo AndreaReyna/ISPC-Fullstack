@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Libreria_In_47_App"
+        android:theme="@style/Base.Theme.Libreria_In_47_App"
         tools:targetApi="31">
         <activity
             android:name=".accountactivity"
