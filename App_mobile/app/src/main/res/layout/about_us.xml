@@ -7,6 +7,17 @@
     tools:context=".AboutUsActivity">
 
     <ImageView
+        android:id="@+id/ivRegresar"
+        android:layout_width="24dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/regresar_flecha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="57dp"
         android:layout_height="32dp"
@@ -23,9 +34,7 @@
         android:padding="32dp"
         android:gravity="center">
 
-
-
-        <ImageView
+      <ImageView
             android:id="@+id/imageView2"
             android:layout_width="257dp"
             android:layout_height="122dp"
