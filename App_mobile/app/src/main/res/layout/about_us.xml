@@ -7,6 +7,17 @@
     tools:context=".AboutUsActivity">
 
     <ImageView
+        android:id="@+id/ivRegresar"
+        android:layout_width="24dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/regresar_flecha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="57dp"
         android:layout_height="32dp"
@@ -45,5 +56,6 @@
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis lorem integer amet at. Aliquet nulla elit blandit urna natoque sed. Ac vestibulum nibh accumsan, lorem dis non suspendisse blandit condimentum. Vulputate pharetra sit amet elementum. Tincidunt id facilisis felis pellentesque. Scelerisque augue lacinia maecenas lacus sed dignissim et. In non pellentesque et euismod. Sagittis sed elit sagittis orci porta porttitor et morbi sed. Facilisi sodales purus, consectetur magna viverra sagittis amet. Vulputate neque, at pulvinar bibendum. Adipiscing sit rutrum nunc dictum suspendisse risus. Urna, vitae neque imperdiet accumsan lacinia tempor sagittis, sapien. Dui velit nec fames urna quam amet sit. . "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="474dp" />
+        tools:layout_editor_absoluteY="474dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
