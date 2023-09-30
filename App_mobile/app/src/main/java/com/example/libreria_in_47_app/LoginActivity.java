@@ -20,9 +20,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         usernameEditText = findViewById(R.id.usernameEditText);
-        passwordEditText = findViewById(R.id.passwordEditText);
+        passwordEditText = findViewById(R.id.contactmessage);
         registerTextView = findViewById(R.id.registerTextView);
-        loginButton = findViewById(R.id.loginButton);
+        loginButton = findViewById(R.id.contactsendbutton);
 
         registerTextView.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);

@@ -24,7 +24,7 @@
         android:background="@drawable/rounded_edittext" />
 
     <EditText
-        android:id="@+id/passwordEditText"
+        android:id="@+id/contactmessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -34,7 +34,7 @@
         android:background="@drawable/rounded_edittext" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/contactsendbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

@@ -19,17 +19,17 @@ public class MainActivity extends AppCompatActivity {
            } else if (item.getItemId() == R.id.bottom_deseos) {
                startActivity(new Intent(getApplicationContext(), BookDetail.class));
                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-               finish();
+               //finish();
                return true;
            } else if (item.getItemId() == R.id.bottom_compartir) {
-               startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+               startActivity(new Intent(getApplicationContext(), ContactActivity.class));
                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-               finish();
+               //finish();
                return true;
            } else if (item.getItemId() == R.id.bottom_perfil) {
                startActivity(new Intent(getApplicationContext(), accountactivity.class));
                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-               finish();
+               //finish();
                return true;
            }
            return false;

@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
         firstNameEditText = findViewById(R.id.firstNameEditText);
         lastNameEditText = findViewById(R.id.lastNameEditText);
         emailEditText = findViewById(R.id.emailEditText);
-        passwordEditText = findViewById(R.id.passwordEditText);
+        passwordEditText = findViewById(R.id.contactmessage);
         repeatPasswordEditText = findViewById(R.id.repeatPasswordEditText);
         alreadyRegisteredTextView = findViewById(R.id.alreadyRegisteredTextView);
 
