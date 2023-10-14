@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -35,9 +36,54 @@ public class RegisterActivity extends AppCompatActivity {
 
         Button registerButton = findViewById(R.id.registerButton);
         registerButton.setOnClickListener(v -> {
-            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
+            if (areFieldsValid()) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
         });
+    }
+
+    private boolean areFieldsValid() {
+        String firstName = firstNameEditText.getText().toString().trim();
+        String lastName = lastNameEditText.getText().toString().trim();
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+        String repeatPassword = repeatPasswordEditText.getText().toString().trim();
+
+        if (firstName.length() < 3 || lastName.length() < 3) {
+            showToast("El nombre y el apellido deben tener al menos 3 letras.");
+            return false;
+        }
+
+        if (email.isEmpty() || firstName.isEmpty() || lastName.isEmpty() || password.isEmpty() || repeatPassword.isEmpty()) {
+            showToast("Por favor, rellena todos los campos.");
+            return false;
+        }
+
+        if (!isValidEmail(email)) {
+            showToast("Por favor, ingresa un correo electrónico válido.");
+            return false;
+        }
+
+        if (!password.equals(repeatPassword)) {
+            showToast("Las contraseñas no coinciden.");
+            return false;
+        }
+
+        if (password.length() < 6) {
+            showToast("La contraseña debe tener al menos 6 caracteres.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private boolean isValidEmail(CharSequence target) {
+        return target != null && android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 }
