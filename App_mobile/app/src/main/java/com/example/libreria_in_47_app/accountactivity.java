@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class accountactivity extends AppCompatActivity {
     ImageView ivRegresar;
+    Button btnCerrarSesion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +21,14 @@ public class accountactivity extends AppCompatActivity {
             public void onClick(View v){
                 Intent i = new Intent(accountactivity.this, MainActivity.class);
                 startActivity(i);
+            }
+        });
+        btnCerrarSesion=findViewById(R.id.btnCerrarSesion);
+        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(accountactivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
