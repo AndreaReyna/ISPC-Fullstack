@@ -46,6 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String lastName = lastNameEditText.getText().toString().trim();
                 String email = emailEditText.getText().toString().trim();
                 String password = passwordEditText.getText().toString().trim();
+
+                // Guardado en la base de datos
                 dbHelper.createUser(this, firstName, lastName, password, email);
 
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);

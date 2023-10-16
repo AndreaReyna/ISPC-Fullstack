@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private DataBaseSQLiteHelper dbHelper;
+
     private EditText emailEditText;
     private EditText passwordEditText;
     private TextView registerTextView;
@@ -19,6 +21,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        dbHelper = new DataBaseSQLiteHelper(this);
 
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
@@ -55,6 +59,12 @@ public class LoginActivity extends AppCompatActivity {
 
         if (password.isEmpty()) {
             showToast("Por favor, ingresa tu contraseña.");
+            return false;
+        }
+
+        // Validación con la base de datos
+        if (!dbHelper.validateUserCredentials(email, password)) {
+            showToast("Error, verifique los datos de inicio de sesión y vuelva a intentarlo");
             return false;
         }
 
