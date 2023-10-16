@@ -141,9 +141,9 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(createTableElementosWishlist);
 
         // Inserta autores
-        db.execSQL("INSERT INTO autor (nombre, apellido) VALUES ('Autor', 'Uno');");
-        db.execSQL("INSERT INTO autor (nombre, apellido) VALUES ('Autor', 'Dos');");
-        db.execSQL("INSERT INTO autor (nombre, apellido) VALUES ('Autor', 'Tres');");
+        db.execSQL("INSERT INTO autor (nombre, apellido) VALUES ('Gabriel', 'Martínez');");
+        db.execSQL("INSERT INTO autor (nombre, apellido) VALUES ('Amelia', 'Valdez');");
+        db.execSQL("INSERT INTO autor (nombre, apellido) VALUES ('Enrique', 'Soto');");
 
         // Inserta idiomas
         db.execSQL("INSERT INTO idioma (nombre) VALUES ('Español');");
@@ -156,9 +156,9 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO formato (tipo) VALUES ('Audiolibro');");
 
         // Inserta editoriales
-        db.execSQL("INSERT INTO editorial (nombre) VALUES ('Editorial Uno');");
-        db.execSQL("INSERT INTO editorial (nombre) VALUES ('Editorial Dos');");
-        db.execSQL("INSERT INTO editorial (nombre) VALUES ('Editorial Tres');");
+        db.execSQL("INSERT INTO editorial (nombre) VALUES ('Ediciones del Bosque');");
+        db.execSQL("INSERT INTO editorial (nombre) VALUES ('Línea Clásica Editores');");
+        db.execSQL("INSERT INTO editorial (nombre) VALUES ('Páginas Doradas');");
 
         // Inserta categorías
         db.execSQL("INSERT INTO categoria (tipo) VALUES ('Novela');");
@@ -171,7 +171,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         // Método para gestionar actualizaciones de la base de datos
     }
 
-
+    // Registro
     public void createUser(Context context, String nombre, String apellido, String password, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -199,12 +199,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
-    private String getCurrentDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        Date date = new Date();
-        return dateFormat.format(date);
-    }
-
+    // Verifica si el email existe
     public boolean isEmailRegistered(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM cliente WHERE email = ?";
@@ -216,6 +211,27 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         return true;
     }
+
+    // Login
+    public boolean validateUserCredentials(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM cliente WHERE email = ? AND password = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email, password});
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
+    // Metodo auxiliar para obtener la fecha actual
+    private String getCurrentDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
 
 }
 
