@@ -1,8 +1,18 @@
 package com.example.libreria_in_47_app;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import android.database.Cursor;
+
+
 public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "proyecto_db";
     private static final int DATABASE_VERSION = 1;
@@ -47,10 +57,8 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
                 + "`dni` TEXT, "
                 + "`fecha_nac` DATE, "
                 + "`telefono` TEXT, "
-                + "`direccion_id_direccion` INTEGER NOT NULL, "
                 + "`fecha_creacion` DATE NOT NULL, "
-                + "`fecha_modificacion` DATE, "
-                + "FOREIGN KEY (`direccion_id_direccion`) REFERENCES `direccion` (`id_direccion`));";
+                + "`fecha_modificacion` DATE);";
         db.execSQL(createTableCliente);
 
         // Crea la tabla "autor"
@@ -137,5 +145,52 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) {
         // Método para gestionar actualizaciones de la base de datos
     }
+
+
+    public void createUser(Context context, String nombre, String apellido, String password, String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Verificamos si el email ya existe
+        if (isEmailRegistered(email)) {
+            Toast.makeText(context, "Error, el correo electrónico ya está registrado", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        ContentValues values = new ContentValues();
+        values.put("nombre", nombre);
+        values.put("apellido", apellido);
+        values.put("password", password);
+        values.put("email", email);
+        values.put("tipo_usuario", 2);
+        values.put("fecha_creacion", getCurrentDate());
+
+        long result = db.insert("cliente", null, values);
+        db.close();
+
+        if (result == -1) {
+            Toast.makeText(context, "Error en el registro", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Registro exitoso!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private String getCurrentDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Date date = new Date();
+        return dateFormat.format(date);
+    }
+
+    public boolean isEmailRegistered(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM cliente WHERE email = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+        if (cursor.getCount() <= 0) {
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
 }
 
