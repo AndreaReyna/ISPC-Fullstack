@@ -139,6 +139,31 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY (`wishlist_id_wishlist`) REFERENCES `wishlist` (`id_wishlist`), "
                 + "FOREIGN KEY (`libro_id_libro`) REFERENCES `libro` (`id_libro`));";
         db.execSQL(createTableElementosWishlist);
+
+        // Inserta autores
+        db.execSQL("INSERT INTO autor (nombre, apellido) VALUES ('Autor', 'Uno');");
+        db.execSQL("INSERT INTO autor (nombre, apellido) VALUES ('Autor', 'Dos');");
+        db.execSQL("INSERT INTO autor (nombre, apellido) VALUES ('Autor', 'Tres');");
+
+        // Inserta idiomas
+        db.execSQL("INSERT INTO idioma (nombre) VALUES ('Español');");
+        db.execSQL("INSERT INTO idioma (nombre) VALUES ('Inglés');");
+        db.execSQL("INSERT INTO idioma (nombre) VALUES ('Francés');");
+
+        // Inserta formatos
+        db.execSQL("INSERT INTO formato (tipo) VALUES ('Digital');");
+        db.execSQL("INSERT INTO formato (tipo) VALUES ('Impreso');");
+        db.execSQL("INSERT INTO formato (tipo) VALUES ('Audiolibro');");
+
+        // Inserta editoriales
+        db.execSQL("INSERT INTO editorial (nombre) VALUES ('Editorial Uno');");
+        db.execSQL("INSERT INTO editorial (nombre) VALUES ('Editorial Dos');");
+        db.execSQL("INSERT INTO editorial (nombre) VALUES ('Editorial Tres');");
+
+        // Inserta categorías
+        db.execSQL("INSERT INTO categoria (tipo) VALUES ('Novela');");
+        db.execSQL("INSERT INTO categoria (tipo) VALUES ('Historia');");
+        db.execSQL("INSERT INTO categoria (tipo) VALUES ('Ciencia Ficción');");
     }
 
     @Override
