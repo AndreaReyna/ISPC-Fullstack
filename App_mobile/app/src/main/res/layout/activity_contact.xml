@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ContactActivity">
 
+    <ImageView
+        android:id="@+id/ivRegresar"
+        android:layout_width="24dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/regresar_flecha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <LinearLayout
         android:layout_width="200dp"
         android:layout_height="100dp"
