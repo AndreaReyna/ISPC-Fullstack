@@ -95,7 +95,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         // Crea la tabla "libro"
         String createTableLibro = "CREATE TABLE IF NOT EXISTS `libro` ("
                 + "`id_libro` INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "`isbn` INTEGER NOT NULL, "
+                + "`isbn` TEXT NOT NULL, "
                 + "`titulo` TEXT NOT NULL, "
                 + "`subtitulo` TEXT, "
                 + "`descripcion` TEXT, "
@@ -121,14 +121,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
                 + "`fecha_modificacion` DATE, "
                 + "FOREIGN KEY (`cliente_id_usuario`) REFERENCES `cliente` (`id_usuario`));";
         db.execSQL(createTableWishlist);
-
-        // Crea la tabla "libro_has_detalles_orden"
-        String createTableLibroDetallesOrden = "CREATE TABLE IF NOT EXISTS `libro_has_detalles_orden` ("
-                + "`libro_id_libro` INTEGER NOT NULL, "
-                + "`detalles_orden_id_orden` INTEGER NOT NULL, "
-                + "PRIMARY KEY (`libro_id_libro`, `detalles_orden_id_orden`), "
-                + "FOREIGN KEY (`libro_id_libro`) REFERENCES `libro` (`id_libro`));";
-        db.execSQL(createTableLibroDetallesOrden);
 
         // Crea la tabla "elementos_wishlist"
         String createTableElementosWishlist = "CREATE TABLE IF NOT EXISTS `elementos_wishlist` ("
@@ -164,11 +156,36 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO categoria (tipo) VALUES ('Novela');");
         db.execSQL("INSERT INTO categoria (tipo) VALUES ('Historia');");
         db.execSQL("INSERT INTO categoria (tipo) VALUES ('Ciencia Ficción');");
+
+        // Inserta libros
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, precio, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9781234567890', 'Título del libro de Gabriel Martínez', 'Subtítulo del libro', 'Descripción del libro escrito por Gabriel Martínez', 'Comentarios sobre el libro de este autor', 19.99, 1, 2, 3, 4, 5);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, precio, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9782345678901', 'Título del libro de Amelia Valdez', 'Subtítulo del libro', 'Descripción del libro escrito por Amelia Valdez', 'Comentarios sobre el libro de este autor', 15.99, 2, 1, 3, 5, 4);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, precio, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9783456789012', 'Título del libro de Enrique Soto', 'Subtítulo del libro', 'Descripción del libro escrito por Enrique Soto', 'Comentarios sobre el libro de este autor', 14.99, 3, 2, 3, 2, 5);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) {
         // Método para gestionar actualizaciones de la base de datos
+    }
+
+    // Método para crear una wishlist
+
+    public void addWishlist(Context context, String nombre, String id_usuario){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("nombre", nombre);
+        values.put("id_usuario", id_usuario);
+        values.put("fecha_creacion", getCurrentDate());
+
+        long result = db.insert("wishlist", null, values);
+        db.close();
+
+        if (result == -1) {
+            Toast.makeText(context, "Error al crear la Wishlist", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Wishlist creada con éxito!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // Registro
