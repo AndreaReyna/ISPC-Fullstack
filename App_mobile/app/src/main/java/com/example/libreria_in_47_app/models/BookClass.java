@@ -1,6 +1,8 @@
 package com.example.libreria_in_47_app.models;
 
-public class BookClass {
+import com.example.libreria_in_47_app.interfaces.IBook;
+
+public class BookClass implements IBook {
     public static String COLUMN_ID = "id_libro";
     public static final String COLUMN_ISBN = "isbn";
     public static final String COLUMN_TITULO = "titulo";
@@ -47,31 +49,31 @@ public class BookClass {
         return isbn;
     }
 
-    public String getTitulo() {
+    public String getTitle() {
         return title;
     }
 
-    public String getSubtitulo() {
+    public String getSubtitle() {
         return subtitle;
     }
 
-    public String getDescripcion() {
+    public String getDescription() {
         return description;
     }
 
-    public String getComentarios() {
+    public String getComments() {
         return comments;
     }
 
-    public long getAutorId() {
+    public long getAuthorId() {
         return authorId;
     }
 
-    public long getIdiomaId() {
+    public long getLanguageId() {
         return languageId;
     }
 
-    public long getFormatoId() {
+    public long getFormatId() {
         return formatId;
     }
 
@@ -79,7 +81,8 @@ public class BookClass {
         return editorialId;
     }
 
-    public long getCategoriaId() {
+    public long getCategoryId() {
         return categoryId;
     }
+
 }
