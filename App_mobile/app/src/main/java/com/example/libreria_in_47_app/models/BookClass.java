@@ -22,10 +22,10 @@ public class BookClass implements IBook {
     private String description;
     private String comments;
     private int authorId;
-    private long languageId;
-    private long formatId;
-    private long editorialId;
-    private long categoryId;
+    private int languageId;
+    private int formatId;
+    private int editorialId;
+    private int categoryId;
 
     public BookClass(int id, String isbn, String title, String subtitle, String description, String comments, int authorId, int languageId, int formatId, int editorialId, int categoryId) {
         this.id = id;
@@ -65,23 +65,23 @@ public class BookClass implements IBook {
         return comments;
     }
 
-    public long getAuthorId() {
+    public int getAuthorId() {
         return authorId;
     }
 
-    public long getLanguageId() {
+    public int getLanguageId() {
         return languageId;
     }
 
-    public long getFormatId() {
+    public int getFormatId() {
         return formatId;
     }
 
-    public long getEditorialId() {
+    public int getEditorialId() {
         return editorialId;
     }
 
-    public long getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
