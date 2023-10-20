@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.MainActivity">
+<<<<<<< HEAD
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+=======
+>>>>>>> e1863f7 (acivities folder created, project restructuring)
+    tools:context=".activities.MainActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

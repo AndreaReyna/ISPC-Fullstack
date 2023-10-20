@@ -22,6 +22,15 @@
 =======
             android:name=".activities.ContactActivity"
 >>>>>>> cecbe9f (acivities folder created, project restructuring)
+=======
+            android:name=".EditUserActivity"
+            android:name=".activities.ContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactActivity"
+>>>>>>> 8c838b3 (creacion de EditUserActivity)
+>>>>>>> 5b67e34 (creacion de EditUserActivity)
+            android:name=".activities.accountactivity"
             android:exported="false" />
         <activity
             android:name=".activities.accountactivity"
