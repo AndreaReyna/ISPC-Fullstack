@@ -1,4 +1,4 @@
-package com.example.libreria_in_47_app;
+package com.example.libreria_in_47_app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,11 +11,14 @@ import android.widget.ImageView;
 import com.example.libreria_in_47_app.R;
 
 <<<<<<<< HEAD:App_mobile/app/src/main/java/com/example/libreria_in_47_app/activities/AboutUsActivity.java
+<<<<<<<< HEAD:App_mobile/app/src/main/java/com/example/libreria_in_47_app/activities/AboutUsActivity.java
 import com.example.libreria_in_47_app.R;
 
 public class AboutUsActivity extends AppCompatActivity {
 
 ========
+========
+>>>>>>>> 8b78748 (acivities folder created, project restructuring):App_mobile/app/src/main/java/com/example/libreria_in_47_app/activities/BookDetail.java
 public class BookDetail extends AppCompatActivity {
 >>>>>>>> 8b78748 (acivities folder created, project restructuring):App_mobile/app/src/main/java/com/example/libreria_in_47_app/activities/BookDetail.java
     ImageView ivRegresar;
