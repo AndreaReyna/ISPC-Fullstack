@@ -11,23 +11,33 @@ import android.widget.ImageView;
 public class accountactivity extends AppCompatActivity {
     ImageView ivRegresar;
     Button btnCerrarSesion;
+    Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accountactivity);
         ivRegresar = findViewById(R.id.ivRegresar);
-        ivRegresar.setOnClickListener (new View.OnClickListener(){
+        ivRegresar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent i = new Intent(accountactivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
-        btnCerrarSesion=findViewById(R.id.btnCerrarSesion);
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
         btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(accountactivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(accountactivity.this, EditUserActivity.class);
                 startActivity(intent);
             }
         });

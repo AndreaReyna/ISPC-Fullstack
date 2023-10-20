@@ -6,4 +6,7 @@
     <string name="escriba_su_mensaje">Escriba su mensaje</string>
     <string name="txtbotonEditar">Editar Perfil</string>
     <string name="txtbotonCerrarSesion">Cerrar Sesión</string>
+    <string name="txtbtnActualizaUser">Actualizar</string>
+    <string name="txtbtnCancelar">Cancelar</string>
+
 </resources>
