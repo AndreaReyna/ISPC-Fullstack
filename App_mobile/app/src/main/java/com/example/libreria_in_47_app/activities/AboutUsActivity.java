@@ -1,4 +1,4 @@
-package com.example.libreria_in_47_app.activities;
+package com.example.libreria_in_47_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import com.example.libreria_in_47_app.R;
 
 <<<<<<<< HEAD:App_mobile/app/src/main/java/com/example/libreria_in_47_app/activities/AboutUsActivity.java
+import com.example.libreria_in_47_app.R;
+
 public class AboutUsActivity extends AppCompatActivity {
 
 ========
