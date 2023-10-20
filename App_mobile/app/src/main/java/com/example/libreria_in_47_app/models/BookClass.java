@@ -1,4 +1,4 @@
-package com.example.libreria_in_47_app;
+package com.example.libreria_in_47_app.models;
 
 public class BookClass {
     public static String COLUMN_ID = "id_libro";

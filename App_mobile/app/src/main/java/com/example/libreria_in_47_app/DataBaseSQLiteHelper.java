@@ -16,6 +16,8 @@ import java.util.Locale;
 
 import android.database.Cursor;
 
+import com.example.libreria_in_47_app.models.BookClass;
+
 
 public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "proyecto_db";
