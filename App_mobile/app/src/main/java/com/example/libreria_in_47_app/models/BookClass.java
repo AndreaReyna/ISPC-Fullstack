@@ -65,15 +65,15 @@ public class BookClass implements IBook {
         return comments;
     }
 
-    public long getAutorId() {
+    public long getAuthorId() {
         return authorId;
     }
 
-    public long getIdiomaId() {
+    public long getLanguageId() {
         return languageId;
     }
 
-    public long getFormatoId() {
+    public long getFormatId() {
         return formatId;
     }
 
@@ -81,7 +81,7 @@ public class BookClass implements IBook {
         return editorialId;
     }
 
-    public long getCategoriaId() {
+    public long getCategoryId() {
         return categoryId;
     }
 
