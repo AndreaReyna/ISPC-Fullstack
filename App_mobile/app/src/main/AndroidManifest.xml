@@ -15,6 +15,7 @@
         <activity
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:name=".EditUserActivity"
             android:exported="false" />
         <activity
@@ -23,36 +24,38 @@
             android:name=".activities.ContactActivity"
 >>>>>>> cecbe9f (acivities folder created, project restructuring)
 =======
-            android:name=".EditUserActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ContactActivity"
+            android:name=".activities.ContactActivity"
 =======
             android:name=".EditUserActivity"
-            android:name=".activities.ContactActivity"
             android:exported="false" />
         <activity
             android:name=".ContactActivity"
 >>>>>>> 8c838b3 (creacion de EditUserActivity)
 >>>>>>> 5b67e34 (creacion de EditUserActivity)
+            android:exported="false" />
+        <activity
             android:name=".activities.accountactivity"
             android:exported="false" />
         <activity
-            android:name=".accountactivity"
-            android:name=".activities.accountactivity"
             android:name=".activities.BookDetail"
             android:exported="false" />
         <activity
-            android:name=".BookDetail"
+=======
+            android:name=".activities.ContactActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
-            android:name=".activities.RegisterActivity"
+            android:name=".activities.accountactivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.BookDetail"
+            android:exported="false" />
+        <activity
+>>>>>>> cecbe9f (acivities folder created, project restructuring)
             android:name=".activities.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,10 +64,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AboutUsActivity"
+            android:name=".activities.AboutUsActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true" />
 
         <meta-data
