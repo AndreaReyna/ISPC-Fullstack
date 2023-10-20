@@ -169,25 +169,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         // Método para gestionar actualizaciones de la base de datos
     }
 
-    // Método para crear una wishlist
-    public void addWishlist(Context context, String nombre, long id_usuario){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put("nombre", nombre);
-        values.put("id_usuario", id_usuario);
-        values.put("fecha_creacion", getCurrentDate());
-
-        long result = db.insert("wishlist", null, values);
-        db.close();
-
-        if (result == -1) {
-            Toast.makeText(context, "Error al crear la Wishlist", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "Wishlist creada con éxito!", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     // Registro
     public void createUser(Context context, String nombre, String apellido, String password, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -225,7 +206,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
 
         db.close();
     }
-
 
     // Verifica si el email existe
     public boolean isEmailRegistered(String email) {
@@ -267,7 +247,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return true;
     }
 
-
     //Obtener usuario logeado
     public long getLoggedUserId(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
@@ -289,7 +268,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         return wishlistId;
     }
-
 
     // Metodo auxiliar para obtener la fecha actual
     private String getCurrentDate() {
