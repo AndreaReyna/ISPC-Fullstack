@@ -17,10 +17,14 @@
             android:exported="false" />
         <activity
             android:name=".activities.ContactActivity"
+<<<<<<< HEAD
             android:name=".EditUserActivity"
             android:exported="false" />
         <activity
             android:name=".ContactActivity"
+=======
+            android:name=".activities.ContactActivity"
+>>>>>>> cecbe9f (acivities folder created, project restructuring)
             android:exported="false" />
         <activity
             android:name=".activities.accountactivity"
