@@ -1,5 +1,8 @@
 package com.example.libreria_in_47_app.activities;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -9,6 +12,8 @@ import com.example.libreria_in_47_app.models.BookClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
+
+import com.example.libreria_in_47_app.activities.BookAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Guardar la lista en una variable.
         List<BookClass> response = dbHelper.getAllBooks();
+
+        // Configurar el RecyclerView y su adaptador
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        BookAdapter adapter = new BookAdapter(this, response);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Interar la lista para tomar la data de cada libro y mostrarlo en consola.
         for (BookClass book : response) {
