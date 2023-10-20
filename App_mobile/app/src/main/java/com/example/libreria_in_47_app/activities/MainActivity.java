@@ -30,15 +30,15 @@ public class MainActivity extends AppCompatActivity {
         for (BookClass book : response) {
             System.out.println("ID: " + book.getId());
             System.out.println("ISBN: " + book.getIsbn());
-            System.out.println("Título: " + book.getTitulo());
-            System.out.println("Subtítulo: " + book.getSubtitulo());
-            System.out.println("Descripción: " + book.getDescripcion());
-            System.out.println("Comentarios: " + book.getComentarios());
-            System.out.println("Autor ID: " + book.getAutorId());
-            System.out.println("Idioma ID: " + book.getIdiomaId());
-            System.out.println("Formato ID: " + book.getFormatoId());
+            System.out.println("Title: " + book.getTitle());
+            System.out.println("Subtitle: " + book.getSubtitle());
+            System.out.println("Description: " + book.getDescription());
+            System.out.println("Comments: " + book.getComments());
+            System.out.println("Author ID: " + book.getAuthorId());
+            System.out.println("Language ID: " + book.getLanguageId());
+            System.out.println("Format ID: " + book.getFormatId());
             System.out.println("Editorial ID: " + book.getEditorialId());
-            System.out.println("Categoría ID: " + book.getCategoriaId());
+            System.out.println("Category ID: " + book.getCategoryId());
         }
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
