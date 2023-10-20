@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/bottom_compartir"
-        android:icon="@drawable/baseline_share_24"
+        android:icon="@drawable/mail_contact"
         android:title="Compartir" />
 
     <item
