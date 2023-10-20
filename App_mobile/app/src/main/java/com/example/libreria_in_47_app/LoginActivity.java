@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         // Validación con la base de datos
-        if (!dbHelper.validateUserCredentials(email, password)) {
+        if (!dbHelper.validateUserCredentials(this, email, password)) {
             showToast("Error, verifique los datos de inicio de sesión y vuelva a intentarlo");
             return false;
         }

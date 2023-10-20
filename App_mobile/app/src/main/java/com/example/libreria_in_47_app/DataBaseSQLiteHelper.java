@@ -2,6 +2,7 @@ package com.example.libreria_in_47_app;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -169,8 +170,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     }
 
     // Método para crear una wishlist
-
-    public void addWishlist(Context context, String nombre, String id_usuario){
+    public void addWishlist(Context context, String nombre, long id_usuario){
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -206,15 +206,26 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         values.put("tipo_usuario", 2);
         values.put("fecha_creacion", getCurrentDate());
 
-        long result = db.insert("cliente", null, values);
-        db.close();
+        long userId = db.insert("cliente", null, values);
 
-        if (result == -1) {
+        if (userId == -1) {
             Toast.makeText(context, "Error en el registro", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "Registro exitoso!", Toast.LENGTH_SHORT).show();
+            // Creamos wishlist para el usuario registrado
+            ContentValues wishlistValues = new ContentValues();
+            wishlistValues.put("cliente_id_usuario", userId);
+            wishlistValues.put("fecha_creacion", getCurrentDate());
+            long wishlistId = db.insert("wishlist", null, wishlistValues);
+            if (wishlistId == -1) {
+                Toast.makeText(context, "Error creando wishlist", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(context, "Registro exitoso!", Toast.LENGTH_SHORT).show();
+            }
         }
+
+        db.close();
     }
+
 
     // Verifica si el email existe
     public boolean isEmailRegistered(String email) {
@@ -230,7 +241,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     }
 
     // Login
-    public boolean validateUserCredentials(String email, String password) {
+    public boolean validateUserCredentials(Context context, String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM cliente WHERE email = ? AND password = ?";
         Cursor cursor = db.rawQuery(query, new String[]{email, password});
@@ -238,9 +249,47 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
             cursor.close();
             return false;
         }
+        cursor.moveToFirst();
+
+        int columnIndex = cursor.getColumnIndex("id_usuario");
+        if(columnIndex != -1) {
+            long userId = cursor.getLong(columnIndex);
+            // Guardar el ID del usuario en Preferencias Compartidas para dsp poder obtenerlo
+            SharedPreferences sharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putLong("userId", userId);
+            editor.apply();
+        } else {
+            Toast.makeText(context, "Internal error.", Toast.LENGTH_SHORT).show();
+        }
+
         cursor.close();
         return true;
     }
+
+
+    //Obtener usuario logeado
+    public long getLoggedUserId(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
+        return sharedPreferences.getLong("userId", -1);  // Devuelve -1 si no se encuentra el ID del usuario
+    }
+
+    // Obtener la wishlist
+    public long getWishlist(long userId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT id_wishlist FROM wishlist WHERE cliente_id_usuario = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(userId)});
+        long wishlistId = -1;
+        if (cursor.moveToFirst()) {
+            int columnIndex = cursor.getColumnIndex("id_wishlist");
+            if(columnIndex != -1) {
+                wishlistId = cursor.getLong(columnIndex);
+            }
+        }
+        cursor.close();
+        return wishlistId;
+    }
+
 
     // Metodo auxiliar para obtener la fecha actual
     private String getCurrentDate() {
@@ -248,7 +297,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         Date date = new Date();
         return dateFormat.format(date);
     }
-
 
 }
 
