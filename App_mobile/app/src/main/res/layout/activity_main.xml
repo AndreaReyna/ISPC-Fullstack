@@ -20,6 +20,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    tools:context=".activities.MainActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -30,9 +31,21 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
+            <SearchView
+                android:layout_width="700px"
+                android:layout_height="match_parent" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio"
+        android:textColor="@color/lavender"
+        android:layout_centerInParent="true"
+        android:textSize="36sp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
