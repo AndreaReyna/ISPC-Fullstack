@@ -23,21 +23,26 @@
         android:layout_height="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
+        android:tint="@color/design_default_color_on_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:srcCompat="@android:drawable/ic_media_play" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="32dp"
-        android:gravity="center">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-      <ImageView
+        <ImageView
             android:id="@+id/imageView2"
             android:layout_width="257dp"
-            android:layout_height="122dp"
+            android:layout_height="119dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,11 +63,12 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="391dp"
-            android:layout_height="180dp"
-            android:padding="32dp"
+            android:layout_width="411dp"
+            android:layout_height="374dp"
+            android:padding="16dp"
             android:text="Nuestra mision es satisfacer íntegramente las necesidades de nuestros clientes, ofreciendo el mayor surtido de libros de texto, lectura e innovación digital. Satisfaciendo las necesidades de la comunidad educativa con una amplia gama de editoriales para garantizar el aprendizaje y fomentar el amor a la lectura en  el público en general."
             android:textAlignment="center"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="474dp" />
