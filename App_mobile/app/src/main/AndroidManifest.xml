@@ -16,6 +16,10 @@
             android:name=".EditUserActivity"
             android:exported="false" />
         <activity
+            android:name=".ContactActivity"
+            android:name=".EditUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ContactActivity"
             android:exported="false" />
         <activity
