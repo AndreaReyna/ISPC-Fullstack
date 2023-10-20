@@ -17,6 +17,7 @@
         android:layout_alignParentTop="true" />
 =======
 >>>>>>> e1863f7 (acivities folder created, project restructuring)
+    tools:context=".activities.MainActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
