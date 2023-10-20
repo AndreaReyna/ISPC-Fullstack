@@ -1,4 +1,4 @@
-package com.example.libreria_in_47_app;
+package com.example.libreria_in_47_app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
+import com.example.libreria_in_47_app.R;
 
 public class LoginActivity extends AppCompatActivity {
 

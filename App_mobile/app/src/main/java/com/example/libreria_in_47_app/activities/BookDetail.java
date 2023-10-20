@@ -1,4 +1,4 @@
-package com.example.libreria_in_47_app;
+package com.example.libreria_in_47_app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.libreria_in_47_app.R;
 
 public class BookDetail extends AppCompatActivity {
     ImageView ivRegresar;

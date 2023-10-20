@@ -1,8 +1,10 @@
-package com.example.libreria_in_47_app;
+package com.example.libreria_in_47_app.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
+import com.example.libreria_in_47_app.R;
 import com.example.libreria_in_47_app.models.BookClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
