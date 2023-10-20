@@ -1,5 +1,6 @@
 package com.example.libreria_in_47_app;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,7 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import android.database.Cursor;
@@ -101,7 +104,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
                 + "`subtitulo` TEXT, "
                 + "`descripcion` TEXT, "
                 + "`comentarios` TEXT, "
-                + "`precio` REAL NOT NULL, "
                 + "`autor_id_autor` INTEGER NOT NULL, "
                 + "`idioma_id_idioma` INTEGER NOT NULL, "
                 + "`formato_id_formato` INTEGER NOT NULL, "
@@ -159,33 +161,14 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO categoria (tipo) VALUES ('Ciencia Ficción');");
 
         // Inserta libros
-        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, precio, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9781234567890', 'Título del libro de Gabriel Martínez', 'Subtítulo del libro', 'Descripción del libro escrito por Gabriel Martínez', 'Comentarios sobre el libro de este autor', 19.99, 1, 2, 3, 4, 5);");
-        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, precio, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9782345678901', 'Título del libro de Amelia Valdez', 'Subtítulo del libro', 'Descripción del libro escrito por Amelia Valdez', 'Comentarios sobre el libro de este autor', 15.99, 2, 1, 3, 5, 4);");
-        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, precio, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9783456789012', 'Título del libro de Enrique Soto', 'Subtítulo del libro', 'Descripción del libro escrito por Enrique Soto', 'Comentarios sobre el libro de este autor', 14.99, 3, 2, 3, 2, 5);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9781234567890', 'Título del libro de Gabriel Martínez', 'Subtítulo del libro', 'Descripción del libro escrito por Gabriel Martínez', 'Comentarios sobre el libro de este autor', 1, 2, 3, 4, 5);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9782345678901', 'Título del libro de Amelia Valdez', 'Subtítulo del libro', 'Descripción del libro escrito por Amelia Valdez', 'Comentarios sobre el libro de este autor', 2, 1, 3, 5, 4);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9783456789012', 'Título del libro de Enrique Soto', 'Subtítulo del libro', 'Descripción del libro escrito por Enrique Soto', 'Comentarios sobre el libro de este autor', 3, 2, 3, 2, 5);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) {
         // Método para gestionar actualizaciones de la base de datos
-    }
-
-    // Método para crear una wishlist
-    public void addWishlist(Context context, String nombre, long id_usuario){
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put("nombre", nombre);
-        values.put("id_usuario", id_usuario);
-        values.put("fecha_creacion", getCurrentDate());
-
-        long result = db.insert("wishlist", null, values);
-        db.close();
-
-        if (result == -1) {
-            Toast.makeText(context, "Error al crear la Wishlist", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "Wishlist creada con éxito!", Toast.LENGTH_SHORT).show();
-        }
     }
 
     // Registro
@@ -225,7 +208,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
 
         db.close();
     }
-
 
     // Verifica si el email existe
     public boolean isEmailRegistered(String email) {
@@ -267,7 +249,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return true;
     }
 
-
     //Obtener usuario logeado
     public long getLoggedUserId(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE);
@@ -290,12 +271,53 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return wishlistId;
     }
 
-
     // Metodo auxiliar para obtener la fecha actual
     private String getCurrentDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
+    }
+
+    // Obtener todos los libros de la DB
+
+    public List<BookClass> getAllBooks() {
+
+        List<BookClass> books = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM libro";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String isbn = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_ISBN));
+                @SuppressLint("Range")
+                String title = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_TITULO));
+                @SuppressLint("Range")
+                String subtitle = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_SUBTITULO));
+                @SuppressLint("Range")
+                String description = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_DESCRIPCION));
+                @SuppressLint("Range")
+                String comments = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_COMENTARIOS));
+                @SuppressLint("Range")
+                int authorId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_AUTOR_ID));
+                @SuppressLint("Range")
+                int languageId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_IDIOMA_ID));
+                @SuppressLint("Range")
+                int formatId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_FORMATO_ID));
+                @SuppressLint("Range")
+                int editorialId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_EDITORIAL_ID));
+                @SuppressLint("Range")
+                int categoryId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_CATEGORIA_ID));
+
+                BookClass book = new BookClass(id, isbn, title, subtitle, description, comments, authorId, languageId, formatId, editorialId, categoryId);
+
+                books.add(book);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return books;
     }
 
 }

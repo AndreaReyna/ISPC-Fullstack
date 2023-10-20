@@ -6,13 +6,38 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    DataBaseSQLiteHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Instanciar un objeto de la clase DataBaseSQLiteHelper.
+        dbHelper = new DataBaseSQLiteHelper(this);
+
+        // Guardar la lista en una variable.
+        List<BookClass> response = dbHelper.getAllBooks();
+
+        // Interar la lista para tomar la data de cada libro y mostrarlo en consola.
+        for (BookClass book : response) {
+            System.out.println("ID: " + book.getId());
+            System.out.println("ISBN: " + book.getIsbn());
+            System.out.println("Título: " + book.getTitulo());
+            System.out.println("Subtítulo: " + book.getSubtitulo());
+            System.out.println("Descripción: " + book.getDescripcion());
+            System.out.println("Comentarios: " + book.getComentarios());
+            System.out.println("Autor ID: " + book.getAutorId());
+            System.out.println("Idioma ID: " + book.getIdiomaId());
+            System.out.println("Formato ID: " + book.getFormatoId());
+            System.out.println("Editorial ID: " + book.getEditorialId());
+            System.out.println("Categoría ID: " + book.getCategoriaId());
+        }
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_inicio);
