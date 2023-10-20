@@ -21,6 +21,9 @@
             android:exported="false" />
         <activity
             android:name=".activities.ContactActivity"
+=======
+            android:name=".activities.ContactActivity"
+>>>>>>> cecbe9f (acivities folder created, project restructuring)
             android:exported="false" />
         <activity
             android:name=".activities.accountactivity"
@@ -42,10 +45,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.AboutUsActivity"
+            android:name=".AboutUsActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".MainActivity"
             android:exported="true" />
 
         <meta-data
