@@ -15,28 +15,28 @@ public class BookClass {
 
     private int id;
     private String isbn;
-    private String titulo;
-    private String subtitulo;
-    private String descripcion;
-    private String comentarios;
-    private int autorId;
-    private long idiomaId;
-    private long formatoId;
+    private String title;
+    private String subtitle;
+    private String description;
+    private String comments;
+    private int authorId;
+    private long languageId;
+    private long formatId;
     private long editorialId;
-    private long categoriaId;
+    private long categoryId;
 
-    public BookClass(int id, String isbn, String titulo, String subtitulo, String descripcion, String comentarios, int autorId, int idiomaId, int formatoId, int editorialId, int categoriaId) {
+    public BookClass(int id, String isbn, String title, String subtitle, String description, String comments, int authorId, int languageId, int formatId, int editorialId, int categoryId) {
         this.id = id;
         this.isbn = isbn;
-        this.titulo = titulo;
-        this.subtitulo = subtitulo;
-        this.descripcion = descripcion;
-        this.comentarios = comentarios;
-        this.autorId = autorId;
-        this.idiomaId = idiomaId;
-        this.formatoId = formatoId;
+        this.title = title;
+        this.subtitle = subtitle;
+        this.description = description;
+        this.comments = comments;
+        this.authorId = authorId;
+        this.languageId = languageId;
+        this.formatId = formatId;
         this.editorialId = editorialId;
-        this.categoriaId = categoriaId;
+        this.categoryId = categoryId;
     }
 
     public long getId() {
@@ -48,31 +48,31 @@ public class BookClass {
     }
 
     public String getTitulo() {
-        return titulo;
+        return title;
     }
 
     public String getSubtitulo() {
-        return subtitulo;
+        return subtitle;
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return description;
     }
 
     public String getComentarios() {
-        return comentarios;
+        return comments;
     }
 
     public long getAutorId() {
-        return autorId;
+        return authorId;
     }
 
     public long getIdiomaId() {
-        return idiomaId;
+        return languageId;
     }
 
     public long getFormatoId() {
-        return formatoId;
+        return formatId;
     }
 
     public long getEditorialId() {
@@ -80,6 +80,6 @@ public class BookClass {
     }
 
     public long getCategoriaId() {
-        return categoriaId;
+        return categoryId;
     }
 }
