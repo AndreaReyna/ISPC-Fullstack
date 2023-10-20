@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.MainActivity">
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,8 @@
         android:layout_alignParentTop="true" />
 =======
 >>>>>>> e1863f7 (acivities folder created, project restructuring)
-    tools:context=".activities.MainActivity">
+=======
+>>>>>>> cecbe9f (acivities folder created, project restructuring)
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
