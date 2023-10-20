@@ -7,7 +7,7 @@
     android:gravity="bottom"
     android:orientation="vertical"
     android:textAlignment="center"
-    tools:context=".BookDetail">
+    tools:context=".activities.BookDetail">
 
     <ImageView
         android:id="@+id/ivRegresar"
