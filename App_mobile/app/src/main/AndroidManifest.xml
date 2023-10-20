@@ -14,6 +14,7 @@
         tools:targetApi="31">
         <activity
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:name=".EditUserActivity"
             android:exported="false" />
         <activity
@@ -21,6 +22,15 @@
 =======
             android:name=".activities.ContactActivity"
 >>>>>>> cecbe9f (acivities folder created, project restructuring)
+=======
+            android:name=".activities.ContactActivity"
+=======
+            android:name=".EditUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactActivity"
+>>>>>>> 8c838b3 (creacion de EditUserActivity)
+>>>>>>> 5b67e34 (creacion de EditUserActivity)
             android:exported="false" />
         <activity
             android:name=".activities.accountactivity"
