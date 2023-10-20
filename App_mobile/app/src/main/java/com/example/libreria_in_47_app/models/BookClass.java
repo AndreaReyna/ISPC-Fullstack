@@ -1,6 +1,8 @@
 package com.example.libreria_in_47_app.models;
 
-public class BookClass {
+import com.example.libreria_in_47_app.interfaces.IBook;
+
+public class BookClass implements IBook {
     public static String COLUMN_ID = "id_libro";
     public static final String COLUMN_ISBN = "isbn";
     public static final String COLUMN_TITULO = "titulo";
@@ -20,10 +22,10 @@ public class BookClass {
     private String description;
     private String comments;
     private int authorId;
-    private long languageId;
-    private long formatId;
-    private long editorialId;
-    private long categoryId;
+    private int languageId;
+    private int formatId;
+    private int editorialId;
+    private int categoryId;
 
     public BookClass(int id, String isbn, String title, String subtitle, String description, String comments, int authorId, int languageId, int formatId, int editorialId, int categoryId) {
         this.id = id;
@@ -47,39 +49,40 @@ public class BookClass {
         return isbn;
     }
 
-    public String getTitulo() {
+    public String getTitle() {
         return title;
     }
 
-    public String getSubtitulo() {
+    public String getSubtitle() {
         return subtitle;
     }
 
-    public String getDescripcion() {
+    public String getDescription() {
         return description;
     }
 
-    public String getComentarios() {
+    public String getComments() {
         return comments;
     }
 
-    public long getAutorId() {
+    public int getAuthorId() {
         return authorId;
     }
 
-    public long getIdiomaId() {
+    public int getLanguageId() {
         return languageId;
     }
 
-    public long getFormatoId() {
+    public int getFormatId() {
         return formatId;
     }
 
-    public long getEditorialId() {
+    public int getEditorialId() {
         return editorialId;
     }
 
-    public long getCategoriaId() {
+    public int getCategoryId() {
         return categoryId;
     }
+
 }
