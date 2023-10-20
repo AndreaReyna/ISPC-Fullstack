@@ -2,9 +2,9 @@ package com.example.libreria_in_47_app;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.libreria_in_47_app.models.BookClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.List;
 
