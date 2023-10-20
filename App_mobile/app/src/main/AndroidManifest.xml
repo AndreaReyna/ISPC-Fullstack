@@ -23,7 +23,10 @@
             android:name=".activities.ContactActivity"
 >>>>>>> cecbe9f (acivities folder created, project restructuring)
 =======
-            android:name=".activities.ContactActivity"
+            android:name=".EditUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ContactActivity"
 =======
             android:name=".EditUserActivity"
             android:name=".activities.ContactActivity"
@@ -35,19 +38,21 @@
             android:name=".activities.accountactivity"
             android:exported="false" />
         <activity
+            android:name=".accountactivity"
             android:name=".activities.accountactivity"
             android:name=".activities.BookDetail"
             android:exported="false" />
         <activity
-            android:name=".activities.BookDetail"
+            android:name=".BookDetail"
             android:exported="false" />
         <activity
+            android:name=".RegisterActivity"
             android:name=".activities.RegisterActivity"
             android:name=".activities.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,10 +61,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.AboutUsActivity"
+            android:name=".AboutUsActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".MainActivity"
             android:exported="true" />
 
         <meta-data
