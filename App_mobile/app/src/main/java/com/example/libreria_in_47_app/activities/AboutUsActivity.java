@@ -10,8 +10,12 @@ import android.widget.ImageView;
 
 import com.example.libreria_in_47_app.R;
 
+<<<<<<<< HEAD:App_mobile/app/src/main/java/com/example/libreria_in_47_app/activities/AboutUsActivity.java
 public class AboutUsActivity extends AppCompatActivity {
 
+========
+public class BookDetail extends AppCompatActivity {
+>>>>>>>> 8b78748 (acivities folder created, project restructuring):App_mobile/app/src/main/java/com/example/libreria_in_47_app/activities/BookDetail.java
     ImageView ivRegresar;
     private DataBaseSQLiteHelper dbHelper;
 
