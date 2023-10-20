@@ -18,10 +18,12 @@
             android:name=".EditUserActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.ContactActivity"
+            android:name=".ContactActivity"
 =======
             android:name=".activities.ContactActivity"
 >>>>>>> cecbe9f (acivities folder created, project restructuring)
+=======
+            android:name=".activities.ContactActivity"
 =======
             android:name=".EditUserActivity"
             android:name=".activities.ContactActivity"
@@ -34,11 +36,13 @@
             android:exported="false" />
         <activity
             android:name=".activities.accountactivity"
+            android:name=".activities.BookDetail"
             android:exported="false" />
         <activity
             android:name=".activities.BookDetail"
             android:exported="false" />
         <activity
+            android:name=".activities.RegisterActivity"
             android:name=".activities.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register" />
