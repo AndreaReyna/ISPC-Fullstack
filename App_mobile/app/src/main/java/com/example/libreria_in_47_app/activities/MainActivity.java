@@ -31,6 +31,20 @@ public class MainActivity extends AppCompatActivity {
         // Guardar la lista en una variable.
         List<BookClass> response = dbHelper.getAllBooks();
 
+        // Interar la lista para tomar la data de cada libro y mostrarlo en consola.
+        for (BookClass book : response) {
+            System.out.println("ID: " + book.getId());
+            System.out.println("ISBN: " + book.getIsbn());
+            System.out.println("Title: " + book.getTitle());
+            System.out.println("Subtitle: " + book.getSubtitle());
+            System.out.println("Description: " + book.getDescription());
+            System.out.println("Comments: " + book.getComments());
+            System.out.println("Author ID: " + book.getAuthorId());
+            System.out.println("Language ID: " + book.getLanguageId());
+            System.out.println("Format ID: " + book.getFormatId());
+            System.out.println("Editorial ID: " + book.getEditorialId());
+            System.out.println("Category ID: " + book.getCategoryId());
+        }
         // Configurar el RecyclerView y su adaptador
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         BookAdapter adapter = new BookAdapter(this, response);
