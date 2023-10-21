@@ -7,9 +7,6 @@ import android.os.Bundle;
 import com.example.libreria_in_47_app.R;
 
 public class EditUserActivity extends AppCompatActivity {
-    ImageView ivRegresar;
-    Button btnCerrarSesion;
-    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
