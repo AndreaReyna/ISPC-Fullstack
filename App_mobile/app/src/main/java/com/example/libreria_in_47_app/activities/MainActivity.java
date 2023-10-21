@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 //finish();
                 return true;
-            } else if (item.getItemId() == R.id.bottom_compartir) {
+            } else if (item.getItemId() == R.id.bottom_cotacto ) {
                 startActivity(new Intent(getApplicationContext(), ContactActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 //finish();
