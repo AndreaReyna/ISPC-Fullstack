@@ -25,6 +25,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:tint="@color/Black"
+        android:tint="@color/Black"
         android:contentDescription="Reproducir audio descriptivo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -62,6 +63,10 @@
             android:layout_height="wrap_content"
             android:contentDescription="Ilustración librería In47"
             app:layout_constraintBottom_toTopOf="@+id/txtAcouApe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="Ilustración librería In47"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +83,20 @@
 
             <TextView
                 android:id="@+id/txtAcouApe"
+                android:layout_width="match_parent"
+                android:layout_height="422dp"
+                android:contentDescription="Misión, visión y valores de In47"
+                android:fontFamily="@font/amiri"
+                android:text="Misión: Ofrecer un completo catálogo de libros de texto y lectura, fomentando la innovación digital.\nVisión: Garantizar un aprendizaje enriquecedor y promover la pasión por la lectura en la comunidad.\nValores: Compromiso con la excelencia educativa y la satisfacción total del cliente."
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="HardcodedText"
+                tools:layout_editor_absoluteY="474dp" />
+        </LinearLayout>
+            <TextView
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="422dp"
                 android:contentDescription="Misión, visión y valores de In47"
