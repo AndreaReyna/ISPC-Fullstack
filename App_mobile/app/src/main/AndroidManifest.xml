@@ -13,40 +13,15 @@
         android:theme="@style/Base.Theme.Libreria_In_47_App"
         tools:targetApi="31">
         <activity
-            android:name=".EditUserActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.ContactActivity"
-<<<<<<< HEAD
-<<<<<<< HEAD
-            android:name=".EditUserActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ContactActivity"
-=======
-            android:name=".activities.ContactActivity"
->>>>>>> cecbe9f (acivities folder created, project restructuring)
-=======
-            android:name=".activities.ContactActivity"
-=======
-            android:name=".EditUserActivity"
-            android:name=".activities.ContactActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ContactActivity"
->>>>>>> 8c838b3 (creacion de EditUserActivity)
->>>>>>> 5b67e34 (creacion de EditUserActivity)
-            android:name=".activities.accountactivity"
             android:exported="false" />
         <activity
             android:name=".activities.accountactivity"
-            android:name=".activities.BookDetail"
             android:exported="false" />
         <activity
             android:name=".activities.BookDetail"
             android:exported="false" />
         <activity
-            android:name=".activities.RegisterActivity"
             android:name=".activities.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register" />
