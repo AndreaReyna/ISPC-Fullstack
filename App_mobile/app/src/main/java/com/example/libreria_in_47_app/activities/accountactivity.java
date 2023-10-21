@@ -13,6 +13,7 @@ import com.example.libreria_in_47_app.R;
 public class accountactivity extends AppCompatActivity {
     ImageView ivRegresar;
     Button btnCerrarSesion;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,14 @@ public class accountactivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(accountactivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(accountactivity.this, EditUserActivity.class);
                 startActivity(intent);
             }
         });

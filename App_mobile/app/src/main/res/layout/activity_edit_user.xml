@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.EditUserActivity">
+
+    <EditText
+        android:id="@+id/txtEditApe"
+        android:layout_width="334dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEditnom" />
+
+    <EditText
+        android:id="@+id/txtEditnom"
+        android:layout_width="334dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="296dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnActualizaUser"
+        android:layout_width="155dp"
+        android:layout_height="57dp"
+        android:backgroundTint="#F3AA68"
+        android:text="@string/txtbtnActualizaUser"
+        android:textAlignment="center"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEditApe"
+        app:layout_constraintVertical_bias="0.725" />
+
+    <Button
+        android:id="@+id/btnCancelarActUser"
+        android:layout_width="155dp"
+        android:layout_height="57dp"
+        android:backgroundTint="#F3AA68"
+        android:text="@string/txtbtnCancelar"
+        android:textAlignment="center"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEditApe"
+        app:layout_constraintVertical_bias="0.725" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
