@@ -273,6 +273,21 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return wishlistId;
     }
 
+    // Agregar libro a la wishlist
+    public boolean addToWishlist(long wishlistId, long libroId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("wishlist_id_wishlist", wishlistId);
+        contentValues.put("libro_id_libro", libroId); // libroId lo tengo q traer con un intent
+        long result = db.insert("elementos_wishlist", null, contentValues);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     // Metodo auxiliar para obtener la fecha actual
     private String getCurrentDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());

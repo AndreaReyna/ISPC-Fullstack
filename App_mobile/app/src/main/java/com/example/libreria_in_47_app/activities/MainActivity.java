@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
@@ -61,5 +62,10 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    public void enviarLibro(View view) {
+
+        //enviar el ID del libro a la actividad bookDetails
     }
 }
