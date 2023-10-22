@@ -277,7 +277,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     public boolean addToWishlist(int libroId) {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("wishlist_id_wishlist", getWishlist(1)); // hay q pasarle getUserId
+        contentValues.put("wishlist_id_wishlist", getWishlist(getLoggedUserId()));
         contentValues.put("libro_id_libro", libroId); // libroId lo tengo q traer con un intent
         long result = db.insert("elementos_wishlist", null, contentValues);
         if (result == -1) {
