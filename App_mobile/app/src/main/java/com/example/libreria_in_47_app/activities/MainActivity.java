@@ -37,21 +37,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Interar la lista para tomar la data de cada libro y mostrarlo en consola.
-        for (BookClass book : response) {
-            System.out.println("ID: " + book.getId());
-            System.out.println("ISBN: " + book.getIsbn());
-            System.out.println("Title: " + book.getTitle());
-            System.out.println("Subtitle: " + book.getSubtitle());
-            System.out.println("Description: " + book.getDescription());
-            System.out.println("Comments: " + book.getComments());
-            System.out.println("Author ID: " + book.getAuthorId());
-            System.out.println("Language ID: " + book.getLanguageId());
-            System.out.println("Format ID: " + book.getFormatId());
-            System.out.println("Editorial ID: " + book.getEditorialId());
-            System.out.println("Category ID: " + book.getCategoryId());
-        }
-
+        // Navegación.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_inicio);
         bottomNavigationView.setOnItemSelectedListener(item -> {
