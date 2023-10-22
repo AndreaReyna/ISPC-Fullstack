@@ -40,11 +40,14 @@ public class BookDetail extends AppCompatActivity {
     }
 
     public void AddBook() {
+        long userId = dbHelper.getLoggedUserId(this);
+        long wishlistId = dbHelper.getWishlist(userId);
+        long libroId = 1; // pasarle el ID del libro
         btnBookAddWish.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                       boolean isAdded = dbHelper.addToWishlist(1); // pasarle como arg el ID del libro
+                       boolean isAdded = dbHelper.addToWishlist(wishlistId, libroId); // pasarle como arg el ID del libro
                         if (isAdded = true) {
                             Toast.makeText(BookDetail.this, "Libro agregado", Toast.LENGTH_LONG).show();
                         } else {
