@@ -47,24 +47,17 @@ public class BookDetail extends AppCompatActivity {
     public void AddBook() {
         long userId = dbHelper.getLoggedUserId(this);
         long wishlistId = dbHelper.getWishlist(userId);
-        long libroId = 1; //esto se borra es para prueba.
-
-        BookClass libroElegido = dbHelper.getBookById(1); // pasarle el ID del libro
-        List<Integer> librosEnWishlist = dbHelper.getBooksInWishlist(userId);
-
+        long libroId = 1; // pasarle el ID del libro
         btnBookAddWish.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        if (!librosEnWishlist.contains(libroElegido.getId())) {
-                            // El libro no está en la wishlist, así que podemos agregarlo
-                            boolean isAdded = dbHelper.addToWishlist(wishlistId, libroElegido.getId()); // pasarle como arg el ID del libro
-                            if (isAdded) {
-                                Toast.makeText(BookDetail.this, "Libro agregado", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(BookDetail.this, "Error al agregar Libro", Toast.LENGTH_LONG).show();
-                            }
+                       boolean isAdded = dbHelper.addToWishlist(wishlistId, libroId); // pasarle como arg el ID del libro
+                        if (isAdded = true) {
+                            Toast.makeText(BookDetail.this, "Libro agregado", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(BookDetail.this, "Error al agregar Libro", Toast.LENGTH_LONG).show();
+                        }
 
                         } else {
                             // El libro ya está en la wishlist
