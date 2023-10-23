@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
 
+import java.util.List;
+
 public class BookDetail extends AppCompatActivity {
     ImageView ivRegresar;
     DataBaseSQLiteHelper dbHelper;
@@ -43,20 +45,28 @@ public class BookDetail extends AppCompatActivity {
         long userId = dbHelper.getLoggedUserId(this);
         long wishlistId = dbHelper.getWishlist(userId);
         long libroId = 1; // pasarle el ID del libro
+        List<Integer> librosEnWishlist = dbHelper.getBooksInWishlist(userId);
+
         btnBookAddWish.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                       boolean isAdded = dbHelper.addToWishlist(wishlistId, libroId); // pasarle como arg el ID del libro
-                        if (isAdded = true) {
-                            Toast.makeText(BookDetail.this, "Libro agregado", Toast.LENGTH_LONG).show();
+
+                        if (!librosEnWishlist.contains(libroId)) {
+                            // El libro no está en la wishlist, así que podemos agregarlo
+                            boolean isAdded = dbHelper.addToWishlist(wishlistId, libroId); // pasarle como arg el ID del libro
+                            if (isAdded) {
+                                Toast.makeText(BookDetail.this, "Libro agregado", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(BookDetail.this, "Error al agregar Libro", Toast.LENGTH_LONG).show();
+                            }
+
                         } else {
-                            Toast.makeText(BookDetail.this, "Error al agregar Libro", Toast.LENGTH_LONG).show();
+                            // El libro ya está en la wishlist
+                            Toast.makeText(BookDetail.this, "El libro ya se encuentra en tu lista", Toast.LENGTH_LONG).show();
                         }
-
                     }
+                });
                 }
-        );
 
-    }
-}
+    };

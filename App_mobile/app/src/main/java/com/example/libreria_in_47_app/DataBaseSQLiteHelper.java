@@ -276,7 +276,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     // Agregar libro a la wishlist
     public boolean addToWishlist(long wishlistId, long libroId) {
         SQLiteDatabase db = this.getReadableDatabase();
-
+        // tal vez agregar una validacion para saber si el libro ya existe en la wishlist?
         ContentValues contentValues = new ContentValues();
         contentValues.put("wishlist_id_wishlist", wishlistId);
         contentValues.put("libro_id_libro", libroId); // libroId lo tengo q traer con un intent
@@ -286,6 +286,27 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+
+    // Metodo para saber si el libro ya esta en la lista
+    public List<Integer> getBooksInWishlist(long clienteId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<Integer> booksInWishlist = new ArrayList<>();
+        // Consulta SQL para obtener los libros en la wishlist del cliente
+        String consulta = "SELECT libro_id_libro FROM elementos_wishlist WHERE wishlist_id_wishlist IN (SELECT id_wishlist FROM wishlist WHERE cliente_id_usuario = ?)";
+        Cursor cursor = db.rawQuery(consulta, new String[]{String.valueOf(clienteId)});
+
+        int columnIndex = cursor.getColumnIndex("libro_id_libro");
+
+        while (cursor.moveToNext()) {
+            if (columnIndex != -1) {
+                int libroId = cursor.getInt(columnIndex);
+                booksInWishlist.add(libroId);
+            }
+        }
+
+        cursor.close();
+        return booksInWishlist;
     }
 
     // Metodo auxiliar para obtener la fecha actual
