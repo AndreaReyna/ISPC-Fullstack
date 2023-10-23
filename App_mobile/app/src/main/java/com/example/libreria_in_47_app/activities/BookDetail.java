@@ -16,6 +16,8 @@ import com.example.libreria_in_47_app.models.BookClass;
 
 import java.util.List;
 
+import java.util.List;
+
 public class BookDetail extends AppCompatActivity {
     ImageView ivRegresar;
     DataBaseSQLiteHelper dbHelper;
