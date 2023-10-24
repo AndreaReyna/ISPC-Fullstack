@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
+import com.example.libreria_in_47_app.models.BookClass;
 
 import java.util.List;
 
@@ -45,7 +46,9 @@ public class BookDetail extends AppCompatActivity {
     public void AddBook() {
         long userId = dbHelper.getLoggedUserId(this);
         long wishlistId = dbHelper.getWishlist(userId);
-        long libroId = 1; // pasarle el ID del libro
+        long libroId = 1; //esto se borra es para prueba.
+
+        BookClass libroElegido = dbHelper.getBookById(1); // pasarle el ID del libro
         List<Integer> librosEnWishlist = dbHelper.getBooksInWishlist(userId);
 
         btnBookAddWish.setOnClickListener(
@@ -53,9 +56,9 @@ public class BookDetail extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        if (!librosEnWishlist.contains(libroId)) {
+                        if (!librosEnWishlist.contains(libroElegido.getId())) {
                             // El libro no está en la wishlist, así que podemos agregarlo
-                            boolean isAdded = dbHelper.addToWishlist(wishlistId, libroId); // pasarle como arg el ID del libro
+                            boolean isAdded = dbHelper.addToWishlist(wishlistId, libroElegido.getId()); // pasarle como arg el ID del libro
                             if (isAdded) {
                                 Toast.makeText(BookDetail.this, "Libro agregado", Toast.LENGTH_LONG).show();
                             } else {
