@@ -358,5 +358,45 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return books;
     }
 
+    public BookClass getBookById (int idLibro) {
+        //metodo para retornar objeto libro por id
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM libro WHERE id_libro = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idLibro)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String isbn = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_ISBN));
+            @SuppressLint("Range")
+            String title = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_TITULO));
+            @SuppressLint("Range")
+            String subtitle = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_SUBTITULO));
+            @SuppressLint("Range")
+            String description = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_DESCRIPCION));
+            @SuppressLint("Range")
+            String comments = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_COMENTARIOS));
+            @SuppressLint("Range")
+            int authorId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_AUTOR_ID));
+            @SuppressLint("Range")
+            int languageId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_IDIOMA_ID));
+            @SuppressLint("Range")
+            int formatId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_FORMATO_ID));
+            @SuppressLint("Range")
+            int editorialId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_EDITORIAL_ID));
+            @SuppressLint("Range")
+            int categoryId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_CATEGORIA_ID));
+
+            BookClass book = new BookClass(id, isbn, title, subtitle, description, comments, authorId, languageId, formatId, editorialId, categoryId);
+            cursor.close();
+            return book;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
 }
 
