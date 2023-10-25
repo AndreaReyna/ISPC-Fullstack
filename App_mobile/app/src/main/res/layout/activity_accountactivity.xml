@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".accountactivity">
+    tools:context=".activities.accountactivity">
     <TextView
         android:id="@+id/textView4"
         android:layout_width="334dp"
@@ -70,18 +70,19 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="334dp"
+        android:layout_width="155dp"
         android:layout_height="57dp"
-        android:text="Editar Perfil"
+        android:backgroundTint="#F3AA68"
+        android:text="@string/txtbotonEditar"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColorHighlight="#673AB7"
-        android:textSize="20sp"
-        android:backgroundTint="#F3AA68"
+        android:textSize="19dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.843" />
+        app:layout_constraintVertical_bias="0.856" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -104,8 +105,23 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintVertical_bias="0.139" />
+
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="155dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="96dp"
+        android:backgroundTint="#F3AA68"
+        android:text="@string/txtbotonCerrarSesion"
+        android:textAlignment="center"
+        android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.844"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
