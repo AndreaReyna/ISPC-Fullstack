@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,12 @@ import java.util.List;
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private List<BookClass> data;
     private Context context;
+
+    private OnItemClickListener enviarLibro;
+
+    public interface OnItemClickListener {
+        void enviarLibro(BookClass book);
+    }
 
     public BookAdapter(Context context, List<BookClass> data) {
         this.context = context;
@@ -32,9 +39,26 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BookClass book = data.get(position);
+        final BookClass book = data.get(position);
         holder.textTitle.setText(book.getTitle());
         holder.textDescription.setText(book.getDescription());
+
+        // Obtener la referencia al ImageView de la tapa del libro.
+        ImageView bookCoverImageView = holder.itemView.findViewById(R.id.imageView4);
+
+        // Configurar el OnClickListener en la tapa del libro.
+        bookCoverImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (enviarLibro != null) {
+                    enviarLibro.enviarLibro(book);
+                }
+            }
+        });
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        enviarLibro = listener;
     }
 
     @Override
