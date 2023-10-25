@@ -42,7 +42,7 @@
                 app:srcCompat="@drawable/cover_597fb48556f2" />
 
             <TextView
-                android:id="@+id/bookTitle"
+                android:id="@+id/textTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -169,7 +169,7 @@
                 android:text="Description Title" />
 
             <TextView
-                android:id="@+id/bookDescription"
+                android:id="@+id/textDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"

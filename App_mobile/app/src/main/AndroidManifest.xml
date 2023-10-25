@@ -13,6 +13,9 @@
         android:theme="@style/Base.Theme.Libreria_In_47_App"
         tools:targetApi="31">
         <activity
+            android:name=".WishlistActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.EditUserActivity"
             android:exported="false" />
         <activity

@@ -29,9 +29,16 @@
             android:paddingRight="4dp">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/Libro1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:contentPadding="4dp">
+                android:clickable="true"
+                android:outlineProvider="paddedBounds"
+                app:cardCornerRadius="4dp"
+                app:contentPadding="6dp"
+                app:contentPaddingBottom="6dp"
+                app:contentPaddingLeft="6dp"
+                app:contentPaddingRight="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -65,10 +72,12 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/Libro2"
                 android:layout_width="match_parent"
                 android:layout_height="202dp"
+                android:pointerIcon="none"
                 android:textAlignment="center"
+                app:cardCornerRadius="4dp"
                 app:cardUseCompatPadding="true"
                 app:contentPadding="4dp">
 
@@ -103,7 +112,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/Libro2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textAlignment="center"
@@ -141,7 +150,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/Libro2"
                 android:layout_width="match_parent"
                 android:layout_height="194dp"
                 android:textAlignment="center"
@@ -179,7 +188,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+                android:id="@+id/Libro2"
                 android:layout_width="match_parent"
                 android:layout_height="202dp"
                 android:textAlignment="center"
