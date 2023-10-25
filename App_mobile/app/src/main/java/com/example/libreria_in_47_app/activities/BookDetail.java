@@ -1,13 +1,13 @@
 package com.example.libreria_in_47_app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
@@ -18,10 +18,12 @@ import java.util.List;
 
 public class BookDetail extends AppCompatActivity {
     ImageView ivRegresar;
+    TextView textTitle;
+    TextView textDescription;
+    Button btnBookAddWish;
 
     DataBaseSQLiteHelper dbHelper;
-
-    private Button btnBookAddWish;
+    BookClass book;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -30,47 +32,40 @@ public class BookDetail extends AppCompatActivity {
         setContentView(R.layout.activity_book_detail);
         dbHelper = new DataBaseSQLiteHelper(this);
 
-        btnBookAddWish = (Button)findViewById(R.id.bookAddWish); //boton para agregar libro a lista
-        AddBook();
+        textTitle = findViewById(R.id.textTitle);
+        textDescription = findViewById(R.id.textDescription);
+        btnBookAddWish = findViewById(R.id.bookAddWish);
 
         ivRegresar = findViewById(R.id.ivRegresar);
-        ivRegresar.setOnClickListener (new View.OnClickListener(){
+        ivRegresar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent i = new Intent(BookDetail.this, MainActivity.class);
                 startActivity(i);
             }
         });
-    }
 
-    public void AddBook() {
-        long userId = dbHelper.getLoggedUserId(this);
-        long wishlistId = dbHelper.getWishlist(userId);
-        long libroId = 1; //esto se borra es para prueba.
+        // Recuperar el ID del libro de la Intent
+        int bookId = getIntent().getIntExtra("book_id", -1); // -1 es un valor predeterminado en caso de que no se encuentre el ID
 
-        BookClass libroElegido = dbHelper.getBookById(1); // pasarle el ID del libro
-        List<Integer> librosEnWishlist = dbHelper.getBooksInWishlist(userId);
+        if (bookId != -1) {
+            book = dbHelper.getBookById(bookId);
 
-        btnBookAddWish.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+            // Actualizar las vistas con los detalles del libro
+            textTitle.setText(book.getTitle());
+            textDescription.setText(book.getDescription());
 
-                        if (!librosEnWishlist.contains(libroElegido.getId())) {
-                            // El libro no está en la wishlist, así que podemos agregarlo
-                            boolean isAdded = dbHelper.addToWishlist(wishlistId, libroElegido.getId()); // pasarle como arg el ID del libro
-                            if (isAdded) {
-                                Toast.makeText(BookDetail.this, "Libro agregado", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(BookDetail.this, "Error al agregar Libro", Toast.LENGTH_LONG).show();
-                            }
 
-                        } else {
-                            // El libro ya está en la wishlist
-                            Toast.makeText(BookDetail.this, "El libro ya se encuentra en tu lista", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
+            // Agregar book a wishlist.
+            btnBookAddWish.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //
                 }
-
-    };
+            });
+        } else {
+            // Manejar el caso en el que no se haya encontrado el ID del libro
+            Toast.makeText(this, "Libro no encontrado", Toast.LENGTH_SHORT).show();
+        }
+    }
+}

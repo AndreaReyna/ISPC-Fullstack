@@ -100,7 +100,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
 
         // Crea la tabla "libro"
         String createTableLibro = "CREATE TABLE IF NOT EXISTS `libro` ("
-                + "`id_libro` INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "`id_libro` INTEGRER PRIMARY KEY AUTOINCREMENT, "
                 + "`isbn` TEXT NOT NULL, "
                 + "`titulo` TEXT NOT NULL, "
                 + "`subtitulo` TEXT, "
@@ -309,14 +309,14 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return booksInWishlist;
     }
 
-    // Metodo auxiliar para obtener la fecha actual
+    // Metodo auxiliar para obtener la fecha actual.
     private String getCurrentDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
     }
 
-    // Obtener todos los libros de la DB
+    // Obtener todos los libros de la DB.
 
     public List<BookClass> getAllBooks() {
 
