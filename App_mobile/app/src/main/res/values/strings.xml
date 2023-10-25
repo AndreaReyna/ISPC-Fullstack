@@ -8,5 +8,8 @@
     <string name="txtbotonCerrarSesion">Cerrar Sesión</string>
     <string name="txtbtnActualizaUser">Actualizar</string>
     <string name="txtbtnCancelar">Cancelar</string>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4cf2faffde0c675c14ba3ae3d757fccd8a14cfd7
 </resources>

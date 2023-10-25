@@ -5,6 +5,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
+=======
+import android.view.View;
+>>>>>>> 4cf2faffde0c675c14ba3ae3d757fccd8a14cfd7
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         BookAdapter adapter = new BookAdapter(this, response);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+<<<<<<< HEAD
 
         // Interar la lista para tomar la data de cada libro y mostrarlo en consola.
         for (BookClass book : response) {
@@ -51,7 +56,10 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Editorial ID: " + book.getEditorialId());
             System.out.println("Category ID: " + book.getCategoryId());
         }
+=======
+>>>>>>> 4cf2faffde0c675c14ba3ae3d757fccd8a14cfd7
 
+        // Navegación.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_inicio);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -75,5 +83,10 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    public void enviarLibro(View view) {
+
+        //enviar el ID del libro a la actividad bookDetails
     }
 }

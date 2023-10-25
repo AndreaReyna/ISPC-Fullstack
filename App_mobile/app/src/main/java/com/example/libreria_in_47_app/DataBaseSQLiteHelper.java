@@ -273,6 +273,42 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return wishlistId;
     }
 
+    // Agregar libro a la wishlist
+    public boolean addToWishlist(long wishlistId, long libroId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        // tal vez agregar una validacion para saber si el libro ya existe en la wishlist?
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("wishlist_id_wishlist", wishlistId);
+        contentValues.put("libro_id_libro", libroId); // libroId lo tengo q traer con un intent
+        long result = db.insert("elementos_wishlist", null, contentValues);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // Metodo para saber si el libro ya esta en la lista
+    public List<Integer> getBooksInWishlist(long clienteId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<Integer> booksInWishlist = new ArrayList<>();
+        // Consulta SQL para obtener los libros en la wishlist del cliente
+        String consulta = "SELECT libro_id_libro FROM elementos_wishlist WHERE wishlist_id_wishlist IN (SELECT id_wishlist FROM wishlist WHERE cliente_id_usuario = ?)";
+        Cursor cursor = db.rawQuery(consulta, new String[]{String.valueOf(clienteId)});
+
+        int columnIndex = cursor.getColumnIndex("libro_id_libro");
+
+        while (cursor.moveToNext()) {
+            if (columnIndex != -1) {
+                int libroId = cursor.getInt(columnIndex);
+                booksInWishlist.add(libroId);
+            }
+        }
+
+        cursor.close();
+        return booksInWishlist;
+    }
+
     // Metodo auxiliar para obtener la fecha actual
     private String getCurrentDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -320,6 +356,46 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return books;
+    }
+
+    public BookClass getBookById (int idLibro) {
+        //metodo para retornar objeto libro por id
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM libro WHERE id_libro = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idLibro)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String isbn = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_ISBN));
+            @SuppressLint("Range")
+            String title = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_TITULO));
+            @SuppressLint("Range")
+            String subtitle = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_SUBTITULO));
+            @SuppressLint("Range")
+            String description = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_DESCRIPCION));
+            @SuppressLint("Range")
+            String comments = cursor.getString(cursor.getColumnIndex(BookClass.COLUMN_COMENTARIOS));
+            @SuppressLint("Range")
+            int authorId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_AUTOR_ID));
+            @SuppressLint("Range")
+            int languageId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_IDIOMA_ID));
+            @SuppressLint("Range")
+            int formatId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_FORMATO_ID));
+            @SuppressLint("Range")
+            int editorialId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_EDITORIAL_ID));
+            @SuppressLint("Range")
+            int categoryId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_CATEGORIA_ID));
+
+            BookClass book = new BookClass(id, isbn, title, subtitle, description, comments, authorId, languageId, formatId, editorialId, categoryId);
+            cursor.close();
+            return book;
+        } else {
+            cursor.close();
+            return null;
+        }
     }
 
 }

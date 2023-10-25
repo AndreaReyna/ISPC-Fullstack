@@ -13,6 +13,7 @@
         android:theme="@style/Base.Theme.Libreria_In_47_App"
         tools:targetApi="31">
         <activity
+<<<<<<< HEAD
             android:name=".activities.ContactActivity"
             android:exported="false" />
         <activity
@@ -22,6 +23,20 @@
             android:name=".activities.BookDetail"
             android:exported="false" />
         <activity
+=======
+            android:name=".activities.EditUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.accountactivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.BookDetail"
+            android:exported="false" />
+        <activity
+>>>>>>> 4cf2faffde0c675c14ba3ae3d757fccd8a14cfd7
             android:name=".activities.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register" />

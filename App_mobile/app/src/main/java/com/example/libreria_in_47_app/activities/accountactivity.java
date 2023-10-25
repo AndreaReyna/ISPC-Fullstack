@@ -14,7 +14,10 @@ public class accountactivity extends AppCompatActivity {
     ImageView ivRegresar;
     Button btnCerrarSesion;
     Button button;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4cf2faffde0c675c14ba3ae3d757fccd8a14cfd7
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,17 @@ public class accountactivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+<<<<<<< HEAD
 
+=======
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(accountactivity.this, EditUserActivity.class);
+                startActivity(intent);
+            }
+        });
+>>>>>>> 4cf2faffde0c675c14ba3ae3d757fccd8a14cfd7
     }
 }
