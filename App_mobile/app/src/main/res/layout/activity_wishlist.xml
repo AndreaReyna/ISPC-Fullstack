@@ -6,6 +6,12 @@
     tools:context=".Deseos">
 
 
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"></LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -36,6 +42,7 @@
                         android:id="@+id/imageView14"
                         android:layout_width="match_parent"
                         android:layout_height="123dp"
+                        android:layout_weight="@android:dimen/app_icon_size"
                         android:src="@tools:sample/avatars"
                         app:srcCompat="@drawable/portada2" />
 
@@ -208,6 +215,27 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-             </LinearLayout>
+        </LinearLayout>
     </ScrollView>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center|end"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:longClickable="true"
+        android:visibility="visible"
+        app:addElevationShadow="true"
+        app:backgroundTint="#FF5722"
+        app:buttonGravity="bottom"
+        app:fabAlignmentMode="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:titleTextColor="#050505" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
