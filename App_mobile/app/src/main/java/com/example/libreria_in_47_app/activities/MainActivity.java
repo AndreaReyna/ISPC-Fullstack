@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
@@ -14,9 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-import com.example.libreria_in_47_app.activities.BookAdapter;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements BookAdapter.OnItemClickListener {
 
     DataBaseSQLiteHelper dbHelper;
 
@@ -35,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
         // Configurar el RecyclerView y su adaptador
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         BookAdapter adapter = new BookAdapter(this, response);
+        adapter.setOnItemClickListener(this); // Establecer el listener en MainActivity
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         // Navegación.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
@@ -64,8 +63,19 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void enviarLibro(View view) {
 
-        //enviar el ID del libro a la actividad bookDetails
+    @Override
+    public void enviarLibro(BookClass book) {
+        // Obtener el ID del libro.
+        int bookId = book.getId();
+
+        // Crear un Intent para abrir la actividad BookDetail.
+        Intent intent = new Intent(this, BookDetail.class);
+
+        // Pasar el ID del libro como extra en el Intent
+        intent.putExtra("book_id", bookId);
+
+        // Iniciar la actividad BookDetail
+        startActivity(intent);
     }
 }

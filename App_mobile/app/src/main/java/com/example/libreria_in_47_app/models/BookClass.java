@@ -41,7 +41,7 @@ public class BookClass implements IBook {
         this.categoryId = categoryId;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
