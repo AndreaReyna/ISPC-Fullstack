@@ -3,7 +3,7 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="enviar">Enviar</string>
     <string name="quieres_conocer_m_s_sobre_nosotros">¿Quieres conocer más sobre nosotros?</string>
-    <string name="escriba_su_mensaje">Escriba su mensaje</string>
+    <string name="escriba_su_mensaje">Escriba su mensaje aquí</string>
     <string name="txtbotonEditar">Editar Perfil</string>
     <string name="txtbotonCerrarSesion">Cerrar Sesión</string>
     <string name="txtbtnActualizaUser">Actualizar</string>
