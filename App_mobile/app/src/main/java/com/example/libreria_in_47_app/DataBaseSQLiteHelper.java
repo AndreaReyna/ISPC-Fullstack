@@ -17,6 +17,7 @@ import java.util.Locale;
 import android.database.Cursor;
 
 import com.example.libreria_in_47_app.models.BookClass;
+import com.example.libreria_in_47_app.models.UserClass;
 
 
 public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
@@ -398,5 +399,44 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
+    //Método para retornar objeto User
+    public UserClass getUserById (int userid) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM cliente WHERE id_cliente = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(userid)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id_usuario = cursor.getInt(cursor.getColumnIndex(UserClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String nombre = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_NOMBRE));
+            @SuppressLint("Range")
+            String apellido = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_APELLIDO));
+            @SuppressLint("Range")
+            String password = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_PASSWORD));
+            @SuppressLint("Range")
+            String tipo_usuario = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_TIPO_USUARIO));
+            @SuppressLint("Range")
+            String email = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_EMAIL));
+            @SuppressLint("Range")
+            String dni = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_DNI));
+            @SuppressLint("Range")
+            String fecha_nac = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_FECHA_NAC));
+            @SuppressLint("Range")
+            String telefono = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_TELEFONO));
+            @SuppressLint("Range")
+            String fecha_creacion = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_FECHA_CREACION));
+            @SuppressLint("Range")
+            String fecha_modificacion = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_FECHA_MODIFICACION));
+
+            UserClass user = new UserClass ( id_usuario, nombre, apellido, password, tipo_usuario, email, dni, fecha_nac, telefono, fecha_creacion, fecha_modificacion);
+            cursor.close();
+            return user;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
 }
 
