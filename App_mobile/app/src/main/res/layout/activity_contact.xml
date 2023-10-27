@@ -66,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
+            android:backgroundTint="@color/Yellow"
             android:hint="Ingrese su nombre"
             android:inputType="text"
             android:padding="16dp"
@@ -78,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@drawable/rounded_edittext"
+            android:backgroundTint="@color/Yellow"
             android:hint="Ingrese su correo electrónico"
             android:inputType="textEmailAddress"
             android:padding="16dp"
@@ -89,6 +91,7 @@
             android:layout_height="260dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_edittext"
+            android:backgroundTint="@color/Yellow"
             android:hint="@string/escriba_su_mensaje"
             android:inputType="text"
             android:padding="16dp"
@@ -109,8 +112,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:text="@string/quieres_conocer_m_s_sobre_nosotros"
-            android:textColor="@color/teal_200"
-            android:textSize="18sp" />
+            android:textColor="@color/Magenta"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
