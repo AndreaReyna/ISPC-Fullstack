@@ -97,21 +97,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bookAuthor" />
 
-            <TextView
-                android:id="@+id/bookPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/amiri"
-                android:text="Precio Libro"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bookScore"
-                tools:text="AR $9.900" />
-
             <Button
                 android:id="@+id/bookAddWish"
                 android:layout_width="match_parent"
@@ -135,10 +120,10 @@
                 android:id="@+id/bookISBN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="3dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:text="ISBN Title" />
+                android:paddingTop="3dp"
+                android:text="ISBN" />
 
             <TextView
                 android:id="@+id/bookIsbn"
@@ -158,15 +143,15 @@
                 android:id="@+id/bookDescriptionTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dp"
-                android:paddingBottom="3dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="3dp"
+                android:text="Descripcion"
                 android:textColor="?attr/colorControlNormal"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:typeface="normal"
-                android:text="Description Title" />
+                android:typeface="normal" />
 
             <TextView
                 android:id="@+id/textDescription"
@@ -182,15 +167,15 @@
                 android:id="@+id/bookSpecificationTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="16dp"
-                android:paddingBottom="3dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="3dp"
+                android:text="Especificaciones"
                 android:textColor="?attr/colorControlNormal"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:typeface="normal"
-                android:text="Especificaciones Title" />
+                android:typeface="normal" />
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -206,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="50dp"
-                        android:text="Editorial Title" />
+                        android:text="Editorial" />
 
                     <TextView
                         android:id="@+id/bookEditorial"
@@ -225,7 +210,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="50dp"
-                        android:text="Format Title" />
+                        android:text="Formato" />
 
                     <TextView
                         android:id="@+id/bookFormat"
@@ -244,7 +229,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="50dp"
-                        android:text="Language TItle" />
+                        android:text="Lenguaje" />
 
                     <TextView
                         android:id="@+id/bookLanguage"

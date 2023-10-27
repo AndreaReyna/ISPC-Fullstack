@@ -289,7 +289,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     }
 
     // Metodo para saber si el libro ya esta en la lista
-    public List<Integer> getBooksInWishlist(long clienteId) {
+    public List<Integer> getBookIdsInWishlist(long clienteId) {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Integer> booksInWishlist = new ArrayList<>();
         // Consulta SQL para obtener los libros en la wishlist del cliente
