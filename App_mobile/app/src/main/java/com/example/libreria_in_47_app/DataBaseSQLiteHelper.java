@@ -400,10 +400,10 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     }
 
     //Método para retornar objeto User
-    public UserClass getUserById (int userid) {
+    public UserClass getUserById (int userId) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT * FROM cliente WHERE id_cliente = ?";
-        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(userid)});
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(userId)});
 
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();

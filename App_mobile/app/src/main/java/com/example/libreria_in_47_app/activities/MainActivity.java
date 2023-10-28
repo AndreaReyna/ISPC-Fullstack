@@ -81,12 +81,12 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
 
     public void enviarUser(UserClass user) {
         // Obtener el ID del usuario
-        int userId = user.getId();
+        int userId = user.getIdUser();
 
         // Crear un Intent para abrir la actividad accountactivity
         Intent intent = new Intent(this, accountactivity.class);
 
-        // Pasar el ID del libro como extra en el Intent
+        // Pasar el ID del usuario como extra en el Intent
         intent.putExtra("id_usuario", userId);
 
         // Iniciar la actividad accountactivity

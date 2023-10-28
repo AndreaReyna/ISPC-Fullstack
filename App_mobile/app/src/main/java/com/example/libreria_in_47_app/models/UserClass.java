@@ -49,7 +49,7 @@ public class UserClass implements IUser {
         this.fecha_modificacion = fecha_modificacion;
     }
 
-    public int getId() { return id; }
+    public int getIdUser() { return id; }
 
     public String getNombre() { return nombre; }
 
