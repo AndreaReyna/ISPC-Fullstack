@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
     public void enviarUser(UserClass user) {
         // Obtener el ID del usuario
         int userId = user.getIdUser();
-        Toast.makeText(this, userId,Toast.LENGTH_LONG).show();
+        Toast.makeText(this, + userId,Toast.LENGTH_LONG).show();
         // Crear un Intent para abrir la actividad accountactivity
         Intent intent = new Intent(this, accountactivity.class);
 
