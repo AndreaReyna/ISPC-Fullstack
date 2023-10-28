@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,7 +18,11 @@ import java.util.Locale;
 
 import android.database.Cursor;
 
+import com.example.libreria_in_47_app.models.AuthorClass;
 import com.example.libreria_in_47_app.models.BookClass;
+import com.example.libreria_in_47_app.models.CategoryClass;
+import com.example.libreria_in_47_app.models.FormatClass;
+import com.example.libreria_in_47_app.models.LanguageClass;
 
 
 public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
@@ -455,6 +460,114 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
+    }
+
+    public List<AuthorClass> getAllPublishers() {
+        List<AuthorClass> authors = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM autor";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(AuthorClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String firstname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_FIRST_NAME));
+                @SuppressLint("Range")
+                String lastname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_LAST_NAME));
+
+                AuthorClass author = new AuthorClass(id, firstname, lastname);
+
+                authors.add(author);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return authors;
+    }
+
+    public List<FormatClass> getAllFormats() {
+        List<FormatClass> formats = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM formato";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(FormatClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String tipo = cursor.getString(cursor.getColumnIndex(FormatClass.COLUMN_TYPE));
+
+                FormatClass format = new FormatClass(id, tipo);
+
+                formats.add(format);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return formats;
+    }
+
+    public List<LanguageClass> getAllLanguages() {
+        List<LanguageClass> languages = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM idioma";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(LanguageClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String nombre = cursor.getString(cursor.getColumnIndex(LanguageClass.COLUMN_NAME));
+
+                LanguageClass language = new LanguageClass(id, nombre);
+
+                languages.add(language);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return languages;
+    }
+    public List<CategoryClass> getAllCategories() {
+        List<CategoryClass> categories = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM categoria";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(CategoryClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String tipo = cursor.getString(cursor.getColumnIndex(CategoryClass.COLUMN_TYPE));
+
+                CategoryClass category = new CategoryClass(id, tipo);
+
+                categories.add(category);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return categories;
+    }
+
+    public List<AuthorClass> getAllAuthors() {
+        List<AuthorClass> authors = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM autor";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(AuthorClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String firstname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_FIRST_NAME));
+                @SuppressLint("Range")
+                String lastname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_LAST_NAME));
+
+                AuthorClass author = new AuthorClass(id, firstname, lastname);
+
+                authors.add(author);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return authors;
     }
 
 }
