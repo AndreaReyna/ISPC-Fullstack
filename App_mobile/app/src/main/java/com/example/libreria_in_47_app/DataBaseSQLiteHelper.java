@@ -435,7 +435,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
-<<<<<<< HEAD
+
     //Método para retornar objeto User
     public UserClass getUserById (long userId) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -475,7 +475,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
             return null;
         }
     }
-=======
+
     //Actualizar calificación del libro
     public void rateBook(int bookId, float userRating) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -615,6 +615,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return authors;
     }
 
->>>>>>> 0662bdef63573cc3dffe54f28dac15daf9042331
+
 }
 
