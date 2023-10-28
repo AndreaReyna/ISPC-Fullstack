@@ -16,6 +16,7 @@ import java.util.Locale;
 
 import android.database.Cursor;
 
+import com.example.libreria_in_47_app.models.AuthorClass;
 import com.example.libreria_in_47_app.models.BookClass;
 
 
@@ -396,6 +397,29 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
             cursor.close();
             return null;
         }
+    }
+
+    public List<AuthorClass> getAllAuthors() {
+        List<AuthorClass> authors = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM autor";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(AuthorClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String firstname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_FIRST_NAME));
+                @SuppressLint("Range")
+                String lastname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_LAST_NAME));
+
+                AuthorClass author = new AuthorClass(id, firstname, lastname);
+
+                authors.add(author);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return authors;
     }
 
 }
