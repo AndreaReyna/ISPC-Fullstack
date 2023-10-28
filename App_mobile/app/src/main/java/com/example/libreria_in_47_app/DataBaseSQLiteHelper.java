@@ -369,7 +369,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
                 @SuppressLint("Range")
                 int categoryId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_CATEGORIA_ID));
                 @SuppressLint("Range")
-                double score = cursor.getDouble(cursor.getColumnIndex(BookClass.COLUMN_CALIFICACION_PROMEDIO));
+                float score = cursor.getFloat(cursor.getColumnIndex(BookClass.COLUMN_CALIFICACION_PROMEDIO));
                 @SuppressLint("Range")
                 int numberScores = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_NUMERO_CALIFICACIONES));
 
@@ -413,7 +413,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
             @SuppressLint("Range")
             int categoryId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_CATEGORIA_ID));
             @SuppressLint("Range")
-            double score = cursor.getDouble(cursor.getColumnIndex(BookClass.COLUMN_CALIFICACION_PROMEDIO));
+            float score = cursor.getFloat(cursor.getColumnIndex(BookClass.COLUMN_CALIFICACION_PROMEDIO));
             @SuppressLint("Range")
             int numberScores = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_NUMERO_CALIFICACIONES));
 
@@ -427,7 +427,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     }
 
     //Actualizar calificación del libro
-    public void rateBook(int bookId, double userRating) {
+    public void rateBook(int bookId, float userRating) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT calificacion_promedio, numero_calificaciones FROM libro WHERE id_libro = ?", new String[]{String.valueOf(bookId)});

@@ -13,7 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  implements BookAdapter.OnItemClickListener {
+public class MainActivity extends AppCompatActivity  implements BookAdapter.OnItemClickListener, BookAdapter.OnRatingChangeListener {
 
     DataBaseSQLiteHelper dbHelper;
 
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         BookAdapter adapter = new BookAdapter(this, response);
         adapter.setOnItemClickListener(this); // Establecer el listener en MainActivity
+        adapter.setOnRatingChangeListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -77,5 +78,10 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
 
         // Iniciar la actividad BookDetail
         startActivity(intent);
+    }
+
+    @Override
+    public void onRatingChange(int bookId, float newRating) {
+        dbHelper.rateBook(bookId, newRating);
     }
 }

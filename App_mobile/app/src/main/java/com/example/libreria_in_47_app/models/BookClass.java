@@ -31,10 +31,10 @@ public class BookClass implements IBook {
     private int editorialId;
     private int categoryId;
 
-    private double score;
+    private float score;
     private int numberScores;
 
-    public BookClass(int id, String isbn, String title, String subtitle, String description, String comments, int authorId, int languageId, int formatId, int editorialId, int categoryId, double score, int numberScores) {
+    public BookClass(int id, String isbn, String title, String subtitle, String description, String comments, int authorId, int languageId, int formatId, int editorialId, int categoryId, float score, int numberScores) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
@@ -94,7 +94,7 @@ public class BookClass implements IBook {
         return categoryId;
     }
 
-    public double getScore() {
+    public float getScore() {
         return score;
     }
 

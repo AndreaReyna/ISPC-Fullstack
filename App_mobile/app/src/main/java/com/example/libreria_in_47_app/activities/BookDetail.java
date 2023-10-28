@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,8 @@ public class BookDetail extends AppCompatActivity {
     long loggedUserId;
     long wishlistId;
 
+    RatingBar bookRatingBar;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,7 @@ public class BookDetail extends AppCompatActivity {
         bookLanguage = findViewById(R.id.bookLanguage);
         textDescription = findViewById(R.id.textDescription);
         btnBookAddWish = findViewById(R.id.bookAddWish);
+        bookRatingBar = findViewById(R.id.bookScore);
 
         ivRegresar = findViewById(R.id.ivRegresar);
         ivRegresar.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +91,7 @@ public class BookDetail extends AppCompatActivity {
 
         // Recuperar el ID del libro de la Intent
         int bookId = getIntent().getIntExtra("book_id", -1); // -1 es un valor predeterminado en caso de que no se encuentre el ID
+
 
         if (bookId != -1) {
             book = dbHelper.getBookById(bookId);
@@ -115,6 +120,19 @@ public class BookDetail extends AppCompatActivity {
                     }
                 }
             });
+
+
+            bookRatingBar.setRating(book.getScore());
+
+            bookRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                @Override
+                public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                    if (fromUser) {
+                        dbHelper.rateBook(book.getId(), rating);
+                    }
+                }
+            });
+
         } else {
             // Manejar el caso en el que no se haya encontrado el ID del libro
             Toast.makeText(this, "Libro no encontrado", Toast.LENGTH_SHORT).show();
