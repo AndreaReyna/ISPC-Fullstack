@@ -65,6 +65,7 @@ public class accountactivity extends AppCompatActivity {
         txtAcouApe.setText(user.getApellido());
         txtAcouEmail.setText(user.getEmail());
         txtAcouTelefono.setText(user.getTelefono());
+        txtAcouTitulo.setText(user.getNombre());
 
     }
 }
