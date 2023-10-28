@@ -68,7 +68,7 @@
                 android:layout_height="250dp" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txtAcouApe"
                 android:layout_width="match_parent"
                 android:layout_height="422dp"
                 android:layout_marginTop="32dp"

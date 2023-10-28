@@ -5,10 +5,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
 import com.example.libreria_in_47_app.models.BookClass;
+import com.example.libreria_in_47_app.models.UserClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -32,11 +34,12 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
         // Configurar el RecyclerView y su adaptador
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         BookAdapter adapter = new BookAdapter(this, response);
+
         adapter.setOnItemClickListener(this); // Establecer el listener en MainActivity
         adapter.setOnRatingChangeListener(this);
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
         // Navegación.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);

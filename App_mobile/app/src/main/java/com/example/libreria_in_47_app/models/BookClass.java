@@ -50,6 +50,9 @@ public class BookClass implements IBook {
         this.numberScores = numberScores;
     }
 
+    public BookClass(int idUsuario, String nombre, String apellido, String password, String tipoUsuario, String email, String dni, String fechaNac, String telefono, String fechaCreacion, String fechaModificacion) {
+    }
+
     public int getId() {
         return id;
     }
