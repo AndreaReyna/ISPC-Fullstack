@@ -31,7 +31,6 @@ public class accountactivity extends AppCompatActivity {
         setContentView(R.layout.activity_accountactivity);
         ivRegresar = findViewById(R.id.ivRegresar);
         txtAcouNom = findViewById(R.id.txtAcouNom);
-
         ivRegresar.setOnClickListener (new View.OnClickListener(){
             @Override
             public void onClick(View v){
