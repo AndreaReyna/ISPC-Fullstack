@@ -80,5 +80,4 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
         startActivity(intent);
     }
 
-
 }

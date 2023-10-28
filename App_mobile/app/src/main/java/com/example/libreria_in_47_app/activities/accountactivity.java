@@ -2,7 +2,6 @@ package com.example.libreria_in_47_app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +31,7 @@ public class accountactivity extends AppCompatActivity {
         setContentView(R.layout.activity_accountactivity);
         ivRegresar = findViewById(R.id.ivRegresar);
         txtAcouNom = findViewById(R.id.txtAcouNom);
-        TextView TextView5 = findViewById(R.id.textView5);
+
         ivRegresar.setOnClickListener (new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -69,7 +68,5 @@ public class accountactivity extends AppCompatActivity {
             // Manejar el caso en el que no se haya encontrado el ID del usuario
             Toast.makeText(this, "usuario no encontrado", Toast.LENGTH_SHORT).show();
         }
-
     }
-
 }
