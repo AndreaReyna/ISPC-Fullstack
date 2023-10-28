@@ -2,6 +2,7 @@ package com.example.libreria_in_47_app.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -55,13 +56,12 @@ public class accountactivity extends AppCompatActivity {
             }
         });
 
+        dbHelper = new DataBaseSQLiteHelper(this); // Inicializar el objeto dbHelper
         int userId = getIntent().getIntExtra("id_usuario", -1);
 
         if (userId != -1) {
             user = dbHelper.getUserById(userId);
-            String userIdStr = String.valueOf(userId);
             // Actualizar las vistas con los detalles del usuario
-            TextView5.setText(userIdStr);
             txtAcouNom.setText(user.getNombre());
 
         } else {

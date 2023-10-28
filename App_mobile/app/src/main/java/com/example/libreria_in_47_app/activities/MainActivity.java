@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
@@ -91,5 +92,6 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
 
         // Iniciar la actividad accountactivity
         startActivity(intent);
+
     }
 }
