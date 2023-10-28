@@ -27,6 +27,7 @@ public class accountactivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accountactivity);
+        dbHelper = new DataBaseSQLiteHelper(this);
         ivRegresar = findViewById(R.id.ivRegresar);
         txtAcouNom = findViewById(R.id.txtAcouNom);
         txtAcouApe = findViewById(R.id.txtAcouApe);
@@ -65,7 +66,7 @@ public class accountactivity extends AppCompatActivity {
         txtAcouApe.setText(user.getApellido());
         txtAcouEmail.setText(user.getEmail());
         txtAcouTelefono.setText(user.getTelefono());
-        txtAcouTitulo.setText(user.getNombre());
+        txtAcouTitulo.setText("Hola " + user.getNombre());
 
     }
 }
