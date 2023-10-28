@@ -20,13 +20,13 @@ import android.database.Cursor;
 
 import com.example.libreria_in_47_app.models.AuthorClass;
 import com.example.libreria_in_47_app.models.BookClass;
-<<<<<<< HEAD
+
 import com.example.libreria_in_47_app.models.UserClass;
-=======
+
 import com.example.libreria_in_47_app.models.CategoryClass;
 import com.example.libreria_in_47_app.models.FormatClass;
 import com.example.libreria_in_47_app.models.LanguageClass;
->>>>>>> 0662bdef63573cc3dffe54f28dac15daf9042331
+
 
 
 public class DataBaseSQLiteHelper extends SQLiteOpenHelper {

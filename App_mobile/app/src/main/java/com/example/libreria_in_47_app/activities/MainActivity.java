@@ -87,5 +87,4 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
     public void onRatingChange(int bookId, float newRating) {
         dbHelper.rateBook(bookId, newRating);
     }
-
 }
