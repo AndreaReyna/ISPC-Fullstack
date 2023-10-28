@@ -57,11 +57,11 @@ public class accountactivity extends AppCompatActivity {
             }
         });
 
-        user = new UserClass();
         long userId = dbHelper.getLoggedUserId(this);
+        user = dbHelper.getUserById(userId);
 
         if (userId != -1) {
-            user = dbHelper.getUserById(userId);
+
             // Actualizar las vistas con los detalles del usuario
             txtAcouNom.setText(user.getNombre());
 
