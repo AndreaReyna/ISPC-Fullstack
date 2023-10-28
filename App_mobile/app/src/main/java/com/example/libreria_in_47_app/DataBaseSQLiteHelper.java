@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.text.Format;
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,6 +25,7 @@ import com.example.libreria_in_47_app.models.BookClass;
 import com.example.libreria_in_47_app.models.UserClass;
 
 import com.example.libreria_in_47_app.models.CategoryClass;
+import com.example.libreria_in_47_app.models.EditorialClass;
 import com.example.libreria_in_47_app.models.FormatClass;
 import com.example.libreria_in_47_app.models.LanguageClass;
 
@@ -507,28 +509,51 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
     }
 
-    public List<AuthorClass> getAllPublishers() {
-        List<AuthorClass> authors = new ArrayList<>();
+    // Obtener todas las editoriales de la db
+    public List<EditorialClass> getAllPublishers() {
+        List<EditorialClass> publishers = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM autor";
+        String selectQuery = "SELECT * FROM editorial";
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
                 @SuppressLint("Range")
-                int id = cursor.getInt(cursor.getColumnIndex(AuthorClass.COLUMN_ID));
+                int id = cursor.getInt(cursor.getColumnIndex(EditorialClass.COLUMN_ID));
                 @SuppressLint("Range")
-                String firstname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_FIRST_NAME));
-                @SuppressLint("Range")
-                String lastname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_LAST_NAME));
+                String name = cursor.getString(cursor.getColumnIndex(EditorialClass.COLUMN_NAME));
 
-                AuthorClass author = new AuthorClass(id, firstname, lastname);
+                EditorialClass publisher = new EditorialClass(id, name);
 
-                authors.add(author);
+                publishers.add(publisher);
             } while (cursor.moveToNext());
         }
         cursor.close();
-        return authors;
+        return publishers;
     }
+
+    public EditorialClass getPublisherById (int idEditorial) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM editorial WHERE id_editorial = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idEditorial)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id_editorial = cursor.getInt(cursor.getColumnIndex(EditorialClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String nombre = cursor.getString(cursor.getColumnIndex(EditorialClass.COLUMN_NAME));
+
+            EditorialClass publisher = new EditorialClass(id_editorial, nombre);
+            cursor.close();
+            return publisher;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    // Obtener todos los formatos
 
     public List<FormatClass> getAllFormats() {
         List<FormatClass> formats = new ArrayList<>();
@@ -551,6 +576,29 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return formats;
     }
 
+    public FormatClass getFormatById (int idFormat) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM formato WHERE id_formato = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idFormat)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id_formato = cursor.getInt(cursor.getColumnIndex(FormatClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String tipo = cursor.getString(cursor.getColumnIndex(FormatClass.COLUMN_TYPE));
+
+            FormatClass format = new FormatClass(id_formato, tipo);
+            cursor.close();
+            return format;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    // Obtener todos los idiomas
     public List<LanguageClass> getAllLanguages() {
         List<LanguageClass> languages = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -571,6 +619,30 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         return languages;
     }
+
+    public LanguageClass getLanguageById (int idLanguage) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM idioma WHERE id_idioma = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idLanguage)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id_idioma = cursor.getInt(cursor.getColumnIndex(LanguageClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String nombre = cursor.getString(cursor.getColumnIndex(LanguageClass.COLUMN_NAME));
+
+            LanguageClass language = new LanguageClass(id_idioma, nombre);
+            cursor.close();
+            return language;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    // Obtener todas las categorias
     public List<CategoryClass> getAllCategories() {
         List<CategoryClass> categories = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -592,6 +664,29 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return categories;
     }
 
+    public CategoryClass getCategoryById (int idCategory) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM categoria WHERE id_categoria = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idCategory)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id_categoria = cursor.getInt(cursor.getColumnIndex(CategoryClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String tipo = cursor.getString(cursor.getColumnIndex(CategoryClass.COLUMN_TYPE));
+
+            CategoryClass category = new CategoryClass(id_categoria, tipo);
+            cursor.close();
+            return category;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    // Obtener todos los autores
     public List<AuthorClass> getAllAuthors() {
         List<AuthorClass> authors = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -613,6 +708,30 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return authors;
+    }
+
+    public AuthorClass getAuthorById (int idAuthor) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM autor WHERE id_autor = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idAuthor)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id = cursor.getInt(cursor.getColumnIndex(AuthorClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String firstname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_FIRST_NAME));
+            @SuppressLint("Range")
+            String lastname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_LAST_NAME));
+
+            AuthorClass author = new AuthorClass(id, firstname, lastname);
+            cursor.close();
+            return author;
+        } else {
+            cursor.close();
+            return null;
+        }
     }
 
 
