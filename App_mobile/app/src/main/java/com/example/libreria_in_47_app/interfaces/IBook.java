@@ -12,6 +12,6 @@ public interface IBook {
     int getFormatId();
     int getEditorialId();
     int getCategoryId();
-    double getScore();
+    float getScore();
     int getNumberScores();
 }
