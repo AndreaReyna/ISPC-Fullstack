@@ -14,6 +14,10 @@ public class BookClass implements IBook {
     public static final String COLUMN_FORMATO_ID = "formato_id_formato";
     public static final String COLUMN_EDITORIAL_ID = "editorial_id_editorial";
     public static final String COLUMN_CATEGORIA_ID = "categoria_id_categoria";
+    public static final String COLUMN_CALIFICACION_PROMEDIO = "calificacion_promedio";
+    public static final String COLUMN_NUMERO_CALIFICACIONES = "numero_calificaciones";
+
+
 
     private int id;
     private String isbn;
@@ -27,7 +31,10 @@ public class BookClass implements IBook {
     private int editorialId;
     private int categoryId;
 
-    public BookClass(int id, String isbn, String title, String subtitle, String description, String comments, int authorId, int languageId, int formatId, int editorialId, int categoryId) {
+    private float score;
+    private int numberScores;
+
+    public BookClass(int id, String isbn, String title, String subtitle, String description, String comments, int authorId, int languageId, int formatId, int editorialId, int categoryId, float score, int numberScores) {
         this.id = id;
         this.isbn = isbn;
         this.title = title;
@@ -39,6 +46,8 @@ public class BookClass implements IBook {
         this.formatId = formatId;
         this.editorialId = editorialId;
         this.categoryId = categoryId;
+        this.score = score;
+        this.numberScores = numberScores;
     }
 
     public BookClass(int idUsuario, String nombre, String apellido, String password, String tipoUsuario, String email, String dni, String fechaNac, String telefono, String fechaCreacion, String fechaModificacion) {
@@ -86,6 +95,14 @@ public class BookClass implements IBook {
 
     public int getCategoryId() {
         return categoryId;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public int getNumberScores() {
+        return numberScores;
     }
 
 }

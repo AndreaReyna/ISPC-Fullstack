@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ContactActivity">
+    tools:context=".activities.ContactActivity"
+    android:background="#000000">
 
     <ImageView
         android:id="@+id/ivRegresar"
@@ -15,11 +16,12 @@
         android:src="@drawable/regresar_flecha"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        app:tint="@color/teal_200" />
 
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="283dp"
+        android:layout_height="170dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
@@ -31,14 +33,15 @@
 
         <ImageView
             android:id="@+id/logoImageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="204dp"
+            android:layout_height="204dp"
             android:layout_marginTop="32dp"
             android:gravity="center"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#FEFEFE" />
 
     </LinearLayout>
 
@@ -63,9 +66,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
-            android:hint="Nombre"
+            android:backgroundTint="@color/Yellow"
+            android:hint="Ingrese su nombre"
             android:inputType="text"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:textColorHint="@color/Black" />
+
 
         <EditText
             android:id="@+id/contactmailText"
@@ -73,9 +79,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:background="@drawable/rounded_edittext"
-            android:hint="Correo electrónico"
+            android:backgroundTint="@color/Yellow"
+            android:hint="Ingrese su correo electrónico"
             android:inputType="textEmailAddress"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:textColorHint="@color/Black" />
 
         <EditText
             android:id="@+id/contactmessage"
@@ -83,18 +91,20 @@
             android:layout_height="260dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/rounded_edittext"
+            android:backgroundTint="@color/Yellow"
             android:hint="@string/escriba_su_mensaje"
             android:inputType="text"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:textColorHint="@color/Black" />
 
         <Button
             android:id="@+id/contactsendbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:backgroundTint="#F3AA60"
+            android:backgroundTint="@color/teal_200"
             android:text="@string/enviar"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/Black" />
 
         <TextView
             android:id="@+id/AboutusTextView"
@@ -102,7 +112,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:text="@string/quieres_conocer_m_s_sobre_nosotros"
-            android:textColor="#828282" />
+            android:textColor="@color/Magenta"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
