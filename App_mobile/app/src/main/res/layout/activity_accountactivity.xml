@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.accountactivity">
+
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtAcouTelefono"
         android:layout_width="334dp"
         android:layout_height="50dp"
-        android:text="********"
+        android:text="351 222222"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +31,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtAcouEmail"
         android:layout_width="334dp"
         android:layout_height="50dp"
         android:text="tobby@mail.com"
@@ -43,7 +44,7 @@
         app:layout_constraintVertical_bias="0.284" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtAcouApe"
         android:layout_width="334dp"
         android:layout_height="50dp"
         android:text="Canino"
@@ -97,7 +98,7 @@
         app:srcCompat="@mipmap/imagenperfil" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/txtAcouTitulo"
         android:layout_width="109dp"
         android:layout_height="94dp"
         android:text="Hola, Tobby"

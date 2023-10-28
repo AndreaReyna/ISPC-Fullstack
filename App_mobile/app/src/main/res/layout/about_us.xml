@@ -68,7 +68,7 @@
                 android:layout_height="250dp" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txtAcouApe"
                 android:layout_width="match_parent"
                 android:layout_height="422dp"
                 android:contentDescription="@string/misi_n_visi_n_y_valores_de_in47"

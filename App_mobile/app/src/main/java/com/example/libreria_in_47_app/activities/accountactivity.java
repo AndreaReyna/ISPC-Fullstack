@@ -8,18 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
 import com.example.libreria_in_47_app.models.UserClass;
-import android.content.SharedPreferences;
 
 public class accountactivity extends AppCompatActivity {
     ImageView ivRegresar;
     Button btnCerrarSesion;
     Button button;
-    TextView txtAcouNom;
+    TextView txtAcouNom, txtAcouApe, txtAcouEmail, txtAcouTelefono, txtAcouTitulo;
 
     UserClass user;
 
@@ -31,6 +29,11 @@ public class accountactivity extends AppCompatActivity {
         setContentView(R.layout.activity_accountactivity);
         ivRegresar = findViewById(R.id.ivRegresar);
         txtAcouNom = findViewById(R.id.txtAcouNom);
+        txtAcouApe = findViewById(R.id.txtAcouApe);
+        txtAcouEmail = findViewById(R.id.txtAcouEmail);
+        txtAcouTelefono = findViewById(R.id.txtAcouTelefono);
+        txtAcouTitulo = findViewById(R.id.txtAcouTitulo);
+
         ivRegresar.setOnClickListener (new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -58,14 +61,10 @@ public class accountactivity extends AppCompatActivity {
         long userId = dbHelper.getLoggedUserId(this);
         user = dbHelper.getUserById(userId);
 
-        if (userId != -1) {
+        txtAcouNom.setText(user.getNombre());
+        txtAcouApe.setText(user.getApellido());
+        txtAcouEmail.setText(user.getEmail());
+        txtAcouTelefono.setText(user.getTelefono());
 
-            // Actualizar las vistas con los detalles del usuario
-            txtAcouNom.setText(user.getNombre());
-
-        } else {
-            // Manejar el caso en el que no se haya encontrado el ID del usuario
-            Toast.makeText(this, "usuario no encontrado", Toast.LENGTH_SHORT).show();
-        }
     }
 }
