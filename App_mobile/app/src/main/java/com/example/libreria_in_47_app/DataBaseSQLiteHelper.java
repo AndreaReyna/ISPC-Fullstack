@@ -21,6 +21,7 @@ import android.database.Cursor;
 import com.example.libreria_in_47_app.models.AuthorClass;
 import com.example.libreria_in_47_app.models.BookClass;
 import com.example.libreria_in_47_app.models.CategoryClass;
+import com.example.libreria_in_47_app.models.EditorialClass;
 import com.example.libreria_in_47_app.models.FormatClass;
 import com.example.libreria_in_47_app.models.LanguageClass;
 
@@ -462,27 +463,26 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
     }
 
-    public List<AuthorClass> getAllPublishers() {
-        List<AuthorClass> authors = new ArrayList<>();
+    // Obtener todas las editoriales de la db
+    public List<EditorialClass> getAllPublishers() {
+        List<EditorialClass> publishers = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM autor";
+        String selectQuery = "SELECT * FROM editorial";
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
                 @SuppressLint("Range")
-                int id = cursor.getInt(cursor.getColumnIndex(AuthorClass.COLUMN_ID));
+                int id = cursor.getInt(cursor.getColumnIndex(EditorialClass.COLUMN_ID));
                 @SuppressLint("Range")
-                String firstname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_FIRST_NAME));
-                @SuppressLint("Range")
-                String lastname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_LAST_NAME));
+                String name = cursor.getString(cursor.getColumnIndex(EditorialClass.COLUMN_NAME));
 
-                AuthorClass author = new AuthorClass(id, firstname, lastname);
+                EditorialClass publisher = new EditorialClass(id, name);
 
-                authors.add(author);
+                publishers.add(publisher);
             } while (cursor.moveToNext());
         }
         cursor.close();
-        return authors;
+        return publishers;
     }
 
     public List<FormatClass> getAllFormats() {
