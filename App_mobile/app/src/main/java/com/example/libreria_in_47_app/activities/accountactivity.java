@@ -25,6 +25,7 @@ public class accountactivity extends AppCompatActivity {
     UserClass user;
 
     DataBaseSQLiteHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +57,8 @@ public class accountactivity extends AppCompatActivity {
             }
         });
 
-        dbHelper = new DataBaseSQLiteHelper(this); // Inicializar el objeto dbHelper
-        int userId = getIntent().getIntExtra("id_usuario", -1);
+        user = new UserClass();
+        long userId = dbHelper.getLoggedUserId(this);
 
         if (userId != -1) {
             user = dbHelper.getUserById(userId);
