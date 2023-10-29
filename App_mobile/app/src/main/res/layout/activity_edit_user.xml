@@ -7,22 +7,58 @@
     tools:context=".activities.EditUserActivity">
 
     <EditText
-        android:id="@+id/txtEditApe"
+        android:id="@+id/txtEditFecha_nac"
         android:layout_width="334dp"
         android:layout_height="50dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="252dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEditnom" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEditNom" />
 
     <EditText
-        android:id="@+id/txtEditnom"
+        android:id="@+id/txtEditDni"
         android:layout_width="334dp"
         android:layout_height="50dp"
-        android:layout_marginTop="296dp"
+        android:layout_marginTop="176dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEditNom" />
+
+    <EditText
+        android:id="@+id/txtEditApe"
+        android:layout_width="334dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEditNom" />
+
+    <EditText
+        android:id="@+id/txtEditEmail"
+        android:layout_width="334dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEditNom" />
+
+    <EditText
+        android:id="@+id/txtEditNom"
+        android:layout_width="334dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="144dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +79,7 @@
         app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEditApe"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintVertical_bias="0.843" />
 
     <Button
         android:id="@+id/btnCancelarActUser"
@@ -58,6 +94,6 @@
         app:layout_constraintHorizontal_bias="0.847"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtEditApe"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintVertical_bias="0.843" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
