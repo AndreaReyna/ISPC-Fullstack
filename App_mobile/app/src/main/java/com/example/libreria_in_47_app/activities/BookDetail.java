@@ -17,6 +17,7 @@ import com.example.libreria_in_47_app.models.AuthorClass;
 import com.example.libreria_in_47_app.models.BookClass;
 import com.example.libreria_in_47_app.models.CategoryClass;
 import com.example.libreria_in_47_app.models.EditorialClass;
+import com.example.libreria_in_47_app.models.FormatClass;
 
 import java.util.List;
 
@@ -117,6 +118,12 @@ public class BookDetail extends AppCompatActivity {
             // Obtener el categoría.
             EditorialClass editorial = dbHelper.getPublisherById(editorialId);
 
+            // Traer id del formato.
+            int formatoId = book.getFormatId();
+
+            // Obtener el categoría.
+            FormatClass formato = dbHelper.getFormatById(formatoId);
+
             // Actualizar las vistas con los detalles del libro
             textTitle.setText(book.getTitle());
             bookSubtitle.setText(book.getSubtitle());
@@ -125,7 +132,7 @@ public class BookDetail extends AppCompatActivity {
             bookCategorie.setText(categoria.getType());
             textDescription.setText(book.getDescription());
             bookEditorial.setText(editorial.getName());
-            //bookFormat.setText(book.getFormatId());       falta traer el formato
+            bookFormat.setText(formato.getType());
             //bookLanguage.setText(book.getLanguageId());     falta traer el lenguaje
 
             // Agregar book a wishlist.
