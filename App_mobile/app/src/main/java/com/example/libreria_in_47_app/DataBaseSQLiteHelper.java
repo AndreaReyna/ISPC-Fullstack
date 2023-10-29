@@ -100,7 +100,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
 
         // Crea la tabla "libro"
         String createTableLibro = "CREATE TABLE IF NOT EXISTS `libro` ("
-                + "`id_libro` INTEGRER PRIMARY KEY AUTOINCREMENT, "
+                + "`id_libro` INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "`isbn` TEXT NOT NULL, "
                 + "`titulo` TEXT NOT NULL, "
                 + "`subtitulo` TEXT, "

@@ -36,6 +36,13 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Configurar el RecyclerView y su adaptador
+        //RecyclerView recyclerViewW = findViewById(R.id.recyclerViewW);
+        //WishlistAdapter adapterW = new WishlistAdapter(this, response);
+        //adapterW.setOnItemClickListener(this); // Establecer el listener en MainActivity
+        //recyclerViewW.setAdapter(adapter);
+        //recyclerViewW.setLayoutManager(new LinearLayoutManager(this));
+
 
         // Navegación.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
