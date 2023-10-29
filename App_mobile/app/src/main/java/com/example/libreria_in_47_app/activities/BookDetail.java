@@ -101,6 +101,10 @@ public class BookDetail extends AppCompatActivity {
 
             book = dbHelper.getBookById(bookId);
 
+            if (booksIdsInWishlist.contains(bookId)) {
+                btnBookAddWish.setText("Eliminar de la Lista");
+            }
+
             // Traer id del autor.
             int autorId = book.getAuthorId();
 
@@ -144,6 +148,8 @@ public class BookDetail extends AppCompatActivity {
 
             // Agregar book a wishlist.
             btnBookAddWish.setOnClickListener(new View.OnClickListener() {
+
+
                 @Override
                 public void onClick(View view) {
                     // traer usuario
@@ -152,7 +158,15 @@ public class BookDetail extends AppCompatActivity {
                     if (!booksIdsInWishlist.contains(bookId)) {
                         // agregar libro
                         dbHelper.addToWishlist(wishlistId, bookId);
+                        btnBookAddWish.setText("Eliminar de la Lista");
                     }
+
+                    else {
+                        dbHelper.delFromWishlist(wishlistId, bookId);
+                        btnBookAddWish.setText("Agregar a la Lista");
+                    }
+
+
                 }
             });
 
