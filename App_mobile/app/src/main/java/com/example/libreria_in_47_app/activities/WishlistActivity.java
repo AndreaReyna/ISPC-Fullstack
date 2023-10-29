@@ -26,8 +26,11 @@ public class WishlistActivity extends AppCompatActivity implements WishlistAdapt
         // Instanciar un objeto de la clase DataBaseSQLiteHelper.
         dbHelper = new DataBaseSQLiteHelper(this);
 
+        // Recuperar id de usuario logueado.
+        long userId = dbHelper.getLoggedUserId(this);
+
         // Guardar la lista en una variable.
-        List<BookClass> response = dbHelper.getAllBooks();
+        List<BookClass> response = dbHelper.getBooksInWishlist(userId);
 
         // Configurar el RecyclerView y su adaptador
         RecyclerView recyclerViewW = findViewById(R.id.recyclerViewW);

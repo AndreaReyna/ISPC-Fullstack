@@ -340,6 +340,28 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return booksInWishlist;
     }
 
+    // Método para traer todos los libros de la wishlist del usuario logueado.
+    public List<BookClass> getBooksInWishlist(long usuarioId){
+
+        List<BookClass> books = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT libro_id_libro FROM elementos_wishlist WHERE wishlist_id_wishlist IN (SELECT id_wishlist FROM wishlist WHERE cliente_id_usuario = ?)";
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(usuarioId)});
+
+        int columnIndex = cursor.getColumnIndex("libro_id_libro");
+
+        while (cursor.moveToNext()) {
+            if (columnIndex != -1) {
+                int libroId = cursor.getInt(columnIndex);
+                BookClass book = getBookById(libroId);
+                books.add(book);
+            }
+        }
+        cursor.close();
+        return books;
+    }
+
     // Metodo auxiliar para obtener la fecha actual.
     private String getCurrentDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -348,7 +370,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     }
 
     // Obtener todos los libros de la DB.
-
     public List<BookClass> getAllBooks() {
 
         List<BookClass> books = new ArrayList<>();
@@ -437,7 +458,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
-
     //Método para retornar objeto User
     public UserClass getUserById (long userId) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -478,7 +498,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
-    //Actualizar calificación del libro
+    //Actualizar calificación del libro.
     public void rateBook(int bookId, float userRating) {
         SQLiteDatabase db = this.getWritableDatabase();
 
