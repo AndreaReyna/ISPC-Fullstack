@@ -147,29 +147,27 @@ public class BookDetail extends AppCompatActivity {
             bookLanguage.setText(idioma.getName());
 
             // Agregar book a wishlist.
+            if (booksIdsInWishlist.contains(bookId)) {
+                btnBookAddWish.setText("Eliminar de la Lista");
+            } else {
+                btnBookAddWish.setText("Agregar a la Lista");
+            }
+
+            // Agregar el evento de clic al botón
             btnBookAddWish.setOnClickListener(new View.OnClickListener() {
-
-
                 @Override
                 public void onClick(View view) {
-                    // traer usuario
-                    // traer wishlist de usuario
-                    // chequear que el libro no este en la wishlist
-                    if (!booksIdsInWishlist.contains(bookId)) {
-                        // agregar libro
+                    if (btnBookAddWish.getText().toString().equals("Agregar a la Lista")) {
+                        // Agregar libro a la wishlist
                         dbHelper.addToWishlist(wishlistId, bookId);
                         btnBookAddWish.setText("Eliminar de la Lista");
-                    }
-
-                    else {
+                    } else {
+                        // Eliminar libro de la wishlist
                         dbHelper.delFromWishlist(wishlistId, bookId);
                         btnBookAddWish.setText("Agregar a la Lista");
                     }
-
-
                 }
             });
-
 
             bookRatingBar.setRating(book.getScore());
 
