@@ -1,7 +1,6 @@
 package com.example.libreria_in_47_app.activities;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +18,11 @@ import com.example.libreria_in_47_app.models.BookClass;
 
 import java.util.List;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
+public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHolder> {
     private List<BookClass> data;
     private Context context;
 
-    private OnItemClickListener enviarLibro;
-
-    private OnRatingChangeListener onRatingChangeListener;
+    private WishlistAdapter.OnItemClickListener enviarLibro;
 
     DataBaseSQLiteHelper dbHelper;
 
@@ -33,12 +30,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         void enviarLibro(BookClass book);
     }
 
-    public interface OnRatingChangeListener {
-        void onRatingChange(int bookId, float rating);
-    }
-
-
-    public BookAdapter(Context context, List<BookClass> data) {
+    public WishlistAdapter(Context context, List<BookClass> data) {
         this.context = context;
         this.data = data;
     }
@@ -46,15 +38,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wishlist_layout, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        // Instanciar un objeto de la clase DataBaseSQLiteHelper.
+    public void onBindViewHolder(@NonNull WishlistAdapter.ViewHolder holder, int position) {
         dbHelper = new DataBaseSQLiteHelper(this.context);
 
         final BookClass book = data.get(position);
@@ -65,20 +54,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         // Obtener el autor.
         AuthorClass autor = dbHelper.getAuthorById(autorId);
 
-        holder.textTitle.setText(book.getTitle());
-        holder.textDescription.setText(book.getDescription());
-        holder.ratingBook.setRating(book.getScore());
-        holder.textAutor.setText(autor.getFullName());
-
-        // Listener para RatingBar
-        holder.ratingBook.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                if (fromUser && onRatingChangeListener != null) {
-                    onRatingChangeListener.onRatingChange(book.getId(), rating);
-                }
-            }
-        });
+        holder.textTitleW.setText(book.getTitle());
+        holder.textDescriptionW.setText(book.getDescription());
+        holder.ratingBookW.setRating(book.getScore());
+        holder.textAutorW.setText(autor.getFullName());
 
         // Obtener la referencia al ImageView de la tapa del libro.
         ImageView bookCoverImageView = holder.itemView.findViewById(R.id.imageView4);
@@ -98,28 +77,25 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         enviarLibro = listener;
     }
 
-    public void setOnRatingChangeListener(OnRatingChangeListener listener) {
-        this.onRatingChangeListener = listener;
-    }
-
     @Override
     public int getItemCount() {
         return data.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textTitle;
-        TextView textDescription;
-        RatingBar ratingBook;
+        TextView textTitleW;
+        TextView textDescriptionW;
 
-        TextView textAutor;
+        RatingBar ratingBookW;
+
+        TextView textAutorW;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textTitle = itemView.findViewById(R.id.textTitle);
-            textDescription = itemView.findViewById(R.id.textDescription);
-            ratingBook = itemView.findViewById(R.id.ratingBook);
-            textAutor = itemView.findViewById(R.id.textAutor);
+            textTitleW = itemView.findViewById(R.id.textTitleW);
+            textDescriptionW = itemView.findViewById(R.id.textDescriptionW);
+            ratingBookW = itemView.findViewById(R.id.ratingBookW);
+            textAutorW = itemView.findViewById(R.id.textAutorW);
         }
     }
 }

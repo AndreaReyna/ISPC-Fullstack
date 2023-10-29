@@ -5,17 +5,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
 import com.example.libreria_in_47_app.models.BookClass;
-import com.example.libreria_in_47_app.models.UserClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  implements BookAdapter.OnItemClickListener, BookAdapter.OnRatingChangeListener {
+public class WishlistActivity extends AppCompatActivity implements WishlistAdapter.OnItemClickListener {
 
     DataBaseSQLiteHelper dbHelper;
 
@@ -23,33 +21,33 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_wishlist);
 
         // Instanciar un objeto de la clase DataBaseSQLiteHelper.
         dbHelper = new DataBaseSQLiteHelper(this);
 
+        // Recuperar id de usuario logueado.
+        long userId = dbHelper.getLoggedUserId(this);
+
         // Guardar la lista en una variable.
-        List<BookClass> response = dbHelper.getAllBooks();
+        List<BookClass> response = dbHelper.getBooksInWishlist(userId);
 
         // Configurar el RecyclerView y su adaptador
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        BookAdapter adapter = new BookAdapter(this, response);
-
-        adapter.setOnItemClickListener(this); // Establecer el listener en MainActivity
-        adapter.setOnRatingChangeListener(this);
-
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView recyclerViewW = findViewById(R.id.recyclerViewW);
+        WishlistAdapter adapterW = new WishlistAdapter(this, response);
+        adapterW.setOnItemClickListener(this); // Establecer el listener en WishlistActivity
+        recyclerViewW.setAdapter(adapterW);
+        recyclerViewW.setLayoutManager(new LinearLayoutManager(this));
 
         // Navegación.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-        bottomNavigationView.setSelectedItemId(R.id.bottom_inicio);
-        bottomNavigationView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.bottom_inicio) {
+            bottomNavigationView.setSelectedItemId(R.id.bottom_deseos);
+            bottomNavigationView.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.bottom_deseos) {
                 return true;
-            } else if (item.getItemId() == R.id.bottom_deseos) {
-                startActivity(new Intent(getApplicationContext(), WishlistActivity.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            } else if (item.getItemId() == R.id.bottom_inicio) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(R.anim.slide_out_left,R.anim.slide_in_right);
                 //finish();
                 return true;
             } else if (item.getItemId() == R.id.bottom_cotacto ) {
@@ -66,7 +64,6 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
             return false;
         });
     }
-
     @Override
     public void enviarLibro(BookClass book) {
         // Obtener el ID del libro.
@@ -80,10 +77,5 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
 
         // Iniciar la actividad BookDetail
         startActivity(intent);
-    }
-
-    @Override
-    public void onRatingChange(int bookId, float newRating) {
-        dbHelper.rateBook(bookId, newRating);
     }
 }

@@ -200,9 +200,9 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO calificaciones (libro_id, usuario_id, puntuacion) VALUES (3, 3, 4);");
 
         // Inserta libros
-        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria, calificacion_promedio, numero_calificaciones) VALUES ('9781234567890', 'Título del libro de Gabriel Martínez', 'Subtítulo del libro', 'Descripción del libro escrito por Gabriel Martínez', 'Comentarios sobre el libro de este autor', 1, 2, 3, 1, 1, 4.5, 3);");
-        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria, calificacion_promedio, numero_calificaciones) VALUES ('9782345678901', 'Título del libro de Amelia Valdez', 'Subtítulo del libro', 'Descripción del libro escrito por Amelia Valdez', 'Comentarios sobre el libro de este autor', 2, 1, 3, 2, 2, 4.0, 2);");
-        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria, calificacion_promedio, numero_calificaciones) VALUES ('9783456789012', 'Título del libro de Enrique Soto', 'Subtítulo del libro', 'Descripción del libro escrito por Enrique Soto', 'Comentarios sobre el libro de este autor', 3, 2, 3, 3, 3, 4.7, 2);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria, calificacion_promedio, numero_calificaciones) VALUES ('9781234567890', 'El Monje Negro', 'Subtítulo del libro', 'Apasionante novela que narra la historia de un enigmático personaje que opera en las sombras,', 'Comentarios sobre el libro de este autor', 1, 2, 3, 1, 1, 4.5, 3);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria, calificacion_promedio, numero_calificaciones) VALUES ('9782345678901', 'Mañanas asombrosas', 'Subtítulo del libro', 'Conmovedora obra literaria que nos sumerge en la rutina diaria de un personaje principal cuya vida cambia con maravillas que descubre cada mañana', 'Comentarios sobre el libro de este autor', 2, 1, 3, 2, 2, 4.0, 2);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria, calificacion_promedio, numero_calificaciones) VALUES ('9783456789012', 'Madrugadas de sol', 'Subtítulo del libro', 'Novela que transporta al lector a un mundo de esperanza y renovación', 'Comentarios sobre el libro de este autor', 3, 2, 3, 3, 3, 4.7, 2);");
     }
 
     @Override
@@ -340,6 +340,28 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         return booksInWishlist;
     }
 
+    // Método para traer todos los libros de la wishlist del usuario logueado.
+    public List<BookClass> getBooksInWishlist(long usuarioId){
+
+        List<BookClass> books = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT libro_id_libro FROM elementos_wishlist WHERE wishlist_id_wishlist IN (SELECT id_wishlist FROM wishlist WHERE cliente_id_usuario = ?)";
+
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(usuarioId)});
+
+        int columnIndex = cursor.getColumnIndex("libro_id_libro");
+
+        while (cursor.moveToNext()) {
+            if (columnIndex != -1) {
+                int libroId = cursor.getInt(columnIndex);
+                BookClass book = getBookById(libroId);
+                books.add(book);
+            }
+        }
+        cursor.close();
+        return books;
+    }
+
     // Metodo auxiliar para obtener la fecha actual.
     private String getCurrentDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -348,7 +370,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     }
 
     // Obtener todos los libros de la DB.
-
     public List<BookClass> getAllBooks() {
 
         List<BookClass> books = new ArrayList<>();
@@ -437,7 +458,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
-
     //Método para retornar objeto User
     public UserClass getUserById (long userId) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -478,7 +498,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
-    //Actualizar calificación del libro
+    //Actualizar calificación del libro.
     public void rateBook(int bookId, float userRating) {
         SQLiteDatabase db = this.getWritableDatabase();
 
