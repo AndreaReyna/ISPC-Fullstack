@@ -13,9 +13,9 @@
         android:title="Deseos" />
 
     <item
-        android:id="@+id/bottom_compartir"
-        android:icon="@drawable/baseline_share_24"
-        android:title="Compartir" />
+        android:id="@+id/bottom_cotacto"
+        android:icon="@drawable/mail_contact"
+        android:title="Cotacto" />
 
     <item
         android:id="@+id/bottom_perfil"

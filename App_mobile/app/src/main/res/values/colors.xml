@@ -8,5 +8,9 @@
     <color name="black">#EF6262</color> //sombra seleccionada
     <color name="white">#FFFFFFFF</color> //Icononos
     <color name="lavender">#F3AA60</color>//barra
-    <color name="grey">#EF6262 </color>//icono seleccionado
+    <color name="grey">#EF6262 </color>
+    <color name="Celeste">#468B97</color>//icono seleccionado
+    <color name="Black">#000000</color>
+    <color name="Yellow">#FFFC32</color>
+    <color name="Magenta">#E23EFF</color>
 </resources>
