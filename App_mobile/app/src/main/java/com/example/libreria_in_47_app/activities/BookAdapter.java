@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,9 +22,16 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     private OnItemClickListener enviarLibro;
 
+    private OnRatingChangeListener onRatingChangeListener;
+
     public interface OnItemClickListener {
         void enviarLibro(BookClass book);
     }
+
+    public interface OnRatingChangeListener {
+        void onRatingChange(int bookId, float rating);
+    }
+
 
     public BookAdapter(Context context, List<BookClass> data) {
         this.context = context;
@@ -42,6 +50,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         final BookClass book = data.get(position);
         holder.textTitle.setText(book.getTitle());
         holder.textDescription.setText(book.getDescription());
+        holder.ratingBook.setRating(book.getScore());
+
+        // Listener para RatingBar
+        holder.ratingBook.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                if (fromUser && onRatingChangeListener != null) {
+                    onRatingChangeListener.onRatingChange(book.getId(), rating);
+                }
+            }
+        });
 
         // Obtener la referencia al ImageView de la tapa del libro.
         ImageView bookCoverImageView = holder.itemView.findViewById(R.id.imageView4);
@@ -61,6 +80,10 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         enviarLibro = listener;
     }
 
+    public void setOnRatingChangeListener(OnRatingChangeListener listener) {
+        this.onRatingChangeListener = listener;
+    }
+
     @Override
     public int getItemCount() {
         return data.size();
@@ -69,11 +92,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textTitle;
         TextView textDescription;
+        RatingBar ratingBook;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textTitle = itemView.findViewById(R.id.textTitle);
             textDescription = itemView.findViewById(R.id.textDescription);
+            ratingBook = itemView.findViewById(R.id.ratingBook);
         }
     }
 }

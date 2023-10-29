@@ -91,6 +91,11 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
 
+        if (dbHelper.isEmailRegistered(email)) {
+            showToast("Este correo electrónico ya está registrado.");
+            return false;
+        }
+
         return true;
     }
 

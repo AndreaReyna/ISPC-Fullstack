@@ -56,40 +56,34 @@
             app:srcCompat="@drawable/logo"
             tools:ignore="HardcodedText" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="Ilustración librería In47"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.333"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.813"
-            app:srcCompat="@drawable/img_about_us"
-            tools:ignore="HardcodedText" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
 
+            <VideoView
+                android:id="@+id/video1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp" />
+
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/txtAcouApe"
                 android:layout_width="match_parent"
                 android:layout_height="422dp"
-                android:contentDescription="Misión, visión y valores de In47"
-                android:fontFamily="@font/amiri"
-                android:text="Misión: Ofrecer un completo catálogo de libros de texto y lectura, fomentando la innovación digital.\nVisión: Garantizar un aprendizaje enriquecedor y promover la pasión por la lectura en la comunidad.\nValores: Compromiso con la excelencia educativa y la satisfacción total del cliente."
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/misi_n_visi_n_y_valores_de_in47"
+                android:text="Misión: Ofrecer un completo catálogo de libros de texto y lectura, fomentando la innovación digital.\n\nVisión: Garantizar un aprendizaje enriquecedor y promover la pasión por la lectura en la comunidad.\n\nValores: Compromiso con la excelencia educativa y la satisfacción total del cliente."
                 android:textAlignment="center"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="HardcodedText"
                 tools:layout_editor_absoluteY="474dp" />
+
+
         </LinearLayout>
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

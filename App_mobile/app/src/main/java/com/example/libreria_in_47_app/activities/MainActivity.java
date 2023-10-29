@@ -5,15 +5,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
 import com.example.libreria_in_47_app.models.BookClass;
+import com.example.libreria_in_47_app.models.UserClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  implements BookAdapter.OnItemClickListener {
+public class MainActivity extends AppCompatActivity  implements BookAdapter.OnItemClickListener, BookAdapter.OnRatingChangeListener {
 
     DataBaseSQLiteHelper dbHelper;
 
@@ -32,10 +34,14 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
         // Configurar el RecyclerView y su adaptador
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         BookAdapter adapter = new BookAdapter(this, response);
+
         adapter.setOnItemClickListener(this); // Establecer el listener en MainActivity
+        adapter.setOnRatingChangeListener(this);
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+<<<<<<< HEAD
         // Configurar el RecyclerView y su adaptador
         //RecyclerView recyclerViewW = findViewById(R.id.recyclerViewW);
         //WishlistAdapter adapterW = new WishlistAdapter(this, response);
@@ -44,6 +50,8 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
         //recyclerViewW.setLayoutManager(new LinearLayoutManager(this));
 
 
+=======
+>>>>>>> 601174568f7716c9573671463ae51d544e04ed17
         // Navegación.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setSelectedItemId(R.id.bottom_inicio);
@@ -84,5 +92,10 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
 
         // Iniciar la actividad BookDetail
         startActivity(intent);
+    }
+
+    @Override
+    public void onRatingChange(int bookId, float newRating) {
+        dbHelper.rateBook(bookId, newRating);
     }
 }

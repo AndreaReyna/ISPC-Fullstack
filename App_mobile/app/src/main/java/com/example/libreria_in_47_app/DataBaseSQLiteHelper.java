@@ -6,8 +6,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
+import java.text.Format;
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,7 +19,16 @@ import java.util.Locale;
 
 import android.database.Cursor;
 
+import com.example.libreria_in_47_app.models.AuthorClass;
 import com.example.libreria_in_47_app.models.BookClass;
+
+import com.example.libreria_in_47_app.models.UserClass;
+
+import com.example.libreria_in_47_app.models.CategoryClass;
+import com.example.libreria_in_47_app.models.EditorialClass;
+import com.example.libreria_in_47_app.models.FormatClass;
+import com.example.libreria_in_47_app.models.LanguageClass;
+
 
 
 public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
@@ -111,11 +123,14 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
                 + "`formato_id_formato` INTEGER NOT NULL, "
                 + "`editorial_id_editorial` INTEGER NOT NULL, "
                 + "`categoria_id_categoria` INTEGER NOT NULL, "
+                + "`calificacion_promedio` REAL DEFAULT 0, "
+                + "`numero_calificaciones` INTEGER DEFAULT 0, "
                 + "FOREIGN KEY (`autor_id_autor`) REFERENCES `autor` (`id_autor`), "
                 + "FOREIGN KEY (`idioma_id_idioma`) REFERENCES `idioma` (`id_idioma`), "
                 + "FOREIGN KEY (`formato_id_formato`) REFERENCES `formato` (`id_formato`), "
                 + "FOREIGN KEY (`editorial_id_editorial`) REFERENCES `editorial` (`id_editorial`), "
-                + "FOREIGN KEY (`categoria_id_categoria`) REFERENCES `categoria` (`id_categoria`));";
+                + "FOREIGN KEY (`categoria_id_categoria`) REFERENCES `categoria` (`id_categoria`)"
+                + ");";
         db.execSQL(createTableLibro);
 
         // Crea la tabla "wishlist"
@@ -136,6 +151,14 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY (`wishlist_id_wishlist`) REFERENCES `wishlist` (`id_wishlist`), "
                 + "FOREIGN KEY (`libro_id_libro`) REFERENCES `libro` (`id_libro`));";
         db.execSQL(createTableElementosWishlist);
+
+        String createTableCalificaciones = "CREATE TABLE IF NOT EXISTS `calificaciones` ("
+                + "`id_calificacion` INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "`libro_id` INTEGER NOT NULL, "
+                + "`usuario_id` INTEGER NOT NULL, "
+                + "`puntuacion` INTEGER NOT NULL, "
+                + "FOREIGN KEY (`libro_id`) REFERENCES `libro` (`id_libro`));";
+        db.execSQL(createTableCalificaciones);
 
         // Inserta autores
         db.execSQL("INSERT INTO autor (nombre, apellido) VALUES ('Gabriel', 'Martínez');");
@@ -162,10 +185,24 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO categoria (tipo) VALUES ('Historia');");
         db.execSQL("INSERT INTO categoria (tipo) VALUES ('Ciencia Ficción');");
 
+        //Insertar usuarios
+        db.execSQL("INSERT INTO cliente (nombre, apellido, password, tipo_usuario, email, dni, fecha_nac, telefono, fecha_creacion, fecha_modificacion) VALUES ('Juan', 'Pérez', 'passJuan123', 1, 'juan@mail.com', '30123456', '1980-12-01', '5551234', CURRENT_DATE, CURRENT_DATE);");
+        db.execSQL("INSERT INTO cliente (nombre, apellido, password, tipo_usuario, email, dni, fecha_nac, telefono, fecha_creacion, fecha_modificacion) VALUES ('Ana', 'García', 'passAna456', 1, 'ana@mail.com', '40123457', '1985-05-15', '5555678', CURRENT_DATE, CURRENT_DATE);");
+        db.execSQL("INSERT INTO cliente (nombre, apellido, password, tipo_usuario, email, dni, fecha_nac, telefono, fecha_creacion, fecha_modificacion) VALUES ('Luis', 'Rodriguez', 'passLuis789', 1, 'luis@mail.com', '50123458', '1990-09-21', '5559101', CURRENT_DATE, CURRENT_DATE);");
+
+        // Calificaciones
+        db.execSQL("INSERT INTO calificaciones (libro_id, usuario_id, puntuacion) VALUES (1, 1, 5);");
+        db.execSQL("INSERT INTO calificaciones (libro_id, usuario_id, puntuacion) VALUES (1, 2, 4);");
+        db.execSQL("INSERT INTO calificaciones (libro_id, usuario_id, puntuacion) VALUES (1, 3, 5);");
+        db.execSQL("INSERT INTO calificaciones (libro_id, usuario_id, puntuacion) VALUES (2, 1, 4);");
+        db.execSQL("INSERT INTO calificaciones (libro_id, usuario_id, puntuacion) VALUES (2, 3, 4);");
+        db.execSQL("INSERT INTO calificaciones (libro_id, usuario_id, puntuacion) VALUES (3, 2, 5);");
+        db.execSQL("INSERT INTO calificaciones (libro_id, usuario_id, puntuacion) VALUES (3, 3, 4);");
+
         // Inserta libros
-        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9781234567890', 'Título del libro de Gabriel Martínez', 'Subtítulo del libro', 'Descripción del libro escrito por Gabriel Martínez', 'Comentarios sobre el libro de este autor', 1, 2, 3, 4, 5);");
-        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9782345678901', 'Título del libro de Amelia Valdez', 'Subtítulo del libro', 'Descripción del libro escrito por Amelia Valdez', 'Comentarios sobre el libro de este autor', 2, 1, 3, 5, 4);");
-        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria) VALUES ('9783456789012', 'Título del libro de Enrique Soto', 'Subtítulo del libro', 'Descripción del libro escrito por Enrique Soto', 'Comentarios sobre el libro de este autor', 3, 2, 3, 2, 5);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria, calificacion_promedio, numero_calificaciones) VALUES ('9781234567890', 'Título del libro de Gabriel Martínez', 'Subtítulo del libro', 'Descripción del libro escrito por Gabriel Martínez', 'Comentarios sobre el libro de este autor', 1, 2, 3, 1, 1, 4.5, 3);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria, calificacion_promedio, numero_calificaciones) VALUES ('9782345678901', 'Título del libro de Amelia Valdez', 'Subtítulo del libro', 'Descripción del libro escrito por Amelia Valdez', 'Comentarios sobre el libro de este autor', 2, 1, 3, 2, 2, 4.0, 2);");
+        db.execSQL("INSERT INTO libro (isbn, titulo, subtitulo, descripcion, comentarios, autor_id_autor, idioma_id_idioma, formato_id_formato, editorial_id_editorial, categoria_id_categoria, calificacion_promedio, numero_calificaciones) VALUES ('9783456789012', 'Título del libro de Enrique Soto', 'Subtítulo del libro', 'Descripción del libro escrito por Enrique Soto', 'Comentarios sobre el libro de este autor', 3, 2, 3, 3, 3, 4.7, 2);");
     }
 
     @Override
@@ -176,12 +213,6 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     // Registro
     public void createUser(Context context, String nombre, String apellido, String password, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-        // Verificamos si el email ya existe
-        if (isEmailRegistered(email)) {
-            Toast.makeText(context, "Error, el correo electrónico ya está registrado", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         ContentValues values = new ContentValues();
         values.put("nombre", nombre);
@@ -289,7 +320,7 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
     }
 
     // Metodo para saber si el libro ya esta en la lista
-    public List<Integer> getBooksInWishlist(long clienteId) {
+    public List<Integer> getBookIdsInWishlist(long clienteId) {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Integer> booksInWishlist = new ArrayList<>();
         // Consulta SQL para obtener los libros en la wishlist del cliente
@@ -348,8 +379,12 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
                 int editorialId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_EDITORIAL_ID));
                 @SuppressLint("Range")
                 int categoryId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_CATEGORIA_ID));
+                @SuppressLint("Range")
+                float score = cursor.getFloat(cursor.getColumnIndex(BookClass.COLUMN_CALIFICACION_PROMEDIO));
+                @SuppressLint("Range")
+                int numberScores = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_NUMERO_CALIFICACIONES));
 
-                BookClass book = new BookClass(id, isbn, title, subtitle, description, comments, authorId, languageId, formatId, editorialId, categoryId);
+                BookClass book = new BookClass(id, isbn, title, subtitle, description, comments, authorId, languageId, formatId, editorialId, categoryId, score, numberScores);
 
                 books.add(book);
             } while (cursor.moveToNext());
@@ -388,8 +423,12 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
             int editorialId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_EDITORIAL_ID));
             @SuppressLint("Range")
             int categoryId = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_CATEGORIA_ID));
+            @SuppressLint("Range")
+            float score = cursor.getFloat(cursor.getColumnIndex(BookClass.COLUMN_CALIFICACION_PROMEDIO));
+            @SuppressLint("Range")
+            int numberScores = cursor.getInt(cursor.getColumnIndex(BookClass.COLUMN_NUMERO_CALIFICACIONES));
 
-            BookClass book = new BookClass(id, isbn, title, subtitle, description, comments, authorId, languageId, formatId, editorialId, categoryId);
+            BookClass book = new BookClass(id, isbn, title, subtitle, description, comments, authorId, languageId, formatId, editorialId, categoryId, score, numberScores);
             cursor.close();
             return book;
         } else {
@@ -397,6 +436,304 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
             return null;
         }
     }
+
+
+    //Método para retornar objeto User
+    public UserClass getUserById (long userId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM cliente WHERE id_usuario = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(userId)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id_usuario = cursor.getInt(cursor.getColumnIndex(UserClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String nombre = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_NOMBRE));
+            @SuppressLint("Range")
+            String apellido = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_APELLIDO));
+            @SuppressLint("Range")
+            String password = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_PASSWORD));
+            @SuppressLint("Range")
+            String tipo_usuario = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_TIPO_USUARIO));
+            @SuppressLint("Range")
+            String email = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_EMAIL));
+            @SuppressLint("Range")
+            String dni = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_DNI));
+            @SuppressLint("Range")
+            String fecha_nac = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_FECHA_NAC));
+            @SuppressLint("Range")
+            String telefono = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_TELEFONO));
+            @SuppressLint("Range")
+            String fecha_creacion = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_FECHA_CREACION));
+            @SuppressLint("Range")
+            String fecha_modificacion = cursor.getString(cursor.getColumnIndex(UserClass.COLUMN_FECHA_MODIFICACION));
+
+            UserClass user = new UserClass ( id_usuario, nombre, apellido, password, tipo_usuario, email, dni, fecha_nac, telefono, fecha_creacion, fecha_modificacion);
+            cursor.close();
+            return user;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    //Actualizar calificación del libro
+    public void rateBook(int bookId, float userRating) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT calificacion_promedio, numero_calificaciones FROM libro WHERE id_libro = ?", new String[]{String.valueOf(bookId)});
+
+        if (cursor.moveToFirst()) {
+            int ratingIndex = cursor.getColumnIndex("calificacion_promedio");
+            int numberRatingsIndex = cursor.getColumnIndex("numero_calificaciones");
+
+            if (ratingIndex != -1 && numberRatingsIndex != -1) {
+                double currentRating = cursor.getDouble(ratingIndex);
+                int numberRatings = cursor.getInt(numberRatingsIndex);
+
+                // Nueva calificación promedio
+                double newRating = ((currentRating * numberRatings) + userRating) / (numberRatings + 1);
+                int newNumberRatings = numberRatings + 1;
+
+                ContentValues values = new ContentValues();
+                values.put("calificacion_promedio", newRating);
+                values.put("numero_calificaciones", newNumberRatings);
+
+                db.update("libro", values, "id_libro = ?", new String[]{String.valueOf(bookId)});
+            } else {
+                Log.e("rateBook", "error saving score in database");
+            }
+        }
+
+        cursor.close();
+    }
+
+    // Obtener todas las editoriales de la db
+    public List<EditorialClass> getAllPublishers() {
+        List<EditorialClass> publishers = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM editorial";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(EditorialClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String name = cursor.getString(cursor.getColumnIndex(EditorialClass.COLUMN_NAME));
+
+                EditorialClass publisher = new EditorialClass(id, name);
+
+                publishers.add(publisher);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return publishers;
+    }
+
+    public EditorialClass getPublisherById (int idEditorial) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM editorial WHERE id_editorial = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idEditorial)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id_editorial = cursor.getInt(cursor.getColumnIndex(EditorialClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String nombre = cursor.getString(cursor.getColumnIndex(EditorialClass.COLUMN_NAME));
+
+            EditorialClass publisher = new EditorialClass(id_editorial, nombre);
+            cursor.close();
+            return publisher;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    // Obtener todos los formatos
+
+    public List<FormatClass> getAllFormats() {
+        List<FormatClass> formats = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM formato";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(FormatClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String tipo = cursor.getString(cursor.getColumnIndex(FormatClass.COLUMN_TYPE));
+
+                FormatClass format = new FormatClass(id, tipo);
+
+                formats.add(format);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return formats;
+    }
+
+    public FormatClass getFormatById (int idFormat) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM formato WHERE id_formato = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idFormat)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id_formato = cursor.getInt(cursor.getColumnIndex(FormatClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String tipo = cursor.getString(cursor.getColumnIndex(FormatClass.COLUMN_TYPE));
+
+            FormatClass format = new FormatClass(id_formato, tipo);
+            cursor.close();
+            return format;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    // Obtener todos los idiomas
+    public List<LanguageClass> getAllLanguages() {
+        List<LanguageClass> languages = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM idioma";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(LanguageClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String nombre = cursor.getString(cursor.getColumnIndex(LanguageClass.COLUMN_NAME));
+
+                LanguageClass language = new LanguageClass(id, nombre);
+
+                languages.add(language);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return languages;
+    }
+
+    public LanguageClass getLanguageById (int idLanguage) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM idioma WHERE id_idioma = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idLanguage)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id_idioma = cursor.getInt(cursor.getColumnIndex(LanguageClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String nombre = cursor.getString(cursor.getColumnIndex(LanguageClass.COLUMN_NAME));
+
+            LanguageClass language = new LanguageClass(id_idioma, nombre);
+            cursor.close();
+            return language;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    // Obtener todas las categorias
+    public List<CategoryClass> getAllCategories() {
+        List<CategoryClass> categories = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM categoria";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(CategoryClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String tipo = cursor.getString(cursor.getColumnIndex(CategoryClass.COLUMN_TYPE));
+
+                CategoryClass category = new CategoryClass(id, tipo);
+
+                categories.add(category);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return categories;
+    }
+
+    public CategoryClass getCategoryById (int idCategory) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM categoria WHERE id_categoria = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idCategory)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id_categoria = cursor.getInt(cursor.getColumnIndex(CategoryClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String tipo = cursor.getString(cursor.getColumnIndex(CategoryClass.COLUMN_TYPE));
+
+            CategoryClass category = new CategoryClass(id_categoria, tipo);
+            cursor.close();
+            return category;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
+    // Obtener todos los autores
+    public List<AuthorClass> getAllAuthors() {
+        List<AuthorClass> authors = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM autor";
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range")
+                int id = cursor.getInt(cursor.getColumnIndex(AuthorClass.COLUMN_ID));
+                @SuppressLint("Range")
+                String firstname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_FIRST_NAME));
+                @SuppressLint("Range")
+                String lastname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_LAST_NAME));
+
+                AuthorClass author = new AuthorClass(id, firstname, lastname);
+
+                authors.add(author);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return authors;
+    }
+
+    public AuthorClass getAuthorById (int idAuthor) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM autor WHERE id_autor = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{String.valueOf(idAuthor)});
+
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            @SuppressLint("Range")
+            int id = cursor.getInt(cursor.getColumnIndex(AuthorClass.COLUMN_ID));
+            @SuppressLint("Range")
+            String firstname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_FIRST_NAME));
+            @SuppressLint("Range")
+            String lastname = cursor.getString(cursor.getColumnIndex(AuthorClass.COLUMN_LAST_NAME));
+
+            AuthorClass author = new AuthorClass(id, firstname, lastname);
+            cursor.close();
+            return author;
+        } else {
+            cursor.close();
+            return null;
+        }
+    }
+
 
 }
 
