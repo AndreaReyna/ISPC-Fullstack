@@ -14,11 +14,11 @@
         android:src="@drawable/logo" />
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:hint="Email"
+        android:hint="Nombre"
         android:padding="16dp"
         android:inputType="text"
         android:background="@drawable/rounded_edittext" />
