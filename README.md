@@ -7,6 +7,8 @@
 
 ### Video funcionamiento: https://drive.google.com/file/d/1KVDOdsH-xjUkfmHCvV0rBP0xhanS91HC/view
 
+### Video Demo MVP: https://drive.google.com/file/d/1KVDOdsH-xjUkfmHCvV0rBP0xhanS91HC/view?usp=sharing
+
 ### Integrantes
 * 👨‍💻 Juan Manuel Sanchez Fin
 * 👩‍🏫 Andrea Inés Reyna
