@@ -78,7 +78,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textAutorW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
