@@ -1,16 +1,11 @@
-package com.example.libreria_in_47_app.activities;
+package com.example.libreria_in_47_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.MediaController;
-import android.widget.VideoView;
-
-import com.example.libreria_in_47_app.R;
 
 public class AboutUsActivity extends AppCompatActivity {
 
@@ -28,19 +23,5 @@ public class AboutUsActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        VideoView videoView = findViewById(R.id.video1);
-        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.videobook;
-
-        videoView.setVideoURI(Uri.parse(videoPath));
-        MediaController mediaController = new MediaController(this);
-        mediaController.setAnchorView(videoView);
-
-        videoView.setMediaController(mediaController);
-
-        videoView.start();
-
     }
-
-
 }

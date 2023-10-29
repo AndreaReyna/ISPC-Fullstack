@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AboutUsActivity">
+    tools:context=".AboutUsActivity">
 
     <ImageView
         android:id="@+id/ivRegresar"
@@ -13,10 +13,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/regresar_flecha"
-        android:contentDescription="Regresar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,MissingConstraints" />
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -24,66 +23,49 @@
         android:layout_height="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:tint="@color/Black"
-        android:contentDescription="Reproducir audio descriptivo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_media_play"
-        tools:ignore="UseAppTint" />
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:gravity="center">
 
-        <ImageView
+      <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="101dp"
+            android:layout_width="257dp"
+            android:layout_height="122dp"
             android:layout_marginTop="16dp"
-            android:contentDescription="Librería In47 logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo"
-            tools:ignore="HardcodedText" />
+            app:srcCompat="@drawable/logo" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="408dp"
+            android:layout_height="212dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.813"
+            app:srcCompat="@drawable/img_about_us" />
 
-            <VideoView
-                android:id="@+id/video1"
-                android:layout_width="match_parent"
-                android:layout_height="250dp" />
-
-            <TextView
-                android:id="@+id/txtAcouApe"
-                android:layout_width="match_parent"
-                android:layout_height="422dp"
-                android:layout_marginTop="32dp"
-                android:contentDescription="@string/misi_n_visi_n_y_valores_de_in47"
-                android:text="Misión: Ofrecer un completo catálogo de libros de texto y lectura, fomentando la innovación digital.\n\nVisión: Garantizar un aprendizaje enriquecedor y promover la pasión por la lectura en la comunidad.\n\nValores: Compromiso con la excelencia educativa y la satisfacción total del cliente."
-                android:textAlignment="center"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="HardcodedText"
-                tools:layout_editor_absoluteY="474dp" />
-
-
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="391dp"
+            android:layout_height="180dp"
+            android:padding="32dp"
+            android:text="Nuestra mision es satisfacer íntegramente las necesidades de nuestros clientes, ofreciendo el mayor surtido de libros de texto, lectura e innovación digital. Satisfaciendo las necesidades de la comunidad educativa con una amplia gama de editoriales para garantizar el aprendizaje y fomentar el amor a la lectura en  el público en general."
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="474dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
