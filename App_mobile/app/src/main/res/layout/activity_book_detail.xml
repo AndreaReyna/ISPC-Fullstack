@@ -24,22 +24,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/detalleLibroTextView"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:text="Detalle del Libro"
+                android:textAlignment="center"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
-                android:layout_height="359dp"
+                android:layout_height="340dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/cover_597fb48556f2" />
+                app:srcCompat="@drawable/cover_597fb48556f2"
+                app:layout_constraintTop_toBottomOf="@+id/detalleLibroTextView"/>
 
             <TextView
                 android:id="@+id/textTitle"
