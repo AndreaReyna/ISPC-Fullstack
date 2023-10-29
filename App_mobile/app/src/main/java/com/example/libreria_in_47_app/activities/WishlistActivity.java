@@ -38,13 +38,13 @@ public class WishlistActivity extends AppCompatActivity implements WishlistAdapt
 
         // Navegación.
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-            bottomNavigationView.setSelectedItemId(R.id.bottom_inicio);
+            bottomNavigationView.setSelectedItemId(R.id.bottom_deseos);
             bottomNavigationView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.bottom_inicio) {
+            if (item.getItemId() == R.id.bottom_deseos) {
                 return true;
-            } else if (item.getItemId() == R.id.bottom_deseos) {
-                startActivity(new Intent(getApplicationContext(), BookDetail.class));
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            } else if (item.getItemId() == R.id.bottom_inicio) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                overridePendingTransition(R.anim.slide_out_left,R.anim.slide_in_right);
                 //finish();
                 return true;
             } else if (item.getItemId() == R.id.bottom_cotacto ) {
