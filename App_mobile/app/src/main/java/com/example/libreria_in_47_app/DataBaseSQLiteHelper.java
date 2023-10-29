@@ -242,6 +242,14 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    // Eliminar usuario
+
+    public void deleteUser(long id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] args = { String.valueOf(id) };
+        db.execSQL("DELETE FROM cliente WHERE id_usuario=?", args);
+    }
+
     // Verifica si el email existe
     public boolean isEmailRegistered(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
