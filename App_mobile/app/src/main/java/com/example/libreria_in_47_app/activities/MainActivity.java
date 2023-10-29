@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
             if (item.getItemId() == R.id.bottom_inicio) {
                 return true;
             } else if (item.getItemId() == R.id.bottom_deseos) {
-                startActivity(new Intent(getApplicationContext(), BookDetail.class));
+                startActivity(new Intent(getApplicationContext(), WishlistActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 //finish();
                 return true;
@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity  implements BookAdapter.OnIt
             return false;
         });
     }
-
 
     @Override
     public void enviarLibro(BookClass book) {
