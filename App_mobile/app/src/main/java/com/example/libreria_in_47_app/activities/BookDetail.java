@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
+import com.example.libreria_in_47_app.models.AuthorClass;
 import com.example.libreria_in_47_app.models.BookClass;
 
 import java.util.List;
@@ -92,14 +93,20 @@ public class BookDetail extends AppCompatActivity {
         // Recuperar el ID del libro de la Intent
         int bookId = getIntent().getIntExtra("book_id", -1); // -1 es un valor predeterminado en caso de que no se encuentre el ID
 
-
         if (bookId != -1) {
+
             book = dbHelper.getBookById(bookId);
+
+            // Traer id del autor.
+            int autorId = book.getAuthorId();
+
+            // Obtener el autor.
+            AuthorClass autor = dbHelper.getAuthorById(autorId);
 
             // Actualizar las vistas con los detalles del libro
             textTitle.setText(book.getTitle());
             bookSubtitle.setText(book.getSubtitle());
-            //bookAuthor.setText(book.getAuthorId());       falta traer el autor
+            bookAuthor.setText(autor.getFullName());
             bookIsbn.setText(book.getIsbn());
             //bookCategorie.setText(book.getCategoryId());  falta traer la categoria
             textDescription.setText(book.getDescription());
