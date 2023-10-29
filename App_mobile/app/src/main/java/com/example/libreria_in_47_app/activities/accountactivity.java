@@ -16,7 +16,7 @@ import com.example.libreria_in_47_app.models.UserClass;
 public class accountactivity extends AppCompatActivity {
     ImageView ivRegresar;
     Button btnCerrarSesion;
-    Button button;
+    Button button, buttonDelete;
     TextView txtAcouNom, txtAcouApe, txtAcouEmail, txtAcouTelefono, txtAcouTitulo;
 
     UserClass user;
@@ -55,6 +55,16 @@ public class accountactivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(accountactivity.this, EditUserActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button = findViewById(R.id.buttonDelete);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               dbHelper.deleteUser(user.getIdUser());
+                Intent intent = new Intent(accountactivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
