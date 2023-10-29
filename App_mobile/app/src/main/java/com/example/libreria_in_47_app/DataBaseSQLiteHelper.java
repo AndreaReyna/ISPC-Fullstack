@@ -319,6 +319,14 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean delFromWishlist(long wishlistId, long libroId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] args = { String.valueOf(wishlistId), String.valueOf(libroId) };
+        db.execSQL("DELETE FROM elementos_wishlist WHERE wishlist_id_wishlist=? AND libro_id_libro=?", args);
+        //
+        return true;
+    }
+
     // Metodo para saber si el libro ya esta en la lista
     public List<Integer> getBookIdsInWishlist(long clienteId) {
         SQLiteDatabase db = this.getReadableDatabase();
