@@ -242,6 +242,14 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    // Eliminar usuario
+
+    public void deleteUser(long id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] args = { String.valueOf(id) };
+        db.execSQL("DELETE FROM cliente WHERE id_usuario=?", args);
+    }
+
     // Verifica si el email existe
     public boolean isEmailRegistered(String email) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -317,6 +325,14 @@ public class DataBaseSQLiteHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+
+    public boolean delFromWishlist(long wishlistId, long libroId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] args = { String.valueOf(wishlistId), String.valueOf(libroId) };
+        db.execSQL("DELETE FROM elementos_wishlist WHERE wishlist_id_wishlist=? AND libro_id_libro=?", args);
+        //
+        return true;
     }
 
     // Metodo para saber si el libro ya esta en la lista
