@@ -72,8 +72,8 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textTitleW = itemView.findViewById(R.id.textTitle);
-            textDescriptionW = itemView.findViewById(R.id.textDescription);
+            textTitleW = itemView.findViewById(R.id.textTitleW);
+            textDescriptionW = itemView.findViewById(R.id.textDescriptionW);
         }
     }
 }
