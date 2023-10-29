@@ -15,6 +15,10 @@ import com.example.libreria_in_47_app.DataBaseSQLiteHelper;
 import com.example.libreria_in_47_app.R;
 import com.example.libreria_in_47_app.models.AuthorClass;
 import com.example.libreria_in_47_app.models.BookClass;
+import com.example.libreria_in_47_app.models.CategoryClass;
+import com.example.libreria_in_47_app.models.EditorialClass;
+import com.example.libreria_in_47_app.models.FormatClass;
+import com.example.libreria_in_47_app.models.LanguageClass;
 
 import java.util.List;
 
@@ -103,16 +107,40 @@ public class BookDetail extends AppCompatActivity {
             // Obtener el autor.
             AuthorClass autor = dbHelper.getAuthorById(autorId);
 
+            // Traer id de la categoría.
+            int categoriaId = book.getCategoryId();
+
+            // Obtener el categoría.
+            CategoryClass categoria = dbHelper.getCategoryById(categoriaId);
+
+            // Traer id de la editorial.
+            int editorialId = book.getEditorialId();
+
+            // Obtener el categoría.
+            EditorialClass editorial = dbHelper.getPublisherById(editorialId);
+
+            // Traer id del formato.
+            int formatoId = book.getFormatId();
+
+            // Obtener el categoría.
+            FormatClass formato = dbHelper.getFormatById(formatoId);
+
+            // Traer id del idioma.
+            int idiomaId = book.getLanguageId();
+
+            // Obtener el categoría.
+            LanguageClass idioma = dbHelper.getLanguageById(idiomaId);
+
             // Actualizar las vistas con los detalles del libro
             textTitle.setText(book.getTitle());
             bookSubtitle.setText(book.getSubtitle());
             bookAuthor.setText(autor.getFullName());
             bookIsbn.setText(book.getIsbn());
-            //bookCategorie.setText(book.getCategoryId());  falta traer la categoria
+            bookCategorie.setText(categoria.getType());
             textDescription.setText(book.getDescription());
-            //bookEditorial.setText(book.getEditorialId()); falta traer la editorial
-            //bookFormat.setText(book.getFormatId());       falta traer el formato
-            //bookLanguage.setText(book.getLanguageId());     falta traer el lenguaje
+            bookEditorial.setText(editorial.getName());
+            bookFormat.setText(formato.getType());
+            bookLanguage.setText(idioma.getName());
 
             // Agregar book a wishlist.
             btnBookAddWish.setOnClickListener(new View.OnClickListener() {
