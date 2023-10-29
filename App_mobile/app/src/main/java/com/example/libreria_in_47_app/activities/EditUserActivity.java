@@ -16,9 +16,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+import android.widget.ImageView;
 
 public class EditUserActivity extends AppCompatActivity {
 
+    ImageView ivRegresar;
     Button btnCancelarActUser;
     Button btnActualizaUser;
     EditText txtEditNom, txtEditApe, txtEditEmail, txtEditDni, txtEditFecha_nac;
@@ -29,6 +31,7 @@ public class EditUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user);
         dbHelper = new DataBaseSQLiteHelper(this);
+        ivRegresar = findViewById(R.id.ivRegresar);
         txtEditNom = findViewById(R.id.txtEditNom);
         txtEditApe = findViewById(R.id.txtEditApe);
         txtEditEmail = findViewById(R.id.txtEditEmail);
@@ -36,6 +39,14 @@ public class EditUserActivity extends AppCompatActivity {
         txtEditFecha_nac = findViewById(R.id.txtEditFecha_nac);
         btnActualizaUser = findViewById(R.id.btnActualizaUser);
         btnCancelarActUser = findViewById(R.id.btnCancelarActUser);
+
+        ivRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(EditUserActivity.this, accountactivity.class);
+                startActivity(i);
+            }
+        });
         btnCancelarActUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
