@@ -15,16 +15,16 @@ import com.example.libreria_in_47_app.models.BookClass;
 
 import java.util.List;
 
-public class WishlistAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
+public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHolder> {
     private List<BookClass> data;
     private Context context;
 
-    private BookAdapter.OnItemClickListener enviarLibro;
+    private WishlistAdapter.OnItemClickListener enviarLibro;
 
     public interface OnItemClickListener {
         void enviarLibro(BookClass book);
     }
-}
+
     public WishlistAdapter(Context context, List<BookClass> data) {
         this.context = context;
         this.data = data;
@@ -32,33 +32,48 @@ public class WishlistAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder
 
     @NonNull
     @Override
-    public WishlistAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_layout, parent, false);
-        return new WishlistAdapter.ViewHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wishlist_layout, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull WishlistAdapter.ViewHolder holder, int position) {
         final BookClass book = data.get(position);
-        holder.textTitle.setText(book.getTitle());
-        holder.textDescription.setText(book.getDescription());
+        holder.textTitleW.setText(book.getTitle());
+        holder.textDescriptionW.setText(book.getDescription());
 
-// Obtener la referencia al ImageView de la tapa del libro.
+        // Obtener la referencia al ImageView de la tapa del libro.
         ImageView bookCoverImageView = holder.itemView.findViewById(R.id.imageView4);
 
-        @Override
-        public int getItemCount() {
-            return data.size();
-        }
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-            TextView textTitle;
-            TextView textDescription;
-
-            public ViewHolder(@NonNull View itemView) {
-                super(itemView);
-                textTitle = itemView.findViewById(R.id.textTitle);
-                textDescription = itemView.findViewById(R.id.textDescription);
+        // Configurar el OnClickListener en la tapa del libro.
+        bookCoverImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (enviarLibro != null) {
+                    enviarLibro.enviarLibro(book);
+                }
             }
+        });
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        enviarLibro = listener;
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView textTitleW;
+        TextView textDescriptionW;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            textTitleW = itemView.findViewById(R.id.textTitle);
+            textDescriptionW = itemView.findViewById(R.id.textDescription);
         }
     }
+}
